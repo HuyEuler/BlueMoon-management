@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="760.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Login_Controller">
    <children>
       <ImageView fitHeight="534.0" fitWidth="505.0" layoutX="44.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,10 +33,15 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="138.0" layoutY="426.0" mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-color: #0000ff;" text="Đăng nhập" textFill="WHITE">
+            <Button layoutX="138.0" layoutY="426.0" mnemonicParsing="false" onAction="#click" style="-fx-font-weight: bold; -fx-background-color: #0000ff;" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font></Button>
+            <ImageView fx:id="imageView" fitHeight="126.0" fitWidth="175.0" layoutX="120.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/login.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
