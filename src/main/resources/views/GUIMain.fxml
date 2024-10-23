@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="760.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Trang chủ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutY="12.0" prefHeight="100.0" prefWidth="967.0">
+                            <fx:include source="home/button_panel.fxml" />
+                        </AnchorPane>
+                        <AnchorPane layoutY="124.0" prefHeight="600.0" prefWidth="951.0">
+                            <fx:include source="home/content.fxml" />
+                        </AnchorPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Quản lý cư dân">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="960.0">
+                            <fx:include source="resident_management/button_panel.fxml" />
+                        </AnchorPane>
+                        <AnchorPane layoutY="117.0" prefHeight="600.0" prefWidth="951.0">
+                            <fx:include source="resident_management/content.fxml" />
+                        </AnchorPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Quản lý phí thu">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="960.0">
+                            <fx:include source="fee_management/button_panel.fxml" />
+                        </AnchorPane>
+                        <AnchorPane layoutX="4.0" layoutY="123.0" prefHeight="600.0" prefWidth="951.0">
+                            <fx:include source="fee_management/content.fxml" />
+                        </AnchorPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

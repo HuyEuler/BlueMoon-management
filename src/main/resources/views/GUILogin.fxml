@@ -33,10 +33,11 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="138.0" layoutY="426.0" mnemonicParsing="false" onAction="#click" style="-fx-font-weight: bold; -fx-background-color: #0000ff;" text="Đăng nhập" textFill="WHITE">
+            <Button layoutX="101.0" layoutY="416.0" onAction="#switchToMainScene" prefHeight="40.0" prefWidth="98.0" style="-fx-font-weight: bold; -fx-background-color: #0000ff;" text="Đăng nhập" textFill="WHITE">
                <font>
-                  <Font size="16.0" />
-               </font></Button>
+                  <Font size="15.0" />
+               </font>
+            </Button>
             <ImageView fx:id="imageView" fitHeight="126.0" fitWidth="175.0" layoutX="120.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/login.png" />
