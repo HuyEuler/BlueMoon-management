@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -17,13 +19,13 @@ public class Login_Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     @FXML
     ImageView imageView;
 
-    public void click(ActionEvent event) throws IOException {
-        imageView.setVisible(true);
-
-    }
+//    public void click(ActionEvent event) throws IOException {
+//        imageView.setVisible(true);
+//    }
 
     public void switchToMainScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));

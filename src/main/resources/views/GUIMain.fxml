@@ -4,19 +4,19 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane prefHeight="760.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="600.0" prefWidth="950.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="200.0" tabMaxWidth="200.0" tabMinHeight="20.0" tabMinWidth="100.0">
         <tabs>
           <Tab text="Trang chủ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane layoutY="12.0" prefHeight="100.0" prefWidth="967.0">
-                            <fx:include source="home/button_panel.fxml" />
-                        </AnchorPane>
-                        <AnchorPane layoutY="124.0" prefHeight="600.0" prefWidth="951.0">
+                        <AnchorPane prefHeight="550.0" prefWidth="700.0">
                             <fx:include source="home/content.fxml" />
+                           <AnchorPane layoutX="400.0" layoutY="480.0" prefHeight="50.0" prefWidth="500.0">
+                               <fx:include source="home/button_panel.fxml" />
+                           </AnchorPane>
                         </AnchorPane>
                      </children></AnchorPane>
             </content>
