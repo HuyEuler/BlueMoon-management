@@ -1,0 +1,23 @@
+.rounded-corner {
+    -fx-background-radius: 10;
+}
+.panel_button {
+    -fx-background-color: linear-gradient(to bottom right, #007bff, #ffffff);
+    -fx-background-radius: 20px;
+    /*-fx-border-color: #007bff;*/
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 100px;
+}
+
+.header_fee {
+    -fx-font-weight: bold;
+    -fx-font-size: 22px;
+    -fx-text-fill: #007ACC;
+}
+
+.all_button {
+    -fx-cursor: hand;
+}

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="660.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.FeeManagementController">
+   <children>
+      <Text layoutX="36.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách loại phí" wrappingWidth="218.29623413085938">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <TabPane layoutX="40.0" layoutY="86.0" prefHeight="500.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Tất cả">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="729.0">
+                     <children>
+                        <TableView fx:id="feeTableTatCa" prefHeight="472.0" prefWidth="750.0">
+                          <columns>
+                            <TableColumn fx:id="maPhiColumn" prefWidth="92.0" text="Mã phí " />
+                            <TableColumn fx:id="tenPhiColumn" prefWidth="215.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn" minWidth="2.0" prefWidth="115.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn" minWidth="0.0" prefWidth="151.0" text="Hạn nộp (dd/mm/yyyy)" />
+                              <TableColumn fx:id="batBuocColumn" minWidth="0.0" prefWidth="176.0" text="Bắt buộc" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Một lần">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="feeTableMotLan" prefHeight="472.0" prefWidth="750.0">
+                           <columns>
+                              <TableColumn fx:id="maPhiColumn1" prefWidth="92.0" text="Mã phí " />
+                              <TableColumn fx:id="tenPhiColumn1" prefWidth="215.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn1" minWidth="2.0" prefWidth="115.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn1" minWidth="0.0" prefWidth="151.0" text="Hạn nộp (dd/mm/yyyy)" />
+                              <TableColumn fx:id="batBuocColumn1" minWidth="0.0" prefWidth="176.0" text="Bắt buộc" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Hàng tháng">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="feeTableHangThang" prefHeight="472.0" prefWidth="750.0">
+                           <columns>
+                              <TableColumn fx:id="maPhiColumn2" prefWidth="92.0" text="Mã phí " />
+                              <TableColumn fx:id="tenPhiColumn2" prefWidth="215.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn2" minWidth="2.0" prefWidth="115.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn2" minWidth="0.0" prefWidth="151.0" text="Hạn nộp (dd/mm/yyyy)" />
+                              <TableColumn fx:id="batBuocColumn2" minWidth="0.0" prefWidth="176.0" text="Bắt buộc" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Thường niên">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="feeTableThuongNien" prefHeight="472.0" prefWidth="750.0">
+                           <columns>
+                              <TableColumn fx:id="maPhiColumn3" prefWidth="92.0" text="Mã phí " />
+                              <TableColumn fx:id="tenPhiColumn3" prefWidth="215.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn3" minWidth="2.0" prefWidth="115.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn3" minWidth="0.0" prefWidth="151.0" text="Hạn nộp (dd/mm/yyyy)" />
+                              <TableColumn fx:id="batBuocColumn3" minWidth="0.0" prefWidth="176.0" text="Bắt buộc" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <TextField layoutX="677.0" layoutY="28.0" prefHeight="25.0" prefWidth="164.0" promptText="Nhập từ khoá để tìm kiếm" />
+      <ImageView fitHeight="47.0" fitWidth="33.0" layoutX="848.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/search.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="809.0" layoutY="86.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: yellow;" styleClass="rounded-corner" stylesheets="@../styles.css">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="61.0" layoutX="-3.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../images/protect_bat_buoc.png" />
+                </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" styleClass="rounded-corner" stylesheets="@../styles.css" text="Bắt buộc" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="66.0" layoutY="48.0" prefHeight="56.0" prefWidth="52.0" text="10" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="809.0" layoutY="203.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: green;" styleClass="rounded-corner" stylesheets="@../styles.css">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="61.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../images/not_necessary.png" />
+                </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" text="Không bắt buộc" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="67.0" layoutY="40.0" prefHeight="56.0" prefWidth="52.0" styleClass="rounded-corner" stylesheets="@../styles.css" text="10" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="809.0" layoutY="315.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: blue;" styleClass="rounded-corner" stylesheets="@../styles.css">
+         <children>
+            <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="2.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/bell_sap_het_han.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" text="Sắp ra mắt" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="66.0" layoutY="43.0" prefHeight="56.0" prefWidth="52.0" text="10" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
