@@ -1,0 +1,88 @@
+// https://dbdiagram.io/d/671c304a97a66db9a35172b7
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table User{
+  userId int [primary key, increment]
+  name nvarchar(50)
+  birthday date
+  phoneNumber nvarchar(12)
+  image varbinary(MAX)
+  address nvarchar(100)
+}
+
+Table Login{
+  userId int [primary key, unique]
+  username varchar(50)
+  password varchar(50)
+}
+
+Ref : Login.userId > User.userId
+
+Table Resident {
+  residentId int [primary key, increment]
+  apartmentId int
+  name nvarchar(50)
+  birthday date
+  gender bit
+  phoneNumber nvarchar(12)
+  nationallity nvarchar(50)
+  relationshipWithOwner nvarchar(50)
+  status int
+}
+
+Table Apartment{
+  apartmentId int [primary key, increment]
+  ownerId int
+  area float
+  floor int
+  room nvarchar(20)
+}
+
+Ref : Apartment.ownerId > Resident.residentId
+Ref : Resident.apartmentId > Apartment.apartmentId
+
+Table Activity{
+  activityId int [primary key, increment]
+  residentId int
+  status int
+  timeIn date
+  timeOut date
+  note nvarchar(500)
+}
+
+Ref : Activity.residentId > Resident.residentId
+
+Table Fee{
+  feeId int [primary key, increment]
+  name nvarchar(100)
+  cost int
+  mandatory bit
+  cycle int
+  expiration date
+  status int
+}
+
+Table Payment{
+  paymentId int [primary key, increment]
+  feeId int
+  apartmentId int
+  timeValidate date
+  payForMonth int
+  payForYear int
+  isLate bit
+}
+Ref : Payment.apartmentId > Apartment.apartmentId
+Ref : Payment.feeId > Fee.feeId
+
+Table Vehicle{
+  vehicleId int [primary key, increment]
+  residentId int
+  type nvarchar(30)
+  licensePlate varchar(30)
+}
+Ref : Vehicle.residentId > Resident.residentId
+
+
+
+
