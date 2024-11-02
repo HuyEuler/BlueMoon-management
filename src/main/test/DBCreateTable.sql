@@ -95,7 +95,7 @@ ALTER TABLE `Apartment`
 ADD CONSTRAINT fk_ownerId FOREIGN KEY (ownerId) REFERENCES `Resident`(residentId);
 
 -- Tạo ràng buộc UNIQUE cho trường username
-ALTER TABLE `User`
+ALTER TABLE `Login`
 ADD CONSTRAINT `unique_username` UNIQUE (`username`);
 
 -- Tạo ràng buộc UNIQUE cho trường room
