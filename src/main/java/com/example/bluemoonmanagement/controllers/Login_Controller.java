@@ -20,10 +20,9 @@ public class Login_Controller {
     @FXML
     ImageView imageView;
 
-    public void click(ActionEvent event) throws IOException {
-        imageView.setVisible(true);
-
-    }
+//    public void click(ActionEvent event) throws IOException {
+//        imageView.setVisible(true);
+//    }
 
     public void switchToMainScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));
