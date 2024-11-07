@@ -13,6 +13,7 @@ public class DBConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
+
 //    public static void main(String[] args) {
 //        DBConnection connection1 = new DBConnection();
 //        connection1.connectToDatabase();
