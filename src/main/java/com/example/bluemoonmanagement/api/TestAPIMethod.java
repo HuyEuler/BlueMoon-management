@@ -1,8 +1,10 @@
 package com.example.bluemoonmanagement.api;
 
 import com.example.bluemoonmanagement.models.Fee;
+import com.example.bluemoonmanagement.models.Payment;
 import com.example.bluemoonmanagement.models.User;
 
+import java.util.Date;
 import java.util.List;
 
 import static com.example.bluemoonmanagement.api.FeeAPI.*;
@@ -58,15 +60,43 @@ public class TestAPIMethod {
 //        }
 
         // 5. getFeeList(mandatory)
-        List<Fee> fees = getFeeList(true);
-        if (fees != null) {
-            System.out.println("getFeeList(mandatory) executed successfully, list size: " + fees.size());
-            for (Fee fee : fees) {
-                System.out.println(fee);
+//        List<Fee> fees = getFeeList(true);
+//        if (fees != null) {
+//            System.out.println("getFeeList(mandatory) executed successfully, list size: " + fees.size());
+//            for (Fee fee : fees) {
+//                System.out.println(fee);
+//            }
+//        } else {
+//            System.out.println("getFeeList(mandatory) returned null");
+//        }
+
+
+        //Test PaymentAPI
+        // Test addPayment
+//        boolean addResult = PaymentAPI.addPayment(1, 2, new java.sql.Date(new Date().getTime()), 10, 2023, false);
+//        if (addResult) {
+//            System.out.println("Add payment successfully");
+//        } else {
+//            System.out.println("Failed to add payment");
+//        }
+
+        // Test getListPayment
+        var payments = PaymentAPI.getListPayment();
+        if (payments != null) {
+            System.out.println("getListPayment() executed successfully, list size: " + payments.size());
+            for (Payment payment : payments) {
+                System.out.println(payment);
             }
         } else {
-            System.out.println("getFeeList(mandatory) returned null");
+            System.out.println("getListPayment() returned null");
         }
+
+
+
+
+
+
+
 
 
 
