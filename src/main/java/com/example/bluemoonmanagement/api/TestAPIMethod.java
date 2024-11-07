@@ -1,6 +1,9 @@
 package com.example.bluemoonmanagement.api;
 
+import com.example.bluemoonmanagement.models.Fee;
 import com.example.bluemoonmanagement.models.User;
+
+import java.util.List;
 
 import static com.example.bluemoonmanagement.api.FeeAPI.*;
 import static com.example.bluemoonmanagement.api.LoginAPI.*;
@@ -30,13 +33,6 @@ public class TestAPIMethod {
 //        // 2. Test gọi các API cho chức năng quản lý cư dân
 
 
-
-
-
-
-
-
-
         // Test FeeAPI
         // 1. addFee
 //        if(addFee("Phí cố định", 1000, true, 1, new java.sql.Date(System.currentTimeMillis()), 1)) {
@@ -50,5 +46,30 @@ public class TestAPIMethod {
 //        if(deleteFee(3)) {
 //            System.out.println("Delete fee successfully");
 //        }
+        // 4. getFeeList()
+//        List<Fee> fees = getFeeList();
+//        if (fees != null) {
+//            System.out.println("getFeeList() executed successfully, list size: " + fees.size());
+//            for (Fee fee : fees) {
+//                System.out.println(fee);
+//            }
+//        } else {
+//            System.out.println("getFeeList() returned null");
+//        }
+
+        // 5. getFeeList(mandatory)
+        List<Fee> fees = getFeeList(true);
+        if (fees != null) {
+            System.out.println("getFeeList(mandatory) executed successfully, list size: " + fees.size());
+            for (Fee fee : fees) {
+                System.out.println(fee);
+            }
+        } else {
+            System.out.println("getFeeList(mandatory) returned null");
+        }
+
+
+
+
     }
 }
