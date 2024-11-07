@@ -8,7 +8,7 @@
    <children>
       <TabPane fx:id="tabPane" prefHeight="760.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab style="-fx-cursor: hand; -fx-background-radius: 10; -fx-background-color: green;" styleClass="f" text="Trang chủ">
+          <Tab text="Trang chủ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -21,7 +21,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab style="-fx-cursor: hand; -fx-border-width: 0; -fx-background-color: green; -fx-background-radius: 10;" text="Quản lý cư dân">
+          <Tab text="Quản lý cư dân">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -34,7 +34,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="feeTab" style="-fx-cursor: hand; -fx-border-width: 0; -fx-border-color: red; -fx-background-color: green; -fx-background-radius: 10;" text="Quản lý phí thu">
+            <Tab fx:id="feeTab" text="Quản lý phí thu">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
