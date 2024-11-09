@@ -1,67 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<!--<?import javafx.scene.control.Label?>-->
+<!--<?import javafx.scene.control.TextField?>-->
+<!--<?import javafx.scene.image.Image?>-->
+<!--<?import javafx.scene.image.ImageView?>-->
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+<!--<?import javafx.scene.text.Font?>-->
 
-<AnchorPane prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="420.0" layoutX="30.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/homeBackground(2).png" />
-         </image>
-      </ImageView>
-      <Label layoutX="300.0" layoutY="30.0" text="Chung cư BlueMoon" textFill="#809bce">
-         <font>
-            <Font name="System Bold" size="38.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="400.0" layoutY="120.0" prefHeight="220.0" prefWidth="500.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;">
-         <children>
-            <Label layoutX="27.0" layoutY="30.0" text="Đại diện ban quản lý" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="46.0" layoutY="70.0" text="Ngày khánh thành" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="93.0" layoutY="110.0" text="Số điện thoại" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="153.0" layoutY="150.0" prefHeight="30.0" prefWidth="66.0" text="Địa chỉ" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <TextField layoutX="250.0" layoutY="32.0" maxWidth="200.0" minWidth="200.0" />
-            <TextField layoutX="250.0" layoutY="72.0" maxWidth="200.0" minWidth="200.0" />
-            <TextField layoutX="250.0" layoutY="112.0" maxWidth="200.0" minWidth="200.0" />
-            <TextField layoutX="250.0" layoutY="152.0" maxWidth="200.0" minWidth="200.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="400.0" layoutY="360.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;">
-         <children>
-            <Label layoutX="112.0" layoutY="20.0" text="User name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="122.0" layoutY="50.0" text="Password" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <TextField layoutX="250.0" layoutY="23.0" maxWidth="200.0" minWidth="200.0" />
-            <TextField layoutX="250.0" layoutY="55.0" maxWidth="200.0" minWidth="200.0" />
-         </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+<!--<AnchorPane prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">-->
+<!--   <children>-->
+<!--      <ImageView fitHeight="420.0" layoutX="30.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">-->
+<!--         <image>-->
+<!--            <Image url="@../../images/homeBackground(2).png" />-->
+<!--         </image>-->
+<!--      </ImageView>-->
+<!--      <Label layoutX="300.0" layoutY="30.0" text="Chung cư BlueMoon" textFill="#809bce">-->
+<!--         <font>-->
+<!--            <Font name="System Bold" size="38.0" />-->
+<!--         </font>-->
+<!--      </Label>-->
+<!--      <AnchorPane layoutX="400.0" layoutY="120.0" prefHeight="220.0" prefWidth="500.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;">-->
+<!--         <children>-->
+<!--            <Label layoutX="27.0" layoutY="30.0" text="Đại diện ban quản lý" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="20.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--            <Label layoutX="46.0" layoutY="70.0" text="Ngày khánh thành" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="20.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--            <Label layoutX="93.0" layoutY="110.0" text="Số điện thoại" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="20.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--            <Label layoutX="153.0" layoutY="150.0" prefHeight="30.0" prefWidth="66.0" text="Địa chỉ" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="20.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--            <TextField layoutX="250.0" layoutY="32.0" maxWidth="200.0" minWidth="200.0" />-->
+<!--            <TextField layoutX="250.0" layoutY="72.0" maxWidth="200.0" minWidth="200.0" />-->
+<!--            <TextField layoutX="250.0" layoutY="112.0" maxWidth="200.0" minWidth="200.0" />-->
+<!--            <TextField layoutX="250.0" layoutY="152.0" maxWidth="200.0" minWidth="200.0" />-->
+<!--         </children>-->
+<!--      </AnchorPane>-->
+<!--      <AnchorPane layoutX="400.0" layoutY="360.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;">-->
+<!--         <children>-->
+<!--            <Label layoutX="112.0" layoutY="20.0" text="User name" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="20.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--            <Label layoutX="122.0" layoutY="50.0" text="Password" textFill="WHITE">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="20.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--            <TextField layoutX="250.0" layoutY="23.0" maxWidth="200.0" minWidth="200.0" />-->
+<!--            <TextField layoutX="250.0" layoutY="55.0" maxWidth="200.0" minWidth="200.0" />-->
+<!--         </children>-->
+<!--      </AnchorPane>-->
+<!--   </children>-->
+<!--</AnchorPane>-->
