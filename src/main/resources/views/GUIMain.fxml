@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
    <children>
       <TabPane fx:id="tabPane" prefHeight="760.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
@@ -44,7 +45,8 @@
                         <AnchorPane fx:id="content" layoutX="4.0" layoutY="123.0" prefHeight="600.0" prefWidth="951.0">
                             <fx:include source="fee_management/content.fxml" />
                         </AnchorPane>
-                     </children></AnchorPane>
+                     </children>
+                </AnchorPane>
               </content>
             </Tab>
         </tabs>
