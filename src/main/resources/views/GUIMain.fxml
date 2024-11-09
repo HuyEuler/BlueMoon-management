@@ -189,7 +189,7 @@
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button ellipsisString="" maxHeight="50.0" maxWidth="250.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce;" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                          <Button fx:id="editInformation" ellipsisString="" maxHeight="50.0" maxWidth="250.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce;" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
@@ -207,7 +207,7 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button ellipsisString="" maxHeight="50.0" maxWidth="250.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce;" text="Đổi mật khẩu" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                          <Button fx:id="changeAccount" ellipsisString="" maxHeight="50.0" maxWidth="250.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce;" text="Đổi mật khẩu" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>

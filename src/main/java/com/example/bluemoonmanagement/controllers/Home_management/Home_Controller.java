@@ -7,8 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
@@ -29,5 +31,36 @@ public class Home_Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private Button editInformation;
+    @FXML
+    private Button changeAccount;
+
+    @FXML
+    public void initialize() {
+        if (editInformation != null) {
+            editInformation.setOnAction(event -> openWindow("editInformation"));
+        }
+        if (changeAccount != null){
+            changeAccount.setOnAction(event -> openWindow("changeAccount"));
+        }
+    }
+    private void openWindow(String fileName) {
+//        System.out.println("OKE");
+        try {
+            String path_file_fxml = "/views/home/" + fileName + ".fxml";
+            FXMLLoader loader = new FXMLLoader((getClass().getResource(path_file_fxml)));
+            root = loader.load();
+            stage = new Stage();
+            stage.setTitle("Thêm loại phí mới");
+            stage.setScene(new Scene(root));
+            // modal mode: not allow return before close this window
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
