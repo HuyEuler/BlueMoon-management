@@ -8,4 +8,7 @@ module com.example.bluemoonmanagement {
 
     opens com.example.bluemoonmanagement.controllers to javafx.fxml;
     exports com.example.bluemoonmanagement.controllers;
+
+    opens com.example.bluemoonmanagement.models to javafx.base;
+    exports com.example.bluemoonmanagement.models;
 }

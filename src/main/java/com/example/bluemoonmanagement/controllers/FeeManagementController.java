@@ -23,18 +23,8 @@ public class FeeManagementController {
     private Button payFee;
     @FXML
     private Button listPaid;
-
     private Stage stage;
     private Parent root;
-
-    class Fee {
-        private Integer maPhi;
-        private String tenPhi;
-        private Integer soTien;
-        private String hanNop;
-        private Boolean batBuoc;
-    }
-
     @FXML
     public void initialize() {
         if (addFee != null) {

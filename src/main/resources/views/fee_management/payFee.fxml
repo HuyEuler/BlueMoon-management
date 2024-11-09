@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.PayFeeController">
+<AnchorPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.PayFeeController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="28.0" prefHeight="17.0" prefWidth="183.0" styleClass="header_fee" stylesheets="@../styles.css" text="Nộp phí" textAlignment="CENTER">
             <font>

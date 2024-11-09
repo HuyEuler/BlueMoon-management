@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="120.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.FeeManagementController">
+<AnchorPane prefHeight="120.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.FeeManagementController">
    <children>
       <Button fx:id="addFee" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" styleClass="panel_button" stylesheets="@../styles.css" text="Thêm loại phí" textAlignment="CENTER">
          <font>
@@ -44,7 +44,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="payFee" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="568.0" layoutY="23.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" styleClass="panel_button" stylesheets="@../styles.css" text="Nạp phí" textAlignment="CENTER">
+      <Button fx:id="payFee" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="568.0" layoutY="23.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" styleClass="panel_button" stylesheets="@../styles.css" text="Nộp phí" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
