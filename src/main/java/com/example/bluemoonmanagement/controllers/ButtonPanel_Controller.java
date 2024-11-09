@@ -131,7 +131,7 @@ public class ButtonPanel_Controller {
         themChuCanHoButton.setOnAction(event -> openAddOwnerWindow());
 
         // ========================================== Sửa chủ căn hộ
-        //editOwnerButton.setOnAction(event -> openEditOwnerDialog());
+        editOwnerButton.setOnAction(event -> openEditOwnerDialog());
         // ========================================== Sửa chủ căn hộ
 
     }
@@ -139,7 +139,7 @@ public class ButtonPanel_Controller {
     private void openEditOwnerDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("views/resident_management/edit_owner.fxml"));
-            Parent root = loader.load();
+            AnchorPane root = loader.load();
 
             // Get the controller to pass the TableView
             EditOwner_Controller controller = loader.getController();
