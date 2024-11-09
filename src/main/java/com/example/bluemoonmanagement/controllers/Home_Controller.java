@@ -23,9 +23,6 @@ public class Home_Controller {
     @FXML
     ImageView imageView;
 
-    public void click(ActionEvent event) throws IOException {
-        imageView.setVisible(true);
-    }
 
     public void switchToLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUILogin.fxml")));
