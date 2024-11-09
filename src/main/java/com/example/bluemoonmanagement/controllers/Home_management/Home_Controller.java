@@ -1,6 +1,5 @@
-package com.example.bluemoonmanagement.controllers;
+package com.example.bluemoonmanagement.controllers.Home_management;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
