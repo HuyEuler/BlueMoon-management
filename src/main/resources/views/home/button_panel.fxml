@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="50.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Home_management.Home_Controller">
+<AnchorPane prefHeight="50.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Home_management.Home_Controller">
    <children>
-      <Button ellipsisString="" mnemonicParsing="false" onAction="#editInformation" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true">
+      <Button fx:id="editInformation" ellipsisString="" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button ellipsisString="" layoutX="175.0" mnemonicParsing="false" onAction="#changeAccount" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;" text="Đổi mật khẩu" textFill="WHITE" wrapText="true">
+      <Button fx:id="changeAccount" ellipsisString="" layoutX="175.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 10;" text="Đổi mật khẩu" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
