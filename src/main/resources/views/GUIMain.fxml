@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxWidth="1200.0" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<GridPane maxWidth="1200.0" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -22,7 +22,7 @@
             <DropShadow />
          </effect>
       </Pane>
-      <TabPane maxHeight="1000.0" maxWidth="1200.0" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="660.0" prefWidth="950.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="300.0" tabMinHeight="20.0" tabMinWidth="100.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <TabPane fx:id="tabPane" maxHeight="1000.0" maxWidth="1200.0" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="660.0" prefWidth="950.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="300.0" tabMinHeight="20.0" tabMinWidth="100.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <tabs>
           <Tab style="-fx-background-color: #FFFFFF;" text="Trang chủ">
                <content>
@@ -56,14 +56,14 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab style="-fx-background-color: #FFFFFF;" text="Quản lý phí thu">
+            <Tab fx:id="feeTab" style="-fx-background-color: #FFFFFF;" text="Quản lý phí thu">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane prefHeight="100.0" prefWidth="960.0">
+                        <AnchorPane fx:id="button_panel" prefHeight="100.0" prefWidth="960.0">
                             <fx:include source="fee_management/button_panel.fxml" />
                         </AnchorPane>
-                        <AnchorPane layoutX="4.0" layoutY="123.0" prefHeight="600.0" prefWidth="951.0">
+                        <AnchorPane fx:id="content" layoutX="4.0" layoutY="123.0" prefHeight="600.0" prefWidth="951.0">
                             <fx:include source="fee_management/content.fxml" />
                         </AnchorPane>
                      </children>
