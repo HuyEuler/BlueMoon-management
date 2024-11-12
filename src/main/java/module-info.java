@@ -19,4 +19,6 @@ module com.example.bluemoonmanagement {
     exports com.example.bluemoonmanagement.models;
     exports com.example.bluemoonmanagement.controllers.Fee_management;
     opens com.example.bluemoonmanagement.controllers.Fee_management to javafx.fxml;
+    exports com.example.bluemoonmanagement.common;
+    opens com.example.bluemoonmanagement.common to javafx.fxml;
 }

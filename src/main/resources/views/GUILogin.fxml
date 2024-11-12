@@ -25,15 +25,15 @@
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Pane maxHeight="600.0" maxWidth="1000.0" minWidth="340.0" prefHeight="500.0" prefWidth="680.0" style="-fx-background-color: #adad;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Pane maxHeight="600.0" maxWidth="1000.0" minWidth="340.0" prefHeight="500.0" prefWidth="625.0" style="-fx-background-color: #adad;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <effect>
             <DropShadow blurType="GAUSSIAN" />
          </effect>
       </Pane>
-      <GridPane maxHeight="600.0" maxWidth="1000.0" prefHeight="500.0" prefWidth="650.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <GridPane maxHeight="600.0" maxWidth="1000.0" prefHeight="500.0" prefWidth="625.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="340.0" prefWidth="340.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="0.0" prefWidth="340.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="315.0" prefWidth="315.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="0.0" prefWidth="315.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -47,8 +47,8 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Pane maxHeight="600.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="340.0" style="-fx-background-color: #809bce;" />
-                  <ImageView fitHeight="300.0" fitWidth="340.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Pane fx:id="stackPane" maxHeight="600.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="340.0" style="-fx-background-color: #809bce;" />
+                  <ImageView fx:id="imageView" fitHeight="371.0" fitWidth="310.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -61,7 +61,7 @@
             <Pane maxHeight="600.0" maxWidth="500.0" minHeight="500.0" minWidth="340.0" prefHeight="500.0" prefWidth="340.0" style="-fx-background-color: #FFFFFF;" />
          </children>
       </GridPane>
-      <GridPane maxHeight="600.0" maxWidth="1000.0" minHeight="500.0" minWidth="0.0" prefHeight="500.0" prefWidth="680.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <GridPane maxHeight="600.0" maxWidth="1000.0" minHeight="500.0" minWidth="0.0" prefHeight="500.0" prefWidth="625.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="340.0" prefWidth="340.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="0.0" prefWidth="340.0" />
@@ -71,7 +71,7 @@
             <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ImageView fitHeight="93.0" opacity="0.38" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <ImageView fitHeight="73.0" fitWidth="662.0" opacity="0.38" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <image>
                   <Image url="@../images/login_cloud(1).png" />
                </image>
@@ -79,7 +79,7 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <ImageView fitHeight="60.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <ImageView fitHeight="63.0" fitWidth="628.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <image>
                   <Image url="@../images/login_cloud(2).png" />
                </image>

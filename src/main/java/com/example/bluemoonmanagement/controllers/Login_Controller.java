@@ -4,26 +4,28 @@ import  com.example.bluemoonmanagement.api.LoginAPI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
+import static com.example.bluemoonmanagement.common.globalVariable.screenBounds;
 import static com.example.bluemoonmanagement.api.LoginAPI.authenticate;
 
 public class Login_Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    @FXML
-    ImageView imageView;
 
     @FXML
     private TextField login_user;
@@ -40,7 +42,7 @@ public class Login_Controller {
         if (authenticate(username, password)) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
             stage.setScene(scene);
             stage.show();
         } else {
@@ -48,6 +50,7 @@ public class Login_Controller {
             Alert confirmationAlert = new Alert(Alert.AlertType.ERROR);
             confirmationAlert.setTitle("Erorr");
             confirmationAlert.setHeaderText("Sai thông tin đăng nhập, vui lòng kiểm tra lại!");
+            confirmationAlert.showAndWait();
         }
     }
 }

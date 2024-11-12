@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="350.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.AddFeeController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="32.0" prefHeight="32.0" prefWidth="210.0" styleClass="header_fee" stylesheets="@../styles.css" text="Thêm loại phí mới" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="32.0" prefHeight="32.0" prefWidth="210.0" styleClass="header_fee" stylesheets="@../ControllView/styles.css" text="Thêm loại phí mới" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font>
@@ -41,12 +41,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="btHuy" layoutX="126.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button" stylesheets="@../styles.css" text="Huỷ">
+      <Button fx:id="btHuy" layoutX="126.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button" stylesheets="@../ControllView/styles.css" text="Huỷ">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btThem" layoutX="351.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button" stylesheets="@../styles.css" text="Thêm">
+      <Button fx:id="btThem" layoutX="351.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button" stylesheets="@../ControllView/styles.css" text="Thêm">
          <font>
             <Font size="15.0" />
          </font>

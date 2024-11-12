@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.DeleteFeeController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="33.0" prefHeight="32.0" prefWidth="210.0" styleClass="header_fee" stylesheets="@../styles.css" text="Xoá phí" textAlignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="33.0" prefHeight="32.0" prefWidth="210.0" styleClass="header_fee" stylesheets="@../ControllView/styles.css" text="Xoá phí" textAlignment="CENTER">
             <font>
                 <Font size="22.0" />
             </font>

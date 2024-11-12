@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
+import static com.example.bluemoonmanagement.common.globalVariable.screenBounds;
+
 
 public class Home_Controller {
     private Stage stage;
@@ -37,7 +39,7 @@ public class Home_Controller {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUILogin.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
             stage.setScene(scene);
             stage.show();
         }
