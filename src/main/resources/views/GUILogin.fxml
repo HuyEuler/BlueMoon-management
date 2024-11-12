@@ -17,8 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<GridPane maxWidth="1000.0" prefHeight="500.0" prefWidth="680.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Login_Controller">
+<GridPane maxWidth="1000.0" prefHeight="500.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Login_Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -139,7 +138,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </PasswordField>
-                  <CheckBox maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="250.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Remember my account!" textFill="#809bce" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <CheckBox fx:id="remember" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="250.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Remember my account!" textFill="#809bce" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
