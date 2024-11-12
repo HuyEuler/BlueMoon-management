@@ -93,14 +93,14 @@
         </tabs>
       </TabPane>
       <TextField fx:id="tfSearch" layoutX="677.0" layoutY="28.0" prefHeight="25.0" prefWidth="164.0" promptText="Nhập tên phí để tìm kiếm" />
-      <AnchorPane layoutX="809.0" layoutY="86.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: yellow;" styleClass="rounded-corner" stylesheets="@../styles.css">
+      <AnchorPane layoutX="809.0" layoutY="86.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: yellow;" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css">
          <children>
             <ImageView fitHeight="49.0" fitWidth="61.0" layoutX="-3.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../../images/protect_bat_buoc.png" />
                 </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" styleClass="rounded-corner" stylesheets="@../styles.css" text="Bắt buộc" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css" text="Bắt buộc" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
@@ -112,7 +112,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="809.0" layoutY="203.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: green;" styleClass="rounded-corner" stylesheets="@../styles.css">
+      <AnchorPane layoutX="809.0" layoutY="203.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: green;" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css">
          <children>
             <ImageView fitHeight="49.0" fitWidth="61.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                 <image>
@@ -124,14 +124,14 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lbKhongBatBuoc" alignment="CENTER" layoutX="67.0" layoutY="40.0" prefHeight="56.0" prefWidth="52.0" styleClass="rounded-corner" stylesheets="@../styles.css" text="10" textAlignment="CENTER">
+            <Label fx:id="lbKhongBatBuoc" alignment="CENTER" layoutX="67.0" layoutY="40.0" prefHeight="56.0" prefWidth="52.0" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css" text="10" textAlignment="CENTER">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="809.0" layoutY="315.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: blue;" styleClass="rounded-corner" stylesheets="@../styles.css">
+      <AnchorPane layoutX="809.0" layoutY="315.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: blue;" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css">
          <children>
             <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="2.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
