@@ -17,28 +17,28 @@ public class TabController {
     private AnchorPane button_panel;
     @FXML
     private AnchorPane content;
-    @FXML
-    public void initialize() {
-        feeTab.setOnSelectionChanged(event -> {
-            if (feeTab.isSelected()) {
-                loadFeeManagementContent();
-            }
-        });
-    }
+//    @FXML
+//    public void initialize() {
+//        feeTab.setOnSelectionChanged(event -> {
+//            if (feeTab.isSelected()) {
+//                loadFeeManagementContent();
+//            }
+//        });
+//    }
 
-    private void loadFeeManagementContent() {
-        try {
-            // Load button_panel.fxml
-            FXMLLoader buttonLoader = new FXMLLoader(getClass().getResource("/views/fee_management/button_panel.fxml"));
-            AnchorPane buttonPane = buttonLoader.load();
-            button_panel.getChildren().setAll(buttonPane);
-            // Load content.fxml
-            FXMLLoader contentLoader = new FXMLLoader(getClass().getResource("/views/fee_management/content.fxml"));
-            AnchorPane contentPane = contentLoader.load();
-            content.getChildren().setAll(contentPane);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void loadFeeManagementContent() {
+//        try {
+//            // Load button_panel.fxml
+//            FXMLLoader buttonLoader = new FXMLLoader(getClass().getResource("/views/fee_management/button_panel.fxml"));
+//            AnchorPane buttonPane = buttonLoader.load();
+//            button_panel.getChildren().setAll(buttonPane);
+//            // Load content.fxml
+//            FXMLLoader contentLoader = new FXMLLoader(getClass().getResource("/views/fee_management/content.fxml"));
+//            AnchorPane contentPane = contentLoader.load();
+//            content.getChildren().setAll(contentPane);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
