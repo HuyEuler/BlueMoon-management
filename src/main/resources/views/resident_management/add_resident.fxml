@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddResident_Controller">
+<AnchorPane prefHeight="662.0" prefWidth="609.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddResident_Controller">
     <children>
         <Label layoutX="20.0" layoutY="74.0" text="Họ và tên" />
         <TextField fx:id="txtName" layoutX="91.0" layoutY="70.0" prefHeight="26.0" prefWidth="425.0" />

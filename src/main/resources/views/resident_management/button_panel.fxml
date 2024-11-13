@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="100.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller">
+<AnchorPane prefHeight="100.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller">
    <children>
       <Button fx:id="btnAddResident" contentDisplay="TOP" layoutX="41.0" layoutY="9.0" mnemonicParsing="false" onAction="#openAddResidentWindow" prefHeight="82.0" prefWidth="146.0" text="Thêm cư dân">
          <font>
