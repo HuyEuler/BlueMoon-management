@@ -6,19 +6,16 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
+<GridPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -26,9 +23,9 @@
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <TabPane fx:id="tabPane" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="900.0" prefWidth="1600.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="500.0" tabMinHeight="50.0" tabMinWidth="150.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <TabPane fx:id="tabPane" blendMode="BLUE" depthTest="ENABLE" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="900.0" prefWidth="1600.0" rotateGraphic="true" stylesheets="@ControllView/styles.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="500.0" tabMinHeight="50.0" tabMinWidth="150.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <tabs>
-          <Tab id="panel_button" style="-fx-background-color: #FFFFFF;" styleClass="styles.css" text="Trang chủ">
+          <Tab text="Trang chủ">
                <content>
                   <GridPane prefHeight="850.0" prefWidth="1600.0">
                      <columnConstraints>
@@ -43,32 +40,77 @@
                   </GridPane>
                </content>
           </Tab>
-          <Tab style="-fx-background-color: #FFFFFF;" text="Quản lý cư dân">
+          <Tab text="Quản lý cư dân">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <GridPane prefHeight="900.0" prefWidth="1600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <AnchorPane layoutY="117.0" prefHeight="600.0" prefWidth="951.0">
-                            <fx:include source="resident_management/content.fxml" />
-                        </AnchorPane>
+                         <fx:include source="resident_management/content.fxml" />
                      </children>
-                  </AnchorPane>
+                  </GridPane>
             </content>
           </Tab>
-            <Tab fx:id="feeTab" style="-fx-background-color: #FFFFFF;" text="Quản lý phí thu">
+            <Tab fx:id="feeTab" text="Quản lý phí thu">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <GridPane prefHeight="900.0" prefWidth="1600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <AnchorPane fx:id="button_panel" prefHeight="100.0" prefWidth="960.0">
-                            <fx:include source="fee_management/button_panel.fxml" />
-                        </AnchorPane>
-                        <AnchorPane fx:id="content" layoutX="4.0" layoutY="123.0" prefHeight="600.0" prefWidth="951.0">
-                            <fx:include source="fee_management/content.fxml" />
-                        </AnchorPane>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="500.0" prefHeight="750.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <GridPane GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="800.0" prefWidth="1400.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="500.0" prefHeight="850.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                     <fx:include source="fee_management/content.fxml" GridPane.columnIndex="1" />
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="500.0" prefHeight="650.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="0.0" prefHeight="130.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                           <fx:include source="fee_management/button_panel.fxml" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                              <Label text="Danh sách phí thu" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="54.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
                      </children>
-                  </AnchorPane>
+                  </GridPane>
               </content>
             </Tab>
-            <Tab style="-fx-background-color: #FFFFFF;" text="Tài khoản">
+            <Tab text="Tài khoản">
               <content>
                   <GridPane>
                      <columnConstraints>
@@ -112,13 +154,6 @@
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
-                                 <effect>
-                                    <DropShadow>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
                               </ImageView>
                               <Label text="admin" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                  <font>

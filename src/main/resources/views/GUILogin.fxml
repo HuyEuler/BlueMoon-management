@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxWidth="1000.0" prefHeight="500.0" prefWidth="680.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Login_Controller">
+<GridPane maxWidth="1000.0" prefHeight="500.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Login_Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -146,7 +146,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </CheckBox>
-                  <Button defaultButton="true" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="250.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #809bce; -fx-background-radius: 5;" text="Login" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                  <Button defaultButton="true" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="250.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="40.0" prefWidth="250.0" stylesheets="@ControllView/styles.css" text="Login" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

@@ -22,7 +22,7 @@
       <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="editInformation" ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 0;" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Button fx:id="editInformation" ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" stylesheets="@../ControllView/styles.css" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -40,7 +40,7 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button fx:id="changeAccount" ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 0;" text="Đổi mật khẩu" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Button fx:id="changeAccount" ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" stylesheets="@../ControllView/styles.css" text="Đổi mật khẩu" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -58,7 +58,7 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #809bce; -fx-background-radius: 0;" text="Đăng xuất" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="70.0" prefWidth="150.0" stylesheets="@../ControllView/styles.css" text="Đăng xuất" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

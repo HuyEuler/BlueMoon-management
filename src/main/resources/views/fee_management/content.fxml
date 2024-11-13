@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -9,155 +10,213 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="660.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.ShowFeeController">
+<GridPane prefHeight="850.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.ShowFeeController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="200.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="500.0" prefHeight="650.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="300.0" minHeight="50.0" prefHeight="130.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <Text layoutX="36.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách loại phí" wrappingWidth="218.29623413085938">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <TabPane layoutX="40.0" layoutY="86.0" prefHeight="500.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="150.0" prefHeight="200.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="150.0" prefHeight="200.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="150.0" prefHeight="200.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" prefWidth="150.0" style="-fx-background-color: #FF7F3E; -fx-background-radius: 5;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="150.0" text="Bắt buộc" textAlignment="CENTER">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbBatBuoc" alignment="CENTER" prefHeight="56.0" prefWidth="52.0" text="10" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" style="-fx-background-color: #88D66C; -fx-background-radius: 5;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" ellipsisString="" prefHeight="74.0" prefWidth="96.0" text="Không bắt buộc" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbKhongBatBuoc" alignment="CENTER" prefHeight="56.0" prefWidth="52.0" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css" text="10" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" style="-fx-background-color: #FF0000; -fx-background-radius: 5;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="129.0" text="Sắp tới" textAlignment="CENTER">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSapToi" alignment="CENTER" prefHeight="56.0" prefWidth="52.0" text="10" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <TabPane prefHeight="500.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
         <tabs>
           <Tab fx:id="tTatCa" text="Tất cả">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="729.0">
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <TableView fx:id="TableTatCa" prefHeight="472.0" prefWidth="750.0">
+                        <TableView fx:id="TableTatCa">
                           <columns>
-                            <TableColumn fx:id="maPhiColumn" prefWidth="73.0" text="Mã phí " />
-                            <TableColumn fx:id="tenPhiColumn" prefWidth="214.0" text="Tên loại phí" />
-                              <TableColumn fx:id="soTienColumn" minWidth="2.0" prefWidth="111.0" text="Số tiền (VNĐ)" />
-                              <TableColumn fx:id="hanNopColumn" minWidth="0.0" prefWidth="167.0" text="Hạn nộp (yyyy/mm/dd)" />
-                              <TableColumn fx:id="chuKiColumn" prefWidth="105.0" text="Chu kì nộp phí" />
-                              <TableColumn fx:id="batBuocColumn" minWidth="0.0" prefWidth="78.0" text="Bắt buộc" />
+                            <TableColumn fx:id="maPhiColumn" maxWidth="-1.0" minWidth="150.0" prefWidth="200.0" text="Mã phí " />
+                            <TableColumn fx:id="tenPhiColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="250.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="250.0" text="Hạn nộp (yyyy/mm/dd)" />
+                              <TableColumn fx:id="chuKiColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Chu kì nộp phí" />
+                              <TableColumn fx:id="batBuocColumn" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" text="Bắt buộc" />
                           </columns>
                         </TableView>
-                     </children></AnchorPane>
+                     </children>
+                  </GridPane>
             </content>
           </Tab>
           <Tab fx:id="tMotLan" text="Phí Một lần">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <TableView fx:id="TableMotLan" prefHeight="472.0" prefWidth="750.0">
                            <columns>
-                              <TableColumn fx:id="maPhiColumn1" prefWidth="92.0" text="Mã phí " />
-                              <TableColumn fx:id="tenPhiColumn1" prefWidth="215.0" text="Tên loại phí" />
-                              <TableColumn fx:id="soTienColumn1" minWidth="2.0" prefWidth="115.0" text="Số tiền (VNĐ)" />
-                              <TableColumn fx:id="hanNopColumn1" minWidth="0.0" prefWidth="151.0" text="Hạn nộp (yyyy/mm/dd)" />
-                              <TableColumn fx:id="batBuocColumn1" minWidth="0.0" prefWidth="176.0" text="Bắt buộc" />
-                              <TableColumn fx:id="chuKiColumn1" prefWidth="75.0" text="Chu kì" />
+                              <TableColumn fx:id="maPhiColumn1" maxWidth="-1.0" minWidth="150.0" prefWidth="200.0" text="Mã phí " />
+                              <TableColumn fx:id="tenPhiColumn1" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="250.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn1" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn1" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="250.0" text="Hạn nộp (yyyy/mm/dd)" />
+                              <TableColumn fx:id="batBuocColumn1" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Bắt buộc" />
+                              <TableColumn fx:id="chuKiColumn1" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" text="Chu kì" />
                            </columns>
                         </TableView>
-                     </children></AnchorPane>
+                     </children>
+                  </GridPane>
             </content>
           </Tab>
             <Tab fx:id="tHangThang" text="Phí Hàng tháng">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <TableView fx:id="TableHangThang" prefHeight="472.0" prefWidth="750.0">
                            <columns>
-                              <TableColumn fx:id="maPhiColumn2" prefWidth="92.0" text="Mã phí " />
-                              <TableColumn fx:id="tenPhiColumn2" prefWidth="215.0" text="Tên loại phí" />
-                              <TableColumn fx:id="soTienColumn2" minWidth="2.0" prefWidth="115.0" text="Số tiền (VNĐ)" />
-                              <TableColumn fx:id="hanNopColumn2" minWidth="0.0" prefWidth="151.0" text="Hạn nộp (yyyy/mm/dd)" />
-                              <TableColumn fx:id="batBuocColumn2" minWidth="0.0" prefWidth="176.0" text="Bắt buộc" />
-                              <TableColumn fx:id="chuKiColumn2" prefWidth="75.0" text="Chu Kì" />
+                              <TableColumn fx:id="maPhiColumn2" maxWidth="-1.0" minWidth="150.0" prefWidth="200.0" text="Mã phí " />
+                              <TableColumn fx:id="tenPhiColumn2" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="250.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn2" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn2" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="250.0" text="Hạn nộp (yyyy/mm/dd)" />
+                              <TableColumn fx:id="batBuocColumn2" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Bắt buộc" />
+                              <TableColumn fx:id="chuKiColumn2" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" text="Chu Kì" />
                            </columns>
                         </TableView>
-                     </children></AnchorPane>
+                     </children>
+                  </GridPane>
               </content>
             </Tab>
             <Tab fx:id="tThuongNien" text="Phí Thường niên">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <TableView fx:id="TableThuongNien" prefHeight="472.0" prefWidth="750.0">
                            <columns>
-                              <TableColumn fx:id="maPhiColumn3" prefWidth="92.0" text="Mã phí " />
-                              <TableColumn fx:id="tenPhiColumn3" prefWidth="174.0" text="Tên loại phí" />
-                              <TableColumn fx:id="soTienColumn3" minWidth="2.0" prefWidth="118.0" text="Số tiền (VNĐ)" />
-                              <TableColumn fx:id="hanNopColumn3" minWidth="0.0" prefWidth="167.0" text="Hạn nộp (yyyy/mm/dd)" />
-                              <TableColumn fx:id="chuKiColumn3" prefWidth="114.0" text="Chu kì nộp phí" />
-                              <TableColumn fx:id="batBuocColumn3" minWidth="0.0" prefWidth="84.0" text="Bắt buộc" />
+                              <TableColumn fx:id="maPhiColumn3" maxWidth="-1.0" minWidth="150.0" prefWidth="200.0" text="Mã phí " />
+                              <TableColumn fx:id="tenPhiColumn3" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="250.0" text="Tên loại phí" />
+                              <TableColumn fx:id="soTienColumn3" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Số tiền (VNĐ)" />
+                              <TableColumn fx:id="hanNopColumn3" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="250.0" text="Hạn nộp (yyyy/mm/dd)" />
+                              <TableColumn fx:id="chuKiColumn3" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Chu kì nộp phí" />
+                              <TableColumn fx:id="batBuocColumn3" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="150.0" text="Bắt buộc" />
                            </columns>
                         </TableView>
-                     </children></AnchorPane>
+                     </children>
+                  </GridPane>
               </content>
             </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="tfSearch" layoutX="677.0" layoutY="28.0" prefHeight="25.0" prefWidth="164.0" promptText="Nhập tên phí để tìm kiếm" />
-      <AnchorPane layoutX="809.0" layoutY="86.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: yellow;" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css">
+      <GridPane GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="500.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <ImageView fitHeight="49.0" fitWidth="61.0" layoutX="-3.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../../images/protect_bat_buoc.png" />
-                </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css" text="Bắt buộc" textAlignment="CENTER">
+            <TextField fx:id="tfSearch" prefHeight="30.0" promptText="Nhập tên phí để tìm kiếm" GridPane.columnIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
-            </Label>
-            <Label fx:id="lbBatBuoc" alignment="CENTER" layoutX="66.0" layoutY="48.0" prefHeight="56.0" prefWidth="52.0" text="10" textAlignment="CENTER">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
+            </TextField>
+            <Button fx:id="btSearch" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
-      </AnchorPane>
-      <AnchorPane layoutX="809.0" layoutY="203.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: green;" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css">
-         <children>
-            <ImageView fitHeight="49.0" fitWidth="61.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../../images/not_necessary.png" />
-                </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" text="Không bắt buộc" textAlignment="CENTER">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbKhongBatBuoc" alignment="CENTER" layoutX="67.0" layoutY="40.0" prefHeight="56.0" prefWidth="52.0" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css" text="10" textAlignment="CENTER">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="809.0" layoutY="315.0" prefHeight="101.0" prefWidth="132.0" style="-fx-background-color: blue;" styleClass="rounded-corner" stylesheets="@../ControllView/styles.css">
-         <children>
-            <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="2.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/bell_sap_het_han.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="2.0" layoutY="-2.0" prefHeight="45.0" prefWidth="129.0" text="Sắp tới" textAlignment="CENTER">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbSapToi" alignment="CENTER" layoutX="66.0" layoutY="43.0" prefHeight="56.0" prefWidth="52.0" text="10" textAlignment="CENTER">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Button fx:id="btSearch" layoutX="847.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0">
-         <graphic>
-            <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/search.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      </GridPane>
    </children>
-</AnchorPane>
+</GridPane>
