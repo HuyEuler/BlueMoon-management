@@ -47,9 +47,6 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane prefHeight="100.0" prefWidth="960.0">
-                            <fx:include source="resident_management/button_panel.fxml" />
-                        </AnchorPane>
                         <AnchorPane layoutY="117.0" prefHeight="600.0" prefWidth="951.0">
                             <fx:include source="resident_management/content.fxml" />
                         </AnchorPane>
