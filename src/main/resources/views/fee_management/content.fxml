@@ -37,9 +37,9 @@
             <RowConstraints minHeight="150.0" prefHeight="200.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" prefWidth="150.0" style="-fx-background-color: #FF7F3E; -fx-background-radius: 5;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" prefWidth="150.0" style="-fx-background-color: #FF7F3E;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" />
                </GridPane.margin>
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="150.0" text="Bắt buộc" textAlignment="CENTER">
@@ -54,10 +54,10 @@
                   </Label>
                </children>
                <opaqueInsets>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" />
                </opaqueInsets>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" style="-fx-background-color: #88D66C; -fx-background-radius: 5;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" style="-fx-background-color: #88D66C;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="10.0" top="10.0" />
                </GridPane.margin>
@@ -74,9 +74,9 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" style="-fx-background-color: #FF0000; -fx-background-radius: 5;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <VBox alignment="CENTER" maxHeight="200.0" maxWidth="150.0" style="-fx-background-color: #FF0000;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <GridPane.margin>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets top="10.0" />
                </GridPane.margin>
                <children>
                   <Label alignment="CENTER" prefHeight="45.0" prefWidth="129.0" text="Sắp tới" textAlignment="CENTER">
@@ -107,8 +107,8 @@
                      <children>
                         <TableView fx:id="TableTatCa">
                           <columns>
-                            <TableColumn fx:id="maPhiColumn" maxWidth="-1.0" minWidth="150.0" prefWidth="200.0" text="Mã phí " />
-                            <TableColumn fx:id="tenPhiColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="250.0" text="Tên loại phí" />
+                            <TableColumn fx:id="maPhiColumn" maxWidth="-1.0" minWidth="150.0" prefWidth="150.0" text="Mã phí " />
+                            <TableColumn fx:id="tenPhiColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="250.0" text="Tên loại phí" />
                               <TableColumn fx:id="soTienColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Số tiền (VNĐ)" />
                               <TableColumn fx:id="hanNopColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="250.0" text="Hạn nộp (yyyy/mm/dd)" />
                               <TableColumn fx:id="chuKiColumn" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="Chu kì nộp phí" />
