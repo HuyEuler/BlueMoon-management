@@ -10,12 +10,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
+<GridPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Home_management.Home_Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -192,66 +191,94 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="280.0" prefWidth="280.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
                                           <Label prefWidth="300.0" text="Đại diện ban quản lý">
                                              <font>
                                                 <Font name="System Bold" size="28.0" />
                                              </font>
                                           </Label>
-                                          <TextField minHeight="40.0" prefHeight="40.0" prefWidth="400.0">
+                                          <TextField fx:id="idBQL" alignment="CENTER" minHeight="40.0" prefHeight="40.0" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
                                           </TextField>
                                        </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    </GridPane>
+                                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
                                           <Label prefWidth="150.0" text="Ngày sinh">
                                              <font>
                                                 <Font name="System Bold" size="28.0" />
                                              </font>
                                           </Label>
-                                          <TextField minHeight="40.0" prefHeight="40.0" prefWidth="550.0">
+                                          <TextField fx:id="idNgaySinh" minHeight="40.0" prefHeight="40.0" prefWidth="550.0" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
                                           </TextField>
                                        </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    </GridPane>
+                                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
                                           <Label prefWidth="200.0" text="Số điện thoại">
                                              <font>
                                                 <Font name="System Bold" size="28.0" />
                                              </font>
                                           </Label>
-                                          <TextField minHeight="40.0" prefHeight="40.0" prefWidth="500.0">
+                                          <TextField fx:id="idSDT" minHeight="40.0" prefHeight="40.0" prefWidth="500.0" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
                                           </TextField>
                                        </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    </GridPane>
+                                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
                                           <Label prefWidth="110.0" text="Địa chỉ">
                                              <font>
                                                 <Font name="System Bold" size="28.0" />
                                              </font>
                                           </Label>
-                                          <TextField minHeight="40.0" prefHeight="40.0" prefWidth="590.0">
+                                          <TextField fx:id="idDiaChi" minHeight="40.0" prefHeight="40.0" prefWidth="590.0" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
                                           </TextField>
                                        </children>
-                                    </HBox>
+                                    </GridPane>
                                  </children>
                               </GridPane>
                               <Pane maxHeight="5.0" minHeight="5.0" prefHeight="5.0" style="-fx-background-color: #387478;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                              <fx:include prefWidth="500.0" source="home/button_panel.fxml" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <fx:include prefWidth="500.0" source="account/button_panel.fxml" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                      </children>

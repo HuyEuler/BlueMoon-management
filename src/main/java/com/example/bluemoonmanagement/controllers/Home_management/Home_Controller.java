@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import javafx.stage.Modality;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.example.bluemoonmanagement.common.globalVariable.screenBounds;
+import static com.example.bluemoonmanagement.common.GlobalVariable.screenBounds;
 
 
 public class Home_Controller {
@@ -49,10 +50,20 @@ public class Home_Controller {
     private Button editInformation;
     @FXML
     private Button changeAccount;
+
     @FXML
+    private TextField idBQL;
 
+    @FXML
+    private TextField idNgaySinh;
 
+    @FXML
+    private TextField idSDT;
 
+    @FXML
+    private TextField idDiaChi;
+
+    @FXML
     public void initialize() {
         if (editInformation != null) {
             editInformation.setOnAction(event -> openWindow("editInformation"));
@@ -61,6 +72,7 @@ public class Home_Controller {
             changeAccount.setOnAction(event -> openWindow("changeAccount"));
         }
     }
+
     private void openWindow(String fileName) {
         System.out.println("OKE");
         try {

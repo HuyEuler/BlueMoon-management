@@ -1,5 +1,5 @@
 package com.example.bluemoonmanagement;
-import static com.example.bluemoonmanagement.common.globalVariable.*;
+import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 
 import javafx.application.Application;
@@ -15,7 +15,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/GUILogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),screenBounds.getWidth(), screenBounds.getHeight());
+        Scene scene = new Scene(fxmlLoader.load(),screenWidth, screenHeight);
         stage.setTitle("Apartment Management System");
 
         stage.setScene(scene);
