@@ -27,7 +27,7 @@ import java.sql.Statement;
 
 public class TestDBConnection {
     public static void main(String[] args) {
-        var url = "jdbc:mysql://localhost:3306/mydatabase";
+        var url = "jdbc:mysql://localhost:3306/bluemoon2";
         var user = "root";
         var password = "";
         try (Connection conn = DriverManager.getConnection(url, user, password)) {

@@ -1,28 +1,24 @@
 package com.example.bluemoonmanagement.models;
 
-import java.util.Date;
 
 public class Fee {
     private int feeId;
     private String name;
-    private int cost;
-    private boolean mandatory;
-    private int cycle;
-    private Date expiration;
-    private int status;
+    private double ratePerSquareMeter; // Don gia tren m2
+    private boolean isMandatory; // Phi bat buoc hay khong
+    private FeeType feeType; // Loai Phi
 
-    public Fee(int feeId, String name, int cost, boolean mandatory, int cycle, Date expiration, int status) {
+    public Fee() {
+    }
+    public Fee(int feeId, String name, double ratePerSquareMeter, boolean isMandatory, FeeType feeType) {
         this.feeId = feeId;
         this.name = name;
-        this.cost = cost;
-        this.mandatory = mandatory;
-        this.cycle = cycle;
-        this.expiration = expiration;
-        this.status = status;
+        this.ratePerSquareMeter = ratePerSquareMeter;
+        this.isMandatory = isMandatory;
+        this.feeType = feeType;
     }
 
-    // Getters and setters for all properties
-
+    // Getters and Setters
     public int getFeeId() {
         return feeId;
     }
@@ -39,43 +35,38 @@ public class Fee {
         this.name = name;
     }
 
-    public int getCost() {
-        return cost;
+    public double getRatePerSquareMeter() {
+        return ratePerSquareMeter;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setRatePerSquareMeter(double ratePerSquareMeter) {
+        this.ratePerSquareMeter = ratePerSquareMeter;
     }
 
     public boolean isMandatory() {
-        return mandatory;
+        return isMandatory;
     }
 
     public void setMandatory(boolean mandatory) {
-        this.mandatory = mandatory;
+        isMandatory = mandatory;
     }
 
-    public int getCycle() {
-        return cycle;
+    public FeeType getFeeType() {
+        return feeType;
     }
 
-    public void setCycle(int cycle) {
-        this.cycle = cycle;
+    public void setFeeType(FeeType feeType) {
+        this.feeType = feeType;
     }
 
-    public Date getExpiration() {
-        return expiration;
+    public String toString() {
+        return "Fee{" +
+                "feeId=" + feeId +
+                ", name=" + name +
+                ", ratePerSquareMeter=" + ratePerSquareMeter +
+                ", isMandatory=" + isMandatory +
+                ", feeType=" + feeType +
+                '}';
     }
 
-    public void setExpiration(Date expiration) {
-        this.expiration = expiration;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 }
