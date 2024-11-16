@@ -1,8 +1,6 @@
 package com.example.bluemoonmanagement.api;
 
-import com.example.bluemoonmanagement.models.Fee;
-import com.example.bluemoonmanagement.models.Payment;
-import com.example.bluemoonmanagement.models.User;
+import com.example.bluemoonmanagement.models.*;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +11,8 @@ import static com.example.bluemoonmanagement.api.UserAPI.*;
 
 public class TestAPIMethod {
     public static void main(String[] args) {
-//        // 1. Test gọi các API cho phần đăng nhập của người quản lý
+        //*********************************************************************
+//        // I. Test gọi các API cho phần đăng nhập của người quản lý
 //
 //        // Test chức năng xác thực username password
 //        System.out.println(authenticate("admim", "password123"));
@@ -32,10 +31,46 @@ public class TestAPIMethod {
 //            System.out.println("Update login successfully");
 //        }
 //
-//        // 2. Test gọi các API cho chức năng quản lý cư dân
+        // ***********************************************************************************
+//        // II. Test gọi các API cho chức năng quản lý cư dân
+
+        // 1. Apartment
+        // Tạo 1 apartment mới
+//        ApartmentAPI.addApartment(1, 20, 13, "1306");
+        // Có thể khởi tạo 1 căn hộ với ownerId = null (chưa xác định)
+//        ApartmentAPI.addApartment(null, 30, 14, "1401");
+
+        // Cập nhật ownerId cho apartment
+//        ApartmentAPI.updateOwnerApartment(4, 2);
+        // Xóa apartment theo Id
+//        ApartmentAPI.deleteApartment(3);
+
+//        2. Resident
+        // get Resident
+//        Resident resident = ResidentAPI.getResidentById(2);
+//        System.out.println(resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
+//            + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
+//            + " " + resident.getIsOwner());
+
+//        // Update resident info
+//        ResidentAPI.updateResidentById(1, "Lý Tiểu Long", "1955-09-23", true,
+//                "0964081173", "Tung của", "Thần tượng", true, 1);
 
 
-        // Test FeeAPI
+//        // Get All resident
+//        ResidentAPI.deleteResidentById(4);
+//        List<Resident> residents = ResidentAPI.getAllResidents();
+//        for (Resident resident : residents){
+//            System.out.println(resident.getResidentId()+ " " + resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
+//            + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
+//            + " " + resident.getIsOwner());
+//        }
+
+
+        // ***********************************************************************
+
+        // III. Test gọi các API cho chức năng quản lý phí thu
+        // FeeAPI
         // 1. addFee
 //        if(addFee("Phí cố định", 1000, true, 1, new java.sql.Date(System.currentTimeMillis()), 1)) {
 //            System.out.println("Add fee successfully");
@@ -81,25 +116,14 @@ public class TestAPIMethod {
 //        }
 
         // Test getListPayment
-        var payments = PaymentAPI.getListPayment();
-        if (payments != null) {
-            System.out.println("getListPayment() executed successfully, list size: " + payments.size());
-            for (Payment payment : payments) {
-                System.out.println(payment);
-            }
-        } else {
-            System.out.println("getListPayment() returned null");
-        }
-
-
-
-
-
-
-
-
-
-
-
+//        var payments = PaymentAPI.getListPayment();
+//        if (payments != null) {
+//            System.out.println("getListPayment() executed successfully, list size: " + payments.size());
+//            for (Payment payment : payments) {
+//                System.out.println(payment);
+//            }
+//        } else {
+//            System.out.println("getListPayment() returned null");
+//        }
     }
 }

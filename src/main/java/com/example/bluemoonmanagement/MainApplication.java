@@ -14,6 +14,7 @@ public class MainApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 960, 760);
         stage.setTitle("Apartment Management System");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 

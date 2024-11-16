@@ -27,6 +27,7 @@ Table Resident {
   gender bit
   phoneNumber nvarchar(12)
   nationallity nvarchar(50)
+  isOwner bool
   relationshipWithOwner nvarchar(50)
   status int
 }

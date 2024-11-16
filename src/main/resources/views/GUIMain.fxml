@@ -18,7 +18,8 @@
                         <AnchorPane layoutY="124.0" prefHeight="600.0" prefWidth="951.0">
                             <fx:include source="home/content.fxml" />
                         </AnchorPane>
-                     </children></AnchorPane>
+                     </children>
+              </AnchorPane>
             </content>
           </Tab>
           <Tab text="Quản lý cư dân">
