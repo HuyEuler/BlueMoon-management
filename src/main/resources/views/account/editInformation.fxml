@@ -8,66 +8,60 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-   <children>
-      <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
-         <children>
-            <Label alignment="CENTER" layoutX="122.0" layoutY="13.0" prefHeight="45.0" prefWidth="356.0" text="CHỈNH SỬA THÔNG TIN" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="50.0" layoutY="100.0" minHeight="200.0" minWidth="500.0" opacity="0.9" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
-         <children>
-            <TextField layoutX="230.0" layoutY="15.0" prefHeight="25.0" prefWidth="250.0" />
-            <TextField layoutX="230.0" layoutY="50.0" prefHeight="25.0" prefWidth="250.0" />
-            <TextField layoutX="230.0" layoutY="85.0" prefHeight="25.0" prefWidth="250.0" />
-            <TextField layoutX="230.0" layoutY="120.0" prefHeight="25.0" prefWidth="250.0" />
-            <Label layoutX="25.0" layoutY="15.0" text="Đại diện ban quản lý" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="45.0" layoutY="50.0" text="Ngày khánh thành" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="94.0" layoutY="85.0" text="Số điện thoại" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="153.0" layoutY="120.0" prefHeight="30.0" prefWidth="66.0" text="Địa chỉ" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <PasswordField layoutX="230.0" layoutY="155.0" prefHeight="25.0" prefWidth="250.0" />
-            <Label layoutX="38.0" layoutY="153.0" prefHeight="30.0" prefWidth="181.0" text="Xác nhận mật khẩu" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Button layoutX="50.0" layoutY="325.0" maxHeight="35.0" maxWidth="240.0" minHeight="35.0" minWidth="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: #809bce;" text="OK" textFill="WHITE">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Account_management.EditInformationController">
+   <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
+      <Label alignment="CENTER" layoutX="122.0" layoutY="13.0" prefHeight="45.0" prefWidth="356.0" text="CHỈNH SỬA THÔNG TIN" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="310.0" layoutY="325.0" maxHeight="35.0" maxWidth="340.0" minHeight="35.0" minWidth="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: #809bce;" text="CANCEL" textFill="WHITE">
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="50.0" layoutY="100.0" minHeight="200.0" minWidth="500.0" opacity="0.9" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
+      <TextField fx:id="TenBQL" layoutX="230.0" layoutY="15.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="NgaySinh" layoutX="230.0" layoutY="50.0" prefHeight="25.0" prefWidth="250.0" promptText="yyyy-mm-dd" />
+      <TextField fx:id="SDT" layoutX="230.0" layoutY="85.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="DiaChi" layoutX="230.0" layoutY="120.0" prefHeight="25.0" prefWidth="250.0" />
+      <Label layoutX="25.0" layoutY="15.0" text="Đại diện ban quản lý" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-   </children>
+      </Label>
+      <Label layoutX="122.0" layoutY="48.0" text="Ngày sinh" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="85.0" text="Số điện thoại" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="153.0" layoutY="120.0" prefHeight="30.0" prefWidth="66.0" text="Địa chỉ" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="Password" layoutX="230.0" layoutY="155.0" prefHeight="25.0" prefWidth="250.0" />
+      <Label layoutX="38.0" layoutY="153.0" prefHeight="30.0" prefWidth="181.0" text="Xác nhận mật khẩu" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <Button fx:id="okButton" defaultButton="true" layoutX="50.0" layoutY="325.0" maxHeight="35.0" maxWidth="240.0" minHeight="35.0" minWidth="240.0" mnemonicParsing="false" onAction="#onOk" prefHeight="35.0" prefWidth="240.0" text="OK" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button layoutX="310.0" layoutY="325.0" maxHeight="35.0" maxWidth="340.0" minHeight="35.0" minWidth="240.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="35.0" prefWidth="240.0" text="CANCEL" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
 </AnchorPane>

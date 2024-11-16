@@ -6,53 +6,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.DeleteFeeController">
-    <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="33.0" prefHeight="32.0" prefWidth="210.0" styleClass="header_fee" stylesheets="@../ControllView/styles.css" text="Xoá phí" textAlignment="CENTER">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
-        <Label layoutX="32.0" layoutY="87.0" prefHeight="21.0" prefWidth="161.0" text="Chọn khoản phí cần xoá">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label fx:id="lbTenPhi" alignment="CENTER" layoutX="-1.0" layoutY="129.0" prefHeight="21.0" prefWidth="500.0" text="Thông tin khoản phí xoá">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <Button fx:id="btHuy" layoutX="120.0" layoutY="279.0" mnemonicParsing="false" text="Huỷ">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Button>
-        <Button fx:id="btXoa" layoutX="331.0" layoutY="279.0" mnemonicParsing="false" text="Xoá">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Button>
-      <Label fx:id="lbSoTien" layoutX="74.0" layoutY="179.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbHanNop" layoutX="259.0" layoutY="225.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbBatBuoc" layoutX="258.0" layoutY="179.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbChuKi" layoutX="76.0" layoutY="225.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="cbTenPhi" layoutX="213.0" layoutY="85.0" prefHeight="25.0" prefWidth="248.0" />
-    </children>
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.DeleteFeeController">
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="33.0" prefHeight="32.0" prefWidth="210.0"
+           styleClass="header_fee" stylesheets="@../views_styles.css" text="Xoá phí" textAlignment="CENTER">
+        <font>
+            <Font size="22.0"/>
+        </font>
+    </Label>
+    <Label layoutX="32.0" layoutY="87.0" prefHeight="21.0" prefWidth="161.0" text="Chọn khoản phí cần xoá">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </Label>
+    <Label fx:id="lbTenPhi" alignment="CENTER" layoutX="-1.0" layoutY="129.0" prefHeight="21.0" prefWidth="500.0"
+           text="Thông tin khoản phí xoá">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Label>
+    <Button fx:id="btHuy" layoutX="120.0" layoutY="279.0" mnemonicParsing="false" text="Huỷ">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Button>
+    <Button fx:id="btXoa" layoutX="331.0" layoutY="279.0" mnemonicParsing="false" text="Xoá">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Button>
+    <Label fx:id="lbSoTien" layoutX="74.0" layoutY="179.0">
+        <font>
+          <Font size="16.0"/>
+        </font>
+    </Label>
+    <Label fx:id="lbHanNop" layoutX="259.0" layoutY="225.0">
+        <font>
+          <Font size="16.0"/>
+        </font>
+    </Label>
+    <Label fx:id="lbBatBuoc" layoutX="258.0" layoutY="179.0">
+        <font>
+          <Font size="16.0"/>
+        </font>
+    </Label>
+    <Label fx:id="lbChuKi" layoutX="76.0" layoutY="225.0">
+        <font>
+          <Font size="16.0"/>
+        </font>
+    </Label>
+    <ChoiceBox fx:id="cbTenPhi" layoutX="213.0" layoutY="85.0" prefHeight="25.0" prefWidth="248.0"/>
 </AnchorPane>
