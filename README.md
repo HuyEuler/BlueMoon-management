@@ -14,3 +14,8 @@
 4. Thêm các cảnh cáo khi thoát đăng nhập.
 5. Thêm thông báo lỗi khi sai thông tin tài khoản.
 6. Tạo một folder `Home > Alert` để thiết kế lại các alert về sau
+
+## 16/11/2024 Update GUI & Completed function for Account
+1. Tách thông tin tài khoản từ tab "Trang chủ" thành một tab"Tài khoản"
+2. Hoàn thành chức năng sửa thông tin và đổi mật khẩu
+3. `GlobalVariable` có thêm các biến _USER_ và _screenBounds_ 
