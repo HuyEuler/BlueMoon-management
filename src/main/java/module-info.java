@@ -9,8 +9,8 @@ module com.example.bluemoonmanagement {
     opens com.example.bluemoonmanagement.controllers to javafx.fxml;
     exports com.example.bluemoonmanagement.controllers;
 
-    opens com.example.bluemoonmanagement.controllers.Home_management to javafx.fxml;
-    exports com.example.bluemoonmanagement.controllers.Home_management;
+//    opens com.example.bluemoonmanagement.controllers.Home_management to javafx.fxml;
+//    exports com.example.bluemoonmanagement.controllers.Home_management;
 
 //    opens com.example.bluemoonmanagement.controllers.Fee_management to javafx.fxml;
 //    exports com.example.bluemoonmanagement.controllers.Fee_management;
@@ -26,4 +26,6 @@ module com.example.bluemoonmanagement {
 
     exports com.example.bluemoonmanagement.controllers.Resident_management;
     opens com.example.bluemoonmanagement.controllers.Resident_management to javafx.fxml;
+    exports com.example.bluemoonmanagement.controllers.Account_management;
+    opens com.example.bluemoonmanagement.controllers.Account_management to javafx.fxml;
 }

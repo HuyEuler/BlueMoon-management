@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,9 +18,7 @@ import static com.example.bluemoonmanagement.api.LoginAPI.authenticate;
 import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 public class Login_Controller {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    public CheckBox remember;
 
     @FXML
     private TextField login_user;
@@ -34,15 +33,15 @@ public class Login_Controller {
         System.out.println("Password: " + password);
 
         if (authenticate(username, password)) {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root, screenWidth, screenHeight);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, screenWidth, screenHeight);
             stage.setScene(scene);
             stage.show();
         } else {
             System.out.println("Sai thông tin!");
             Alert confirmationAlert = new Alert(Alert.AlertType.ERROR);
-            confirmationAlert.setTitle("Erorr");
+            confirmationAlert.setTitle("Error");
             confirmationAlert.setHeaderText("Sai thông tin đăng nhập, vui lòng kiểm tra lại!");
             confirmationAlert.showAndWait();
         }

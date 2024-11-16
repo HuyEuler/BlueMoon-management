@@ -81,15 +81,15 @@ public class TestAPIMethod {
 //        }
 
         // Test getListPayment
-        var payments = PaymentAPI.getListPayment();
-        if (payments != null) {
-            System.out.println("getListPayment() executed successfully, list size: " + payments.size());
-            for (Payment payment : payments) {
-                System.out.println(payment);
-            }
-        } else {
-            System.out.println("getListPayment() returned null");
-        }
+//        var payments = PaymentAPI.getListPayment();
+//        if (payments != null) {
+//            System.out.println("getListPayment() executed successfully, list size: " + payments.size());
+//            for (Payment payment : payments) {
+//                System.out.println(payment);
+//            }
+//        } else {
+//            System.out.println("getListPayment() returned null");
+//        }
 
 
 
