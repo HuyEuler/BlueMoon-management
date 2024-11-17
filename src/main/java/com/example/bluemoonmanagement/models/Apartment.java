@@ -15,6 +15,14 @@ public class Apartment {
         this.room = room;
     }
 
+    public Apartment(int apartmentId, Integer ownerId, float area, int floor, String room) {
+        this.apartmentId = apartmentId;
+        this.ownerId = ownerId;
+        this.area = area;
+        this.floor = floor;
+        this.room = room;
+    }
+
     // Getters và Setters cho các thuộc tính
 
     public int getApartmentId() {

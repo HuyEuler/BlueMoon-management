@@ -1,13 +1,11 @@
 package com.example.bluemoonmanagement.api;
 
-import com.example.bluemoonmanagement.models.*;
+import com.example.bluemoonmanagement.models.Apartment;
+import com.example.bluemoonmanagement.models.Fee;
+import com.example.bluemoonmanagement.models.Payment;
+import com.example.bluemoonmanagement.models.Resident;
 
-import java.util.Date;
 import java.util.List;
-
-import static com.example.bluemoonmanagement.api.FeeAPI.*;
-import static com.example.bluemoonmanagement.api.LoginAPI.*;
-import static com.example.bluemoonmanagement.api.UserAPI.*;
 
 public class TestAPIMethod {
     public static void main(String[] args) {
@@ -38,26 +36,64 @@ public class TestAPIMethod {
         // Tạo 1 apartment mới
 //        ApartmentAPI.addApartment(1, 20, 13, "1306");
         // Có thể khởi tạo 1 căn hộ với ownerId = null (chưa xác định)
-//        ApartmentAPI.addApartment(null, 30, 14, "1401");
+//        ApartmentAPI.addApartment(null, 500, 6, "602");
 
         // Cập nhật ownerId cho apartment
 //        ApartmentAPI.updateOwnerApartment(4, 2);
         // Xóa apartment theo Id
 //        ApartmentAPI.deleteApartment(3);
 
+//        // Lấy 1 apartment theo Id
+//        Apartment apartment = ApartmentAPI.getApartmentById(1);
+//        System.out.println(apartment.getApartmentId() + " " + apartment.getOwnerId() + " " + apartment.getArea()
+//            + " " + apartment.getFloor() + " " + apartment.getRoom());
+
+//              Lấy danh sách tất cả apartment
+//        List<Apartment> apartments = ApartmentAPI.getAllApartment();
+//        for(Apartment apartment : apartments){
+//            System.out.println(apartment.getApartmentId() + " " + apartment.getOwnerId() + " " + apartment.getArea()
+//                    + " " + apartment.getFloor() + " " + apartment.getRoom());
+//        }
+
+//              Lấy danh sách tất cả resident từ 1 apartment
+//        List<Resident> residents = ApartmentAPI.getResidentsFromApartmentId(1);
+//        for (Resident resident : residents){
+//            System.out.println(resident.getResidentId()+ " " + resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
+//                    + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
+//                    + " " + resident.getIsOwner());
+//        }
+
+
 //        2. Resident
-        // get Resident
+
+//              Tạo 1 resident mới
+//        ResidentAPI.addResident(5, "Naruto", "2003-08-19", true,
+//                "0964081173", "Japan",
+//                "Con trai", false, 1, null);
+//
+//        ResidentAPI.addResident(5, "Luffy", "2003-09-19", true,
+//                "0964081173", "Brazil",
+//                "Con trai", true, 1, "Thuê trọ học đại học");
+
+//
+
+//              Trả về 1 resident theo Id
 //        Resident resident = ResidentAPI.getResidentById(2);
-//        System.out.println(resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
+//        assert resident != null;
+//        System.out.println(resident.getResidentId() + " " + resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
 //            + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
-//            + " " + resident.getIsOwner());
+//            + " " + resident.getIsOwner() + " " + resident.getStatus());
 
-//        // Update resident info
-//        ResidentAPI.updateResidentById(1, "Lý Tiểu Long", "1955-09-23", true,
-//                "0964081173", "Tung của", "Thần tượng", true, 1);
+//              Update resident info
+//        Resident resident = ResidentAPI.getResidentById(10);
+//        assert resident != null;
+//        resident.setStatus(3);
+//        resident.setName("Luffy Straw hat");
+//        resident.setIsOwner(true);
+//        ResidentAPI.updateResidentById(resident, "Đi làm vua hải tặc ");
 
 
-//        // Get All resident
+//              Get All resident
 //        ResidentAPI.deleteResidentById(4);
 //        List<Resident> residents = ResidentAPI.getAllResidents();
 //        for (Resident resident : residents){
@@ -70,7 +106,9 @@ public class TestAPIMethod {
         // ***********************************************************************
 
         // III. Test gọi các API cho chức năng quản lý phí thu
-        // FeeAPI
+
+
+        // Test FeeAPI
         // 1. addFee
 //        if(addFee("Phí cố định", 1000, true, 1, new java.sql.Date(System.currentTimeMillis()), 1)) {
 //            System.out.println("Add fee successfully");

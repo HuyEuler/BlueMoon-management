@@ -12,9 +12,23 @@ public class Resident {
     private int status;
     private boolean isOwner;
 
-    // Constructor không chứa residentId (auto-increment)
+    // Constructor
     public Resident(int apartmentId, String name, String birthday, boolean gender, String phoneNumber,
                     String nationality, String relationshipWithOwner, boolean isOwner, int status) {
+        this.apartmentId = apartmentId;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.nationality = nationality;
+        this.relationshipWithOwner = relationshipWithOwner;
+        this.isOwner = isOwner;
+        this.status = status;
+    }
+
+    public Resident(int residentId, int apartmentId, String name, String birthday, boolean gender, String phoneNumber,
+                    String nationality, String relationshipWithOwner, boolean isOwner, int status) {
+        this.residentId = residentId;
         this.apartmentId = apartmentId;
         this.name = name;
         this.birthday = birthday;

@@ -6,9 +6,13 @@ import java.util.List;
 import com.example.bluemoonmanagement.models.Activity;
 
 public class ActivityAPI {
-
+    // Ý nghĩa trường status :
+    // status = 0 : Đã rời chung cư
+    // status = 1 : Thường trú
+    // status = 2 : Tạm trú
+    // status = 3 : Tạm vắng
     // Thêm Activity mới
-    public boolean addActivity(int residentId, int status, String timeIn, String timeOut, String note) {
+    public static boolean addActivity(int residentId, int status, String timeIn, String timeOut, String note) {
         String query = "INSERT INTO Activity (residentId, status, timeIn, timeOut, note) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -25,7 +29,7 @@ public class ActivityAPI {
     }
 
     // Lấy tất cả Activity của một Resident
-    public List<Activity> getAllActivityByResidentId(int residentId) {
+    public static List<Activity> getAllActivityOfResident(int residentId) {
         List<Activity> activities = new ArrayList<>();
         String query = "SELECT * FROM Activity WHERE residentId = ?";
         try (Connection conn = DBConnection.getConnection();

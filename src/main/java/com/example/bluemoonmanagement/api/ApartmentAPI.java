@@ -1,14 +1,58 @@
 package com.example.bluemoonmanagement.api;
 
 import com.example.bluemoonmanagement.models.Apartment;
+import com.example.bluemoonmanagement.models.Resident;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApartmentAPI {
-    // Phương thức trả về 1 Apartment theo Id
 
     // Phương thức trả về List tất cả Apartment
+    // Lấy tất cả Apartment
+    public static List<Apartment> getAllApartment() {
+        List<Apartment> apartments = new ArrayList<>();
+        String query = "SELECT * FROM Apartment";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                apartments.add(new Apartment(
+                        rs.getInt("apartmentId"),
+                        rs.getObject("ownerId") != null ? rs.getInt("ownerId") : null,
+                        rs.getFloat("area"),
+                        rs.getInt("floor"),
+                        rs.getString("room")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return apartments;
+    }
 
+    // Phương thức trả về 1 Apartment theo Id
+    public static Apartment getApartmentById(int id) {
+        String query = "SELECT * FROM Apartment WHERE apartmentId = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Apartment(
+                        rs.getInt("apartmentId"),
+                        rs.getObject("ownerId") != null ? rs.getInt("ownerId") : null,
+                        rs.getFloat("area"),
+                        rs.getInt("floor"),
+                        rs.getString("room")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // Phương thức tạo thêm 1 Apartment mới
     public static Apartment addApartment(Integer ownerId, float area, int floor, String room) {
@@ -36,12 +80,12 @@ public class ApartmentAPI {
     }
 
     // Phương thức cập nhật ownerId cho 1 apartment
-    public static boolean updateOwnerApartment(int id, int ownerId) {
+    public static boolean updateOwnerApartment(int apartmentId, int ownerId) {
         String query = "UPDATE Apartment SET ownerId = ? WHERE apartmentId = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setInt(1, ownerId);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setInt(2, apartmentId);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,5 +105,35 @@ public class ApartmentAPI {
         }
         return false;
     }
+
+    // Phương thức lấy danh sách các resident sinh sống trong 1 apartment
+    public static List<Resident> getResidentsFromApartmentId(int apartmentId) {
+        List<Resident> residents = new ArrayList<>();
+        String query = "SELECT * FROM Resident WHERE apartmentId = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, apartmentId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                residents.add(new Resident(
+                        rs.getInt("residentId"),
+                        rs.getInt("apartmentId"),
+                        rs.getString("name"),
+                        rs.getString("birthday"),
+                        rs.getBoolean("gender"),
+                        rs.getString("phoneNumber"),
+                        rs.getString("nationality"),
+                        rs.getString("relationshipWithOwner"),
+                        rs.getBoolean("isOwner"),
+                        rs.getInt("status")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return residents;
+    }
+
+
 }
 
