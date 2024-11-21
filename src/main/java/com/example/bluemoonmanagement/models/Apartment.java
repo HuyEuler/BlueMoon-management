@@ -64,4 +64,15 @@ public class Apartment {
     public void setRoom(String room) {
         this.room = room;
     }
+
+    @Override
+    public String toString() {
+        return "Apartment{" +
+                "apartmentId=" + apartmentId +
+                ", ownerId=" + (ownerId == null ? "Chưa có chủ" : ownerId) +
+                ", area=" + area + " sqm" +
+                ", floor=" + floor +
+                ", room='" + room + '\'' +
+                '}';
+    }
 }

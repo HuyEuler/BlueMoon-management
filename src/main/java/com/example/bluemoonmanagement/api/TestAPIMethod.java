@@ -1,9 +1,6 @@
 package com.example.bluemoonmanagement.api;
 
-import com.example.bluemoonmanagement.models.Apartment;
-import com.example.bluemoonmanagement.models.Fee;
-import com.example.bluemoonmanagement.models.Payment;
-import com.example.bluemoonmanagement.models.Resident;
+import com.example.bluemoonmanagement.models.*;
 
 import java.util.List;
 
@@ -92,14 +89,47 @@ public class TestAPIMethod {
 //        resident.setIsOwner(true);
 //        ResidentAPI.updateResidentById(resident, "Đi làm vua hải tặc ");
 
+//                Xóa 1 resident
+//        ResidentAPI.deleteResidentById(9, null);
 
-//              Get All resident
+//              Trả về tất cả resident
 //        ResidentAPI.deleteResidentById(4);
 //        List<Resident> residents = ResidentAPI.getAllResidents();
 //        for (Resident resident : residents){
 //            System.out.println(resident.getResidentId()+ " " + resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
 //            + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
 //            + " " + resident.getIsOwner());
+//        }
+
+//        3. Vehicle
+//            Trả về Vehicle theo Id
+//        Vehicle vehicle = VehicleAPI.getVehicleById(1);
+//        System.out.println(vehicle.toString());
+
+//              Thêm 1 vehicle mới
+//        VehicleAPI.addVehicle(5, "Xe máy", "29H2-439.37");
+
+//              Chỉnh sửa thông tin vehicle
+//        VehicleAPI.editVehicle(3, 5, "Xe đạp", null);
+//
+//        //C2 :
+//        Vehicle vehicle = VehicleAPI.getVehicleById(1);
+//        vehicle.setType("Máy bay");
+//        VehicleAPI.editVehicle(vehicle);
+
+//              Xóa vehicle
+//        VehicleAPI.deleteVehicle(1);
+
+//        Trả về tất cả vehicle
+//        List<Vehicle> vehicles = VehicleAPI.getAllVehicles();
+//        for(Vehicle vehicle : vehicles){
+//            System.out.println(vehicle.toString());
+//        }
+
+//        Trả về tất cả vehicle trong 1 apartment
+//        List<Vehicle> vehicles = VehicleAPI.getAllVehiclesByApartmentId(4);
+//        for(Vehicle vehicle : vehicles){
+//            System.out.println(vehicle.toString());
 //        }
 
 

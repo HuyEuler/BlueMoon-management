@@ -89,6 +89,7 @@ public class ResidentAPI {
 
     // Update Resident theo id (2 hàm )
     // Trường note : Lý do (nếu có) nếu đăng ký tạm vắng, nếu không có điền null
+
     public static boolean updateResidentById(Resident updatedResident, String note) {
         int id = updatedResident.getResidentId();
         Resident unUpdatedResident = getResidentById(id);

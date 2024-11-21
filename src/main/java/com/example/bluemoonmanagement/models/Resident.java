@@ -121,5 +121,29 @@ public class Resident {
     public void setIsOwner(boolean owner) {
         isOwner = owner;
     }
+
+    @Override
+    public String toString() {
+        return "Resident{" +
+                "residentId=" + residentId +
+                ", apartmentId=" + apartmentId +
+                ", name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", gender=" + (gender ? "Male" : "Female") +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", relationshipWithOwner='" + relationshipWithOwner + '\'' +
+                ", status=" + getStatusDescription(status) +
+                '}';
+    }
+    private String getStatusDescription(int status) {
+        return switch (status) {
+            case 0 -> "Chuyển khỏi chung cư";
+            case 1 -> "Đăng ký thường trú tại chung cư";
+            case 2 -> "Đăng ký tạm trú tại chung cư";
+            case 3 -> "Đăng ký tạm vắng";
+            default -> "Unknown";
+        };
+    }
 }
 
