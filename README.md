@@ -1,3 +1,9 @@
+## 22/11/2024 Complete fully function:
+Hoàn thành đầy đủ chức năng và giao diện
+Fix những lỗi nhỏ
+Chỉnh sửa hiển thị giao diện sai
+
+
 ## 9/11/2024 Completed function for Fee:
 Đã hoàn thành đầy đủ chức năng cho mục phí 
 
