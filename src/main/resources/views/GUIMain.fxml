@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<GridPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
     </columnConstraints>
@@ -16,7 +16,7 @@
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <TabPane blendMode="BLUE" depthTest="ENABLE" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="900.0" prefWidth="1600.0" rotateGraphic="true" stylesheets="@views_styles.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="500.0" tabMinHeight="50.0" tabMinWidth="150.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-        <Tab text="Trang chủ">
+        <Tab onSelectionChanged="#loadHome" text="Trang chủ">
             <GridPane prefHeight="850.0" prefWidth="1600.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -27,7 +27,7 @@
                 <fx:include fx:id="LoginTab" source="home/content.fxml" />
             </GridPane>
         </Tab>
-        <Tab text="Quản lý cư dân">
+        <Tab onSelectionChanged="#loadResident" text="Quản lý cư dân">
             <GridPane prefHeight="900.0" prefWidth="1600.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -52,7 +52,7 @@
                 </GridPane>
             </GridPane>
         </Tab>
-        <Tab text="Quản lý phí thu">
+        <Tab onSelectionChanged="#loadFee" text="Quản lý phí thu">
             <GridPane prefHeight="900.0" prefWidth="1600.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -97,7 +97,7 @@
                 </GridPane>
             </GridPane>
         </Tab>
-        <Tab fx:id="accountTab" text="Tài khoản">
+        <Tab onSelectionChanged="#loadAccount" text="Tài khoản">
             <GridPane>
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
