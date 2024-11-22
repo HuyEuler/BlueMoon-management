@@ -19,7 +19,6 @@ import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 public class Login_Controller {
     public CheckBox remember;
-
     @FXML
     private TextField login_user;
     @FXML
@@ -29,8 +28,8 @@ public class Login_Controller {
         String username = login_user.getText();
         String password = login_password.getText();
 
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
+        System.out.printf("Username: %s%n", username);
+        System.out.printf("Password: %s%n", password);
 
         if (authenticate(username, password)) {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));

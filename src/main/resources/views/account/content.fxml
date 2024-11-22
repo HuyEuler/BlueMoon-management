@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Account_management.Account_Controller">
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Account_management.Account_content_controller">
 <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="1000.0" prefWidth="1000.0" />
 </columnConstraints>
