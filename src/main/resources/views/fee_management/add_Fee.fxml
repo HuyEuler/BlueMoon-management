@@ -3,71 +3,53 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="550.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.AddFeeController">
-   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="32.0" prefHeight="32.0" prefWidth="210.0"
-          styleClass="header_fee" stylesheets="@../views_styles.css" text="Thêm loại phí mới"
-          textAlignment="CENTER">
+<AnchorPane prefHeight="350.0" prefWidth="510.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.AddFeeController">
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="32.0" prefHeight="32.0" prefWidth="210.0" styleClass="header_fee" stylesheets="@../views_styles.css" text="Thêm loại phí mới" textAlignment="CENTER">
       <font>
-         <Font size="22.0"/>
+         <Font size="22.0" />
       </font>
    </Label>
    <Label layoutX="20.0" layoutY="92.0" prefHeight="21.0" prefWidth="112.0" text="Tên khoản phí">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <Label layoutX="67.0" layoutY="149.0" text="Số tiền">
+   <Label layoutX="40.0" layoutY="149.0" text="Số tiền/m2">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <Label layoutX="61.0" layoutY="207.0" text="Bắt buộc">
+   <Label layoutX="367.0" layoutY="149.0" text="Bắt buộc">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <Label layoutX="277.0" layoutY="149.0" text="Chu kì đóng phí">
+   <Label layoutX="54.0" layoutY="209.0" prefHeight="21.0" prefWidth="59.0" text="Loại phí">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <Label layoutX="198.0" layoutY="207.0" text="Hạn nộp">
+   <Button fx:id="btHuy" layoutX="126.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button" stylesheets="@../views_styles.css" text="Huỷ">
       <font>
-         <Font size="15.0"/>
-      </font>
-   </Label>
-   <Button fx:id="btHuy" layoutX="126.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button"
-           stylesheets="@../views_styles.css" text="Huỷ">
-      <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Button>
-   <Button fx:id="btThem" layoutX="351.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button"
-           stylesheets="@../views_styles.css" text="Thêm">
+   <Button fx:id="btThem" layoutX="351.0" layoutY="268.0" mnemonicParsing="false" styleClass="all_button" stylesheets="@../views_styles.css" text="Thêm">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Button>
-   <TextField fx:id="tfTenPhi" layoutX="135.0" layoutY="90.0" prefHeight="25.0" prefWidth="284.0"/>
-   <TextField fx:id="tfSoTien" layoutX="136.0" layoutY="147.0" prefHeight="25.0" prefWidth="123.0"/>
-   <CheckBox fx:id="cbBatBuoc" layoutX="149.0" layoutY="209.0" mnemonicParsing="false">
+   <TextField fx:id="tfTenPhi" layoutX="135.0" layoutY="90.0" prefHeight="25.0" prefWidth="284.0" />
+   <TextField fx:id="tfDonGia" layoutX="136.0" layoutY="147.0" prefHeight="25.0" prefWidth="170.0" />
+   <CheckBox fx:id="cbBatBuoc" layoutX="437.0" layoutY="149.0" mnemonicParsing="false">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </CheckBox>
-   <DatePicker fx:id="dpHanNop" layoutX="271.0" layoutY="207.0" prefHeight="25.0" prefWidth="240.0"
-               promptText="mm/dd/yyyy"/>
-   <ChoiceBox fx:id="cbChuKi" layoutX="391.0" layoutY="147.0" prefHeight="25.0" prefWidth="67.0"/>
-   <Label layoutX="465.0" layoutY="146.0" text="Tháng">
-      <font>
-         <Font size="18.0"/>
-      </font>
-   </Label>
+   <ChoiceBox fx:id="cbLoaiPhi" layoutX="136.0" layoutY="207.0" prefHeight="25.0" prefWidth="284.0" />
 </AnchorPane>

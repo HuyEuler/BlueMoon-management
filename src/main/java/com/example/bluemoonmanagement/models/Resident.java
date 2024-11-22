@@ -1,107 +1,148 @@
 package com.example.bluemoonmanagement.models;
 
-import java.sql.Date;
-
 public class Resident {
-    private long id;
+    private int residentId;
+    private int apartmentId;
     private String name;
-    private Date birthday;
+    private String birthday;
     private boolean gender;
-    private int phoneNumber;
+    private String phoneNumber;
     private String nationality;
-    private String ethnic;
-    private int floor;
-    private int room;
-    private String relationship;
+    private String relationshipWithOwner;
     private int status;
+    private boolean isOwner;
 
-    public Resident() {}
-    public Resident(String name, Date birthday, boolean gender, int phoneNumber, String nationality, String ethnic, int floor, int room, String relationship) {
-        this.id = id;
+    // Constructor
+    public Resident(int apartmentId, String name, String birthday, boolean gender, String phoneNumber,
+                    String nationality, String relationshipWithOwner, boolean isOwner, int status) {
+        this.apartmentId = apartmentId;
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.nationality = nationality;
-        this.ethnic = ethnic;
-        this.floor = floor;
-        this.room = room;
-        this.relationship = relationship;
-    }
-    public Resident(long id, String name, Date birthday, boolean gender, int phoneNumber, String nationality, String ethnic, int floor, int room, String relationship, int status) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.nationality = nationality;
-        this.ethnic = ethnic;
-        this.floor = floor;
-        this.room = room;
-        this.relationship = relationship;
+        this.relationshipWithOwner = relationshipWithOwner;
+        this.isOwner = isOwner;
         this.status = status;
     }
 
-    public long getId() {return id;}
-    public String getName() {return name;}
-    public Date getBirthday() {return birthday;}
-    public boolean getGender() {return gender;}
-    public int getPhoneNumber() {return phoneNumber;}
-    public String getNationality() {return nationality;}
-    public String getEthnic() {return ethnic;}
-    public int getFloor() {return floor;}
-    public int getRoom() {return room;}
-    public String getRelationship() {return relationship;}
-    public int getStatus() {return status;}
-    public String getStatusStr() {
-        switch (status) {
-            case 0:
-                return "Thường trú";
-            case 1:
-                return "Tạm trú";
-            case 2:
-                return "Tạm vắng";
-            case 3:
-                return "Rời đi";
-            default:
-                return "";
-        }
+    public Resident(int residentId, int apartmentId, String name, String birthday, boolean gender, String phoneNumber,
+                    String nationality, String relationshipWithOwner, boolean isOwner, int status) {
+        this.residentId = residentId;
+        this.apartmentId = apartmentId;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.nationality = nationality;
+        this.relationshipWithOwner = relationshipWithOwner;
+        this.isOwner = isOwner;
+        this.status = status;
     }
 
-    public void setId(long id) {this.id = id;}
-    public void setName(String name) {this.name = name;}
-    public void setBirthday(Date birthday) {this.birthday = birthday;}
-    public void setGender(boolean gender) {this.gender = gender;}
-    public void setPhoneNumber(int phoneNumber) {this.phoneNumber = phoneNumber;}
-    public void setNationality(String nationality) {this.nationality = nationality;}
-    public void setEthnic(String ethnic) {this.ethnic = ethnic;}
-    public void setFloor(int floor) {this.floor = floor;}
-    public void setRoom(int room) {this.room = room;}
-    public void setRelationship(String relationship) {this.relationship = relationship;}
-    public void setStatus(int status) {this.status = status;}
+    // Getters và Setters cho các thuộc tính
+
+    public int getResidentId() {
+        return residentId;
+    }
+
+    public void setResidentId(int residentId) {
+        this.residentId = residentId;
+    }
+
+    public int getApartmentId() {
+        return apartmentId;
+    }
+
+    public void setApartmentId(int apartmentId) {
+        this.apartmentId = apartmentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getRelationshipWithOwner() {
+        return relationshipWithOwner;
+    }
+
+    public void setRelationshipWithOwner(String relationshipWithOwner) {
+        this.relationshipWithOwner = relationshipWithOwner;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public boolean getIsOwner() {
+        return isOwner;
+    }
+
+    public void setIsOwner(boolean owner) {
+        isOwner = owner;
+    }
 
     @Override
     public String toString() {
-        return name + " (Tầng " + floor + ", phòng" + room + ", " + relationship + "," + status + ")";
+        return "Resident{" +
+                "residentId=" + residentId +
+                ", apartmentId=" + apartmentId +
+                ", name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", gender=" + (gender ? "Male" : "Female") +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", relationshipWithOwner='" + relationshipWithOwner + '\'' +
+                ", status=" + getStatusDescription(status) +
+                '}';
     }
-
-    public String[] toData() {
-        String[] data = {
-                name, gender ? "Nữ" : "Nam",
-                String.valueOf(birthday),
-                "0" + phoneNumber,
-                ethnic,
-                nationality,
-                String.valueOf(floor),
-                String.valueOf(room),
-                relationship,
-                status == 0 ? "Thường trú" : status == 1 ? "Tạm trú" : "Tạm vắng"
+    private String getStatusDescription(int status) {
+        return switch (status) {
+            case 0 -> "Chuyển khỏi chung cư";
+            case 1 -> "Đăng ký thường trú tại chung cư";
+            case 2 -> "Đăng ký tạm trú tại chung cư";
+            case 3 -> "Đăng ký tạm vắng";
+            default -> "Unknown";
         };
-        return data;
-    }
-
-    public String[] toDataLite() {
-        String[] data = {name, String.valueOf(birthday), String.valueOf(id), "0" + phoneNumber};
-        return data;
     }
 }

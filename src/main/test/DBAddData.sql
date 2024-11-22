@@ -38,8 +38,7 @@ VALUES
   (NULL, 'Trần Thị B', '1985-08-10', 0, '0987654321', 'Việt Nam', 'Chủ sở hữu', 1);
 
 -- Chèn dữ liệu vào bảng Apartment (sử dụng residentId đã được tự động tạo ra)
-INSERT INTO `Apartment` (ownerId, area, floor, room)
-VALUES
+INSERT INTO `Apartment` (ownerId, area, floor, room) VALUES
   (1, 75.5, 2, 'A-201'),  -- ownerId là residentId của Nguyễn Văn A
   (3, 65.0, 3, 'B-301');  -- ownerId là residentId của Trần Thị B
 
@@ -50,17 +49,13 @@ VALUES
   (2, 1, '2024-02-05', NULL, 'Đang cư trú tại căn hộ');
 
 -- Chèn dữ liệu vào bảng Fee
-INSERT INTO `Fee` (name, cost, mandatory, cycle, expiration, status)
-VALUES
-  ('Phí quản lý', 500000, 1, 1, '2024-12-31', 1),
-  ('Phí giữ xe', 300000, 1, 1, '2024-12-31', 1);
+INSERT INTO Fee (name, ratePerSquareMeter, isMandatory, feeType) VALUES
+    ('Phí dịch vụ chung cư (thấp)', 2500, TRUE, 'SERVICE_FEE'),
+    ('Phí dịch vụ chung cư (cao)', 16500, TRUE, 'SERVICE_FEE');
 
 -- Chèn dữ liệu vào bảng Payment
-INSERT INTO `Payment` (feeId, apartmentId, timeValidate, payForMonth, payForYear, isLate)
-VALUES
-  (1, 1, '2024-01-05', 1, 2024, 0),
-  (2, 1, '2024-02-10', 2, 2024, 1),
-  (1, 2, '2024-01-15', 1, 2024, 0);
+INSERT INTO Payment (feeId, apartmentId, amountDue, amountPaid, paymentDate, payForMonth, payForYear, status) VALUES
+  (1, 1, 50000, 25000, '2024-11-01', 11, 2024, 'PENDING');
 
 -- Chèn dữ liệu vào bảng Vehicle
 INSERT INTO `Vehicle` (residentId, type, licensePlate)

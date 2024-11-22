@@ -2,6 +2,7 @@ package com.example.bluemoonmanagement.controllers.Fee_management;
 
 import com.example.bluemoonmanagement.api.FeeAPI;
 import com.example.bluemoonmanagement.models.Fee;
+import com.example.bluemoonmanagement.models.FeeType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,34 +18,34 @@ public class EditFeeController {
     @FXML
     private ChoiceBox<String> cbTenPhi;
     @FXML
-    private TextField tfSoTien;
+    private TextField tfDonGia;
     @FXML
     private CheckBox cbBatBuoc;
     @FXML
-    private ChoiceBox<Integer> cbChuKi;
+    private ChoiceBox<String> cbLoaiPhi;
     @FXML
-    private DatePicker dpHanNop;
-    @FXML
-    private Button btCapNhat;
-    @FXML
-    private Button btHuy;
+    private Button btCapNhat, btHuy;
     @FXML
     private Label lbChinhSua;
     private int selectedFeeId = -1;
-    private ShowFeeController showFeeController;
 
     @FXML
     public void initialize() {
+        ObservableList<String> feeTypeNames = FXCollections.observableArrayList(
+                getFeeTypeInVietnamese(FeeType.CONTRIBUTION_FEE),
+                getFeeTypeInVietnamese(FeeType.SERVICE_FEE),
+                getFeeTypeInVietnamese(FeeType.MANAGEMENT_FEE)
+        );
+        cbLoaiPhi.setItems(feeTypeNames);
+        cbLoaiPhi.setValue(null);
         loadFeeNames();
-        ObservableList<Integer> cycles = FXCollections.observableArrayList(0, 1, 2, 3, 6, 9, 12, 24);
-        cbChuKi.setItems(cycles);
         cbTenPhi.setOnAction(event -> loadFeeDetails());
         btCapNhat.setOnAction(this::updateFee);
         btHuy.setOnAction(event -> clearFields());
     }
 
     private void loadFeeNames() {
-        List<Fee> feeList = FeeAPI.getFeeList();
+        List<Fee> feeList = FeeAPI.getAllFees();
         ObservableList<String> feeNames = FXCollections.observableArrayList();
         for (Fee fee : feeList) {
             feeNames.add(fee.getName());
@@ -54,21 +55,18 @@ public class EditFeeController {
     private void loadFeeDetails() {
         String selectedFeeName = cbTenPhi.getValue();
         if (selectedFeeName != null) {
-            List<Fee> feeList = FeeAPI.getFeeList();
+            List<Fee> feeList = FeeAPI.getAllFees();
             for (Fee fee : feeList) {
                 if (fee.getName().equals(selectedFeeName)) {
                     selectedFeeId = fee.getFeeId();
                     cbTenPhi.setValue(selectedFeeName);
                     lbChinhSua.setText("Chỉnh sửa phí: " + selectedFeeName);
-                    tfSoTien.setText(String.valueOf(fee.getCost()));
+                    tfDonGia.setText(String.valueOf(fee.getRatePerSquareMeter()));
                     cbBatBuoc.setSelected(fee.isMandatory());
-                    cbChuKi.setValue(fee.getCycle());
-                    if (fee.getExpiration() != null) {
-                        dpHanNop.setValue(((java.sql.Date) fee.getExpiration()).toLocalDate());
-//                        dpHanNop.setValue(fee.getExpiration().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-                    } else {
-                        dpHanNop.setValue(null);
-                    }
+                    FeeType feeType = fee.getFeeType();
+                    String feeTypeName = getFeeTypeInVietnamese(feeType);
+                    cbLoaiPhi.setValue(feeTypeName);
+
                     break;
                 }
             }
@@ -78,31 +76,51 @@ public class EditFeeController {
     private void updateFee(ActionEvent event) {
         if (selectedFeeId != -1) {
             String name = cbTenPhi.getValue();
-            int cost = Integer.parseInt(tfSoTien.getText());
-            boolean mandatory = cbBatBuoc.isSelected();
-            int cycle = cbChuKi.getValue();
-            LocalDate expirationDate = dpHanNop.getValue();
-            Date expiration = expirationDate != null ? Date.valueOf(expirationDate) : null;
-
-            boolean updated = FeeAPI.editFee(selectedFeeId, name, cost, mandatory, cycle, expiration, 1);
+            float ratePerSquareMeter = Float.parseFloat(tfDonGia.getText());
+            boolean ismandatory = cbBatBuoc.isSelected();
+            String selectedTypeName = cbLoaiPhi.getValue();
+            FeeType feeType = getFeeTypeFromVietnamese(selectedTypeName);
+            Fee fee= new Fee(selectedFeeId, name, ratePerSquareMeter, ismandatory, feeType);
+            boolean updated = FeeAPI.updateFee(fee);
 
             if (updated) {
-                if (showFeeController != null) {
-                    showFeeController.refreshData();
-                }
+                Fee_Controller.getInstance().refreshFeeList();
                 showAlert("Cập nhật thành công!", "Thông tin khoản phí đã được cập nhật.");
             } else {
                 showAlert("Lỗi!!", "Cập nhật thất bại.");
             }
         }
     }
+    private String getFeeTypeInVietnamese(FeeType feeType) {
+        switch (feeType) {
+            case CONTRIBUTION_FEE:
+                return "Thiện nguyện";
+            case SERVICE_FEE:
+                return "Dịch vụ";
+            case MANAGEMENT_FEE:
+                return "Quản lý";
+            default:
+                return "Không xác định";
+        }
+    }
+    private FeeType getFeeTypeFromVietnamese(String feeTypeName) {
+        switch (feeTypeName) {
+            case "Thiện nguyện":
+                return FeeType.CONTRIBUTION_FEE;
+            case "Dịch vụ":
+                return FeeType.SERVICE_FEE;
+            case "Quản lý":
+                return FeeType.MANAGEMENT_FEE;
+            default:
+                throw new IllegalArgumentException("Loại phí không hợp lệ: " + feeTypeName);
+        }
+    }
 
     private void clearFields() {
         cbTenPhi.setValue(null);
-        tfSoTien.clear();
+        tfDonGia.clear();
         cbBatBuoc.setSelected(false);
-        cbChuKi.setValue(null);
-        dpHanNop.setValue(null);
+        cbLoaiPhi.setValue(null);
         selectedFeeId = -1;
     }
     private void showAlert(String title, String message) {
