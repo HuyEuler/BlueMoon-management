@@ -21,8 +21,7 @@ public class FeeManagementController {
     private Button payFee;
     @FXML
     private Button listPaid;
-    private Stage stage;
-    private Parent root;
+
     @FXML
     public void initialize() {
         if (addFee != null) {
@@ -46,8 +45,8 @@ public class FeeManagementController {
         try {
             String path_file_fxml = "/views/fee_management/" + fileName + ".fxml";
             FXMLLoader loader = new FXMLLoader((getClass().getResource(path_file_fxml)));
-            root = loader.load();
-            stage = new Stage();
+            Parent root = loader.load();
+            Stage stage = new Stage();
             stage.setTitle("Thêm loại phí mới");
             stage.setScene(new Scene(root));
             // modal mode: not allow return before close this window

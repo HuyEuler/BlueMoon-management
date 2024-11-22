@@ -13,16 +13,44 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.prefs.Preferences;
 
-import static com.example.bluemoonmanagement.api.LoginAPI.authenticate;
+import static com.example.bluemoonmanagement.api.LoginAPI.*;
 import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 public class Login_Controller {
-    public CheckBox remember;
+    @FXML
+    private CheckBox remember;
     @FXML
     private TextField login_user;
     @FXML
     private TextField login_password;
+
+
+    private final Preferences prefs = Preferences.userNodeForPackage(Login_Controller.class);
+    private static final String CHECKBOX_KEY = "checkboxChecked";
+    private static final String PASSWORD_KEY = "password";
+
+    public void initialize() {
+        boolean isChecked = prefs.getBoolean(CHECKBOX_KEY, false);
+        remember.setSelected(isChecked);
+
+        if (isChecked) {
+            login_user.setText(getUsername(1));
+            login_password.setText(prefs.get(PASSWORD_KEY, ""));
+
+        } else {
+            System.out.println("No");
+        }
+
+        remember.setOnAction(event -> {
+            prefs.putBoolean(CHECKBOX_KEY, remember.isSelected());
+        });
+
+        login_password.textProperty().addListener((observable, oldValue, newValue) -> {
+            prefs.put(PASSWORD_KEY, newValue);
+        });
+    }
 
     public void switchToMainScene(ActionEvent event) throws IOException {
         String username = login_user.getText();
