@@ -1,10 +1,8 @@
 package com.example.bluemoonmanagement.controllers.Account_management;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.*;
-import java.io.IOException;
 import java.util.Objects;
 
 import static com.example.bluemoonmanagement.api.LoginAPI.*;
@@ -20,13 +18,11 @@ public class EditAccountController {
     @FXML
     private Button okButton;
 
-    public void onOk(ActionEvent event) throws IOException {
+    public void onOk() {
         System.out.println("OK");
         String password = OldPassword.getText();
         String newPassword = NewPassword.getText();
         String rewritePassword = RewritePassword.getText();
-
-        //System.out.println(password + " " + newPassword + " " + rewritePassword);
 
         if (!Objects.equals(getPassword(USER.getId()), password)) {
             showAlert("Error","Sai mật khẩu!");
@@ -42,12 +38,12 @@ public class EditAccountController {
         }
     }
 
-    public void onCancel(ActionEvent event) throws IOException {
+    public void onCancel() {
         System.out.println("Cancel");
         closeWindow();
     }
-    /*======================================================*/
 
+    /*======================================================*/
     private void closeWindow() {
         // Lấy Stage hiện tại từ nút
         Stage stage = (Stage) okButton.getScene().getWindow();
