@@ -30,34 +30,35 @@ public class TestAPIMethod {
 //        // II. Test gọi các API cho chức năng quản lý cư dân
 
         // 1. Apartment
-        // Tạo 1 apartment mới
+//             Tạo 1 apartment mới
 //        ApartmentAPI.addApartment(1, 20, 13, "1306");
         // Có thể khởi tạo 1 căn hộ với ownerId = null (chưa xác định)
-//        ApartmentAPI.addApartment(null, 500, 6, "602");
+//        ApartmentAPI.addApartment(null, 30, 6, "603");
 
-        // Cập nhật ownerId cho apartment
-//        ApartmentAPI.updateOwnerApartment(4, 2);
+//              Cập nhật ownerId cho apartment
+//        ApartmentAPI.updateOwnerApartment(4, 6);
         // Xóa apartment theo Id
 //        ApartmentAPI.deleteApartment(3);
 
-//        // Lấy 1 apartment theo Id
+//              Lấy 1 apartment theo Id
 //        Apartment apartment = ApartmentAPI.getApartmentById(1);
 //        System.out.println(apartment.getApartmentId() + " " + apartment.getOwnerId() + " " + apartment.getArea()
 //            + " " + apartment.getFloor() + " " + apartment.getRoom());
 
+//              Lấy apartmentId theo số phòng (room)
+//        System.out.println(ApartmentAPI.getApartmentIdByRoom("601"));
+
+
 //              Lấy danh sách tất cả apartment
 //        List<Apartment> apartments = ApartmentAPI.getAllApartment();
 //        for(Apartment apartment : apartments){
-//            System.out.println(apartment.getApartmentId() + " " + apartment.getOwnerId() + " " + apartment.getArea()
-//                    + " " + apartment.getFloor() + " " + apartment.getRoom());
+//            System.out.println(apartment.toString());
 //        }
 
 //              Lấy danh sách tất cả resident từ 1 apartment
-//        List<Resident> residents = ApartmentAPI.getResidentsFromApartmentId(1);
+//        List<Resident> residents = ApartmentAPI.getResidentsFromApartmentId(4);
 //        for (Resident resident : residents){
-//            System.out.println(resident.getResidentId()+ " " + resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
-//                    + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
-//                    + " " + resident.getIsOwner());
+//            System.out.println(resident.toString());
 //        }
 
 
@@ -84,8 +85,8 @@ public class TestAPIMethod {
 //              Update resident info
 //        Resident resident = ResidentAPI.getResidentById(10);
 //        assert resident != null;
-//        resident.setStatus(3);
-//        resident.setName("Luffy Straw hat");
+//        resident.setStatus(2);
+//        resident.setName("Luffy Mũ rơm");
 //        resident.setIsOwner(true);
 //        ResidentAPI.updateResidentById(resident, "Đi làm vua hải tặc ");
 
@@ -93,12 +94,10 @@ public class TestAPIMethod {
 //        ResidentAPI.deleteResidentById(9, null);
 
 //              Trả về tất cả resident
-//        ResidentAPI.deleteResidentById(4);
+//        ResidentAPI.deleteResidentById(1, null);
 //        List<Resident> residents = ResidentAPI.getAllResidents();
 //        for (Resident resident : residents){
-//            System.out.println(resident.getResidentId()+ " " + resident.getName() + " " + resident.getBirthday() + " " + resident.getGender() + " "
-//            + resident.getPhoneNumber() + " " + resident.getNationality() + " " + resident.getRelationshipWithOwner()
-//            + " " + resident.getIsOwner());
+//            System.out.println(resident.toString());
 //        }
 
 //        3. Vehicle

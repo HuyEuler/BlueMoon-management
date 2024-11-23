@@ -54,6 +54,28 @@ public class ApartmentAPI {
         return null;
     }
 
+    // Phương thức trả về apartmentId theo số phòng
+    public static Integer getApartmentIdByRoom(String room) {
+        String query = "SELECT apartmentId FROM Apartment WHERE room = ?";
+        Integer apartmentId = null;
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, room);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                apartmentId = rs.getInt("apartmentId");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return apartmentId;
+    }
+
+
     // Phương thức tạo thêm 1 Apartment mới
     public static Apartment addApartment(Integer ownerId, float area, int floor, String room) {
         String query = "INSERT INTO Apartment (ownerId, area, floor, room) VALUES (?, ?, ?, ?)";
@@ -80,11 +102,11 @@ public class ApartmentAPI {
     }
 
     // Phương thức cập nhật ownerId cho 1 apartment
-    public static boolean updateOwnerApartment(int apartmentId, int ownerId) {
+    public static boolean updateOwnerApartment(int apartmentId, Integer ownerId) {
         String query = "UPDATE Apartment SET ownerId = ? WHERE apartmentId = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-            preparedStatement.setInt(1, ownerId);
+            preparedStatement.setObject(1, ownerId, Types.INTEGER);
             preparedStatement.setInt(2, apartmentId);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
