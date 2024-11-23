@@ -50,12 +50,21 @@ VALUES
 
 -- Chèn dữ liệu vào bảng Fee
 INSERT INTO Fee (name, ratePerSquareMeter, isMandatory, feeType) VALUES
-    ('Phí dịch vụ chung cư (thấp)', 2500, TRUE, 'SERVICE_FEE'),
-    ('Phí dịch vụ chung cư (cao)', 16500, TRUE, 'SERVICE_FEE');
+    ('Phí quản lý chung cư', 10000, TRUE, 'MANAGEMENT_FEE'),
+    ('Phí đất đai nhà ở', 5000, TRUE, 'MANAGEMENT_FEE'),
+    ('Phí an ninh', 3000, TRUE, 'MANAGEMENT_FEE'),
+    ('Phí điện', 9000, TRUE, 'SERVICE_FEE'),
+    ('Phí nước', 6050, TRUE, 'SERVICE_FEE'),
+    ('Phí môi trường', 1650, FALSE, 'SERVICE_FEE'),
+    ('Phí người nghèo', 0, FALSE, 'CONTRIBUTION_FEE'),
+    ('Phí ủng hộ lũ lụt', 0, FALSE, 'CONTRIBUTION_FEE' );
+
 
 -- Chèn dữ liệu vào bảng Payment
 INSERT INTO Payment (feeId, apartmentId, amountDue, amountPaid, paymentDate, payForMonth, payForYear, status) VALUES
-  (1, 1, 50000, 25000, '2024-11-01', 11, 2024, 'PENDING');
+  (1, 1, 50000, 25000, '2024-9-01', 9, 2024, 'PENDING'),
+  (1, 2, 60000, 0, '2024-9-01', 9, 2024, 'PENDING'),
+  (2, 1, 100000, 0, '2024-10-01', 10, 2024, 'PENDING');
 
 -- Chèn dữ liệu vào bảng Vehicle
 INSERT INTO `Vehicle` (residentId, type, licensePlate)
