@@ -16,6 +16,7 @@ import java.util.Objects;
 import java.util.prefs.Preferences;
 
 import static com.example.bluemoonmanagement.api.LoginAPI.*;
+import static com.example.bluemoonmanagement.api.UserAPI.getUser;
 import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 public class Login_Controller {
@@ -60,6 +61,7 @@ public class Login_Controller {
         System.out.printf("Password: %s%n", password);
 
         if (authenticate(username, password)) {
+            USER = getUser(1);
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/GUIMain.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, screenWidth, screenHeight);
