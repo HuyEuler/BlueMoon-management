@@ -23,12 +23,14 @@ ALTER TABLE `Vehicle` AUTO_INCREMENT = 1;
 -- Chèn dữ liệu vào bảng User
 INSERT INTO `User` (name, birthday, phoneNumber, image, address)
 VALUES
-  ('Lê Admin', '1990-05-15', '0123456789', NULL, '123 Đường Lê Lợi, Quận 1, TP.HCM');
+  ('Lê Admin', '1990-05-15', '0123456789', NULL, '123 Đường Lê Lợi, Quận 1, TP.HCM'),
+  ('Nguyễn Admin', '1999-10-15', '0345436223', NULL, '123 Đường Tân Mai, Quận 3, TP.HCM');
 
 -- Chèn dữ liệu vào bảng Login
 INSERT INTO `Login` (userId, username, password)
 VALUES
-  (1, 'admin', 'password123');
+  (1, 'admin', 'password123'),
+  (2, '', '');
 
 -- Chèn dữ liệu vào bảng Resident trước
 INSERT INTO `Resident` (apartmentId, name, birthday, gender, phoneNumber, nationality, relationshipWithOwner, status)
@@ -50,12 +52,21 @@ VALUES
 
 -- Chèn dữ liệu vào bảng Fee
 INSERT INTO Fee (name, ratePerSquareMeter, isMandatory, feeType) VALUES
-    ('Phí dịch vụ chung cư (thấp)', 2500, TRUE, 'SERVICE_FEE'),
-    ('Phí dịch vụ chung cư (cao)', 16500, TRUE, 'SERVICE_FEE');
+    ('Phí quản lý chung cư', 10000, TRUE, 'MANAGEMENT_FEE'),
+    ('Phí đất đai nhà ở', 5000, TRUE, 'MANAGEMENT_FEE'),
+    ('Phí an ninh', 3000, TRUE, 'MANAGEMENT_FEE'),
+    ('Phí điện', 9000, TRUE, 'SERVICE_FEE'),
+    ('Phí nước', 6050, TRUE, 'SERVICE_FEE'),
+    ('Phí môi trường', 1650, FALSE, 'SERVICE_FEE'),
+    ('Phí người nghèo', 0, FALSE, 'CONTRIBUTION_FEE'),
+    ('Phí ủng hộ lũ lụt', 0, FALSE, 'CONTRIBUTION_FEE' );
+
 
 -- Chèn dữ liệu vào bảng Payment
 INSERT INTO Payment (feeId, apartmentId, amountDue, amountPaid, paymentDate, payForMonth, payForYear, status) VALUES
-  (1, 1, 50000, 25000, '2024-11-01', 11, 2024, 'PENDING');
+  (1, 1, 50000, 25000, '2024-9-01', 9, 2024, 'PENDING'),
+  (1, 2, 60000, 0, '2024-9-01', 9, 2024, 'PENDING'),
+  (2, 1, 100000, 0, '2024-10-01', 10, 2024, 'PENDING');
 
 -- Chèn dữ liệu vào bảng Vehicle
 INSERT INTO `Vehicle` (residentId, type, licensePlate)
