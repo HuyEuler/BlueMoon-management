@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.showOwner_controller">
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.showOwner_controller">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0" minWidth="900.0" prefWidth="900.0" />
     </columnConstraints>

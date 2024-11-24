@@ -13,17 +13,17 @@
 <GridPane minHeight="80.0" minWidth="1000.0" prefHeight="80.0" prefWidth="1000.0" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Account_management.Account_button_controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="75.0" prefWidth="165.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" prefWidth="25.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="5.0" prefWidth="25.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="75.0" prefWidth="150.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" prefWidth="25.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="5.0" prefWidth="25.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="75.0" prefWidth="165.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
    </rowConstraints>
-   <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#editInformation" prefHeight="70.0" prefWidth="150.0" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+   <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#editInformation" prefHeight="100.0" prefWidth="300.0" text="Sửa thông tin tài khoản" textFill="WHITE" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
       <font>
-         <Font name="System Bold" size="24.0" />
+         <Font name="System Bold" size="22.0" />
       </font>
       <graphic>
          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -34,12 +34,12 @@
          <Cursor fx:constant="HAND" />
       </cursor>
       <GridPane.margin>
-         <Insets />
+         <Insets bottom="10.0" top="10.0" />
       </GridPane.margin>
    </Button>
-   <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#editAccount" prefHeight="70.0" prefWidth="150.0" text="Đổi mật khẩu" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+   <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#editAccount" prefHeight="100.0" prefWidth="300.0" text="Đổi mật khẩu" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
       <font>
-         <Font name="System Bold" size="24.0" />
+         <Font name="System Bold" size="22.0" />
       </font>
       <graphic>
          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -50,12 +50,12 @@
          <Cursor fx:constant="HAND" />
       </cursor>
       <GridPane.margin>
-         <Insets />
+         <Insets bottom="10.0" top="10.0" />
       </GridPane.margin>
    </Button>
-   <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="70.0" prefWidth="150.0" text="Đăng xuất" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+   <Button ellipsisString="" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="75.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="100.0" prefWidth="300.0" text="Đăng xuất" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
       <font>
-         <Font name="System Bold" size="24.0" />
+         <Font name="System Bold" size="22.0" />
       </font>
       <graphic>
          <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
@@ -66,7 +66,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
       <GridPane.margin>
-         <Insets />
+         <Insets bottom="10.0" top="10.0" />
       </GridPane.margin>
    </Button>
 </GridPane>

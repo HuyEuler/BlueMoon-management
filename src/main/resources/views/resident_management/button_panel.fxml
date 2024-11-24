@@ -1,72 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<!--<?import javafx.scene.control.Button?>-->
+<!--<?import javafx.scene.image.Image?>-->
+<!--<?import javafx.scene.image.ImageView?>-->
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+<!--<?import javafx.scene.text.Font?>-->
 
-<AnchorPane prefHeight="100.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller">
-   <children>
-      <Button fx:id="btnAddResident" contentDisplay="TOP" layoutX="41.0" layoutY="9.0" mnemonicParsing="false" onAction="#openAddResidentWindow" prefHeight="82.0" prefWidth="146.0" text="Thêm cư dân">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <graphic>
-            <ImageView>
-               <image>
-                  <Image url="@../../images/addResident.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button contentDisplay="TOP" layoutX="231.0" layoutY="11.0" mnemonicParsing="false" onAction="#openEditResidentWindow" prefHeight="82.0" prefWidth="158.0" text="Sửa thông tin cư dân">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="71.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/editResident.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button contentDisplay="TOP" layoutX="426.0" layoutY="11.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="131.0" text="Xóa cư dân">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="47.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/deleteResident.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button contentDisplay="TOP" layoutX="593.0" layoutY="12.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="146.0" text="Thay đổi nhân khẩu">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <graphic>
-            <ImageView>
-               <image>
-                  <Image url="@../../images/editAccount.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button contentDisplay="TOP" layoutX="791.0" layoutY="12.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="146.0" text="Lịch sử cư trú">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <graphic>
-            <ImageView>
-               <image>
-                  <Image url="@../../images/historyStatus.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-   </children>
-</AnchorPane>
+<!--<AnchorPane prefHeight="100.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller">-->
+<!--   <children>-->
+<!--      <Button fx:id="btnAddResident" contentDisplay="TOP" layoutX="41.0" layoutY="9.0" mnemonicParsing="false" onAction="#openAddResidentWindow" prefHeight="82.0" prefWidth="146.0" text="Thêm cư dân">-->
+<!--         <font>-->
+<!--            <Font size="14.0" />-->
+<!--         </font>-->
+<!--         <graphic>-->
+<!--            <ImageView>-->
+<!--               <image>-->
+<!--                  <Image url="@../../images/addResident.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
+<!--         </graphic>-->
+<!--      </Button>-->
+<!--      <Button contentDisplay="TOP" layoutX="231.0" layoutY="11.0" mnemonicParsing="false" onAction="#openEditResidentWindow" prefHeight="82.0" prefWidth="158.0" text="Sửa thông tin cư dân">-->
+<!--         <font>-->
+<!--            <Font size="14.0" />-->
+<!--         </font>-->
+<!--         <graphic>-->
+<!--            <ImageView fitHeight="71.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">-->
+<!--               <image>-->
+<!--                  <Image url="@../../images/editResident.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
+<!--         </graphic>-->
+<!--      </Button>-->
+<!--      <Button contentDisplay="TOP" layoutX="426.0" layoutY="11.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="131.0" text="Xóa cư dân">-->
+<!--         <font>-->
+<!--            <Font size="14.0" />-->
+<!--         </font>-->
+<!--         <graphic>-->
+<!--            <ImageView fitHeight="47.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">-->
+<!--               <image>-->
+<!--                  <Image url="@../../images/deleteResident.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
+<!--         </graphic>-->
+<!--      </Button>-->
+<!--      <Button contentDisplay="TOP" layoutX="593.0" layoutY="12.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="146.0" text="Thay đổi nhân khẩu">-->
+<!--         <font>-->
+<!--            <Font size="14.0" />-->
+<!--         </font>-->
+<!--         <graphic>-->
+<!--            <ImageView>-->
+<!--               <image>-->
+<!--                  <Image url="@../../images/editAccount.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
+<!--         </graphic>-->
+<!--      </Button>-->
+<!--      <Button contentDisplay="TOP" layoutX="791.0" layoutY="12.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="146.0" text="Lịch sử cư trú">-->
+<!--         <font>-->
+<!--            <Font size="14.0" />-->
+<!--         </font>-->
+<!--         <graphic>-->
+<!--            <ImageView>-->
+<!--               <image>-->
+<!--                  <Image url="@../../images/historyStatus.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
+<!--         </graphic>-->
+<!--      </Button>-->
+<!--   </children>-->
+<!--</AnchorPane>-->
