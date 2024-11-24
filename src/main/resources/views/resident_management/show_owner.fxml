@@ -26,7 +26,7 @@
       </columns>
     </TableView>
     <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #809bce;" />
-    <Label fx:id="numberRoom" text="Danh sách căn hộ phòng " GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+    <Label fx:id="numberRoom" text="Danh sách cư dân phòng" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <font>
           <Font name="System Bold" size="33.0" />
         </font>

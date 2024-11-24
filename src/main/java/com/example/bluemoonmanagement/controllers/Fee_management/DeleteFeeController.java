@@ -2,42 +2,51 @@ package com.example.bluemoonmanagement.controllers.Fee_management;
 
 import com.example.bluemoonmanagement.api.FeeAPI;
 import com.example.bluemoonmanagement.models.Fee;
+import com.example.bluemoonmanagement.models.FeeType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.StringConverter;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class DeleteFeeController {
     @FXML
-    private ChoiceBox cbTenPhi;
+    private ChoiceBox<String> cbTenPhi;
     @FXML
     private Label lbTenPhi;
     @FXML
-    private Label lbSoTien;
+    private Label lbDonGia;
     @FXML
     private Label lbBatBuoc;
     @FXML
-    private Label lbChuKi;
-    @FXML
-    private Label lbHanNop;
+    private Label lbLoaiPhi;
     @FXML
     private Button btHuy;
     @FXML
     private Button btXoa;
+    private List<Fee> feeList;
     private int selectedFeeId = -1;
+
     @FXML
     public void initialize() {
-        loadFeeNames();
+        loadFeeList();
         cbTenPhi.setOnAction(event -> loadFeeDetails());
         btXoa.setOnAction(this::deleteFee);
         btHuy.setOnAction(event -> clearFields());
     }
-    private void loadFeeNames() {
-        List<Fee> feeList = FeeAPI.getFeeList();
+    private void loadFeeList() {
+        feeList = FeeAPI.getAllFees();
+        if (feeList == null || feeList.isEmpty()) {
+            showAlert("Thông báo", "Không có khoản phí nào để xóa.");
+            cbTenPhi.setItems(FXCollections.observableArrayList());
+            return;
+        }
         ObservableList<String> feeNames = FXCollections.observableArrayList();
+
         for (Fee fee : feeList) {
             feeNames.add(fee.getName());
         }
@@ -46,21 +55,36 @@ public class DeleteFeeController {
     private void loadFeeDetails() {
         String selectedFeeName =(String) cbTenPhi.getValue();
         if (selectedFeeName != null) {
-            List<Fee> feeList = FeeAPI.getFeeList();
-            for (Fee fee : feeList) {
+            List<Fee> fees = FeeAPI.getAllFees();
+            for (Fee fee : fees) {
                 if (fee.getName().equals(selectedFeeName)) {
                     selectedFeeId = fee.getFeeId();
                     cbTenPhi.setValue(selectedFeeName);
                     lbTenPhi.setText("Thông tin khoản phí xoá: " + selectedFeeName);
-                    lbSoTien.setText("Số tiền: " + (fee.getCost()));
+                    Double amount = fee.getRatePerSquareMeter();
+                    DecimalFormat decimalFormat = new DecimalFormat("#,###");
+                    String formattedAmount = decimalFormat.format(amount);
+                    lbDonGia.setText("Số tiền: " + formattedAmount + " VNĐ");
                     if (fee.isMandatory()){
                         lbBatBuoc.setText("Phí bắt buộc!");
                     }
                     else{
                         lbBatBuoc.setText("Phí không bắt buộc!");
                     }
-                    lbChuKi.setText("Chu kì: "+fee.getCycle()+" Tháng");
-                    lbHanNop.setText("Hạn nộp: " + fee.getExpiration());
+                    String s = null;
+                    if (fee.getFeeType() == FeeType.CONTRIBUTION_FEE){
+                        s = "Thiện nguyện";
+                    }
+                    else {
+                        if (fee.getFeeType() == FeeType.SERVICE_FEE){
+                            s = "Dịch vụ";
+                        }
+                        else{
+                            s = "Quản lý";
+                        }
+                    }
+                    lbLoaiPhi.setText("Loại phí: " +  s);
+
                     break;
                 }
             }
@@ -80,9 +104,10 @@ public class DeleteFeeController {
         }
         boolean isDeleted = FeeAPI.deleteFee(selectedFeeId);
         if (isDeleted) {
+            Fee_Controller.getInstance().refreshFeeList();
             showAlert("Xoá Thành công!", "Khoản phí đã được xóa thành công.");
             clearFields();
-            loadFeeNames();
+            loadFeeList();
             selectedFeeId = -1;
         } else {
             showAlert("Lỗi!!!", "Không thể xóa khoản phí. Vui lòng thử lại.");
@@ -91,11 +116,10 @@ public class DeleteFeeController {
 
     private void clearFields() {
         cbTenPhi.setValue(null);
-        lbSoTien.setText(null);
-        lbHanNop.setText(null);
+        lbDonGia.setText(null);
+        lbLoaiPhi.setText(null);
         lbBatBuoc.setText(null);
         lbTenPhi.setText("Thông tin khoản phí xoá");
-        lbChuKi.setText(null);
     }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -1,63 +1,100 @@
 package com.example.bluemoonmanagement.controllers.Fee_management;
 import com.example.bluemoonmanagement.api.FeeAPI;
 
+import com.example.bluemoonmanagement.models.Fee;
+import com.example.bluemoonmanagement.models.FeeType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.time.LocalDate;
-import java.sql.Date;
 
 public class AddFeeController {
     @FXML
     private TextField tfTenPhi;
     @FXML
-    private TextField tfSoTien;
+    private TextField tfDonGia;
     @FXML
     private CheckBox cbBatBuoc;
     @FXML
-    private ChoiceBox cbChuKi;
-    @FXML
-    private DatePicker dpHanNop;
+    private ChoiceBox<String> cbLoaiPhi;
     @FXML
     private Button btHuy;
     @FXML
     private Button btThem;
-    private ShowFeeController showFeeController;
+    private ObservableList<Fee> feeList;
+
     @FXML
     public void initialize() {
-        ObservableList<Integer> cycles = FXCollections.observableArrayList(0, 1, 2, 3, 6, 9, 12, 24); //0: phí một lần
-        cbChuKi.setItems(cycles);
-        cbChuKi.setValue(1);
+        ObservableList<String> feeTypeNames = FXCollections.observableArrayList(
+                getFeeTypeInVietnamese(FeeType.CONTRIBUTION_FEE),
+                getFeeTypeInVietnamese(FeeType.SERVICE_FEE),
+                getFeeTypeInVietnamese(FeeType.MANAGEMENT_FEE)
+        );
+        cbLoaiPhi.setItems(feeTypeNames);
+        cbLoaiPhi.setValue(null);
         btHuy.setOnAction(event -> clearFields());
         btThem.setOnAction(event -> addFeeToDatabase());
     }
-    private void addFeeToDatabase() {
-        String name = tfTenPhi.getText();
-        int cost = Integer.parseInt(tfSoTien.getText());
-        boolean mandatory = cbBatBuoc.isSelected();
-        int cycle = Integer.parseInt(cbChuKi.getValue().toString());
-        LocalDate expirationDate = dpHanNop.getValue();
-        Date expiration = Date.valueOf(expirationDate);
 
-        boolean success = FeeAPI.addFee(name, cost, mandatory, cycle, expiration, 1);
-        if (success) {
-            if (showFeeController != null) {
-                showFeeController.refreshData();
+    private void addFeeToDatabase() {
+        try {
+            String name = tfTenPhi.getText();
+            double ratePerSquareMeter = Double.parseDouble(tfDonGia.getText());
+            boolean isMandatory = cbBatBuoc.isSelected();
+
+            String selectedTypeName = cbLoaiPhi.getValue();
+            FeeType feeType = getFeeTypeFromVietnamese(selectedTypeName);
+            Fee fee = new Fee();
+            fee.setName(name);
+            fee.setRatePerSquareMeter(ratePerSquareMeter);
+            fee.setMandatory(isMandatory);
+            fee.setFeeType(feeType);
+
+            boolean success = FeeAPI.addFee(fee);
+
+            if (success) {
+                Fee_Controller.getInstance().refreshFeeList();
+                showAlert("Thêm phí thành công!", "Thông tin khoản phí đã được thêm vào danh sách.");
+                clearFields();
+            } else {
+                showAlert("Lỗi!!", "Thêm khoản phí thất bại. Vui lòng kiểm tra lại.");
             }
-            showAlert("Thêm phí thành công!", "Thông tin khoản phí đã được thêm vào danh sách.");
+        } catch (NumberFormatException e) {
+            showAlert("Lỗi nhập liệu", "Vui lòng nhập đúng định dạng cho đơn giá.");
+        } catch (Exception e) {
+            showAlert("Lỗi không xác định", "Đã xảy ra lỗi: " + e.getMessage());
         }
-        else {
-            showAlert("Lỗi!!", "Thêm khoản phí thất bại. Vui lòng kiểm tra lại");
+    }
+    private String getFeeTypeInVietnamese(FeeType feeType) {
+        switch (feeType) {
+            case CONTRIBUTION_FEE:
+                return "Thiện nguyện";
+            case SERVICE_FEE:
+                return "Dịch vụ";
+            case MANAGEMENT_FEE:
+                return "Quản lý";
+            default:
+                return "Không xác định";
+        }
+    }
+    private FeeType getFeeTypeFromVietnamese(String feeTypeName) {
+        switch (feeTypeName) {
+            case "Thiện nguyện":
+                return FeeType.CONTRIBUTION_FEE;
+            case "Dịch vụ":
+                return FeeType.SERVICE_FEE;
+            case "Quản lý":
+                return FeeType.MANAGEMENT_FEE;
+            default:
+                throw new IllegalArgumentException("Loại phí không hợp lệ: " + feeTypeName);
         }
     }
     private void clearFields() {
-        tfTenPhi.setText(null);
-        tfSoTien.clear();
+        tfTenPhi.clear();
+        tfDonGia.clear();
         cbBatBuoc.setSelected(false);
-        cbChuKi.setValue(null);
-        dpHanNop.setValue(null);
+        cbLoaiPhi.setValue("Không xác định");
     }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

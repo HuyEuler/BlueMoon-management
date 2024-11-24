@@ -1,3 +1,9 @@
+## 22/11/2024 Complete fully function:
+Hoàn thành đầy đủ chức năng và giao diện
+Fix những lỗi nhỏ
+Chỉnh sửa hiển thị giao diện sai
+
+
 ## 9/11/2024 Completed function for Fee:
 Đã hoàn thành đầy đủ chức năng cho mục phí 
 
@@ -19,3 +25,8 @@
 1. Tách thông tin tài khoản từ tab "Trang chủ" thành một tab"Tài khoản"
 2. Hoàn thành chức năng sửa thông tin và đổi mật khẩu
 3. `GlobalVariable` có thêm các biến _USER_ và _screenBounds_ 
+
+## 22/11/2024 
+1. Tách `account_controller.java` thành `account_button_controller.java` và `account_content_controller.java` để dễ dàng kiểm soát
+2. Thêm `DataManager.java` là class trung gian để giao tiếp giữa các controller, dùng để update thông tin hiển thị
+3. Đã giải quyết xong bài toán update thông tin hiển thị trong Account
