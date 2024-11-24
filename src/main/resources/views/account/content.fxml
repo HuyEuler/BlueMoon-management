@@ -65,48 +65,48 @@
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
         <Label text="Đại diện ban quản lý">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <TextField fx:id="TenBQL" disable="true" editable="false" minHeight="35.0" prefHeight="40.0">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </TextField>
     </VBox>
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
         <Label prefWidth="150.0" text="Ngày sinh">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <TextField fx:id="NgaySinh" disable="true" editable="false" minHeight="35.0" prefHeight="40.0">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </TextField>
     </VBox>
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="5">
         <Label prefWidth="200.0" text="Số điện thoại">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <TextField fx:id="SDT" disable="true" editable="false" minHeight="35.0" prefHeight="40.0">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </TextField>
     </VBox>
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="7">
         <Label prefWidth="110.0" text="Địa chỉ">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <TextField fx:id="DiaChi" disable="true" editable="false" minHeight="35.0" prefHeight="40.0">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </TextField>
     </VBox>

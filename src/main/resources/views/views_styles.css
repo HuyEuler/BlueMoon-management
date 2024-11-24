@@ -1,28 +1,57 @@
-.all_button {
-    -fx-cursor: hand;
-}
-
+/* button */
 .button {
-    -fx-background-color:  #809bce;
+    -fx-background-color: #809bce;
     -fx-background-radius: 5px;
 }
 
 .button:hover {
-    -fx-background-color:  #4A628A;
+    -fx-background-color: #4A628A;
     -fx-cursor: hand;
-
 }
 
+/* Tab header */
+.tab-header-background {
+    -fx-background-color: #D4EBF8;
+}
+
+/* Tab */
 .tab-pane .tab {
     -fx-background-color: transparent;
+    -fx-font-size: 14px; /* Đặt kích thước chữ */
+    -fx-font-weight: bold; /* Kiểu chữ in đậm */
 }
 
 .tab-pane .tab:hover {
     -fx-background-color: #809bce;
     -fx-cursor: hand;
+    -fx-font-size: 16px; /* Đặt kích thước chữ */
+
 }
 
 .tab-pane .tab:selected {
+    -fx-background-insets: 0;
     -fx-background-color: white;
+    -fx-font-size: 16px; /* Kích thước chữ khi tab được chọn */
+    -fx-font-weight: bold;
 }
 
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #1F509A; /* Màu chữ xanh */
+}
+
+.tab-pane .tab:hover .tab-label {
+    -fx-text-fill: white; /* Đổi màu chữ thành trắng khi hover */
+}
+
+.tab-pane .tab:selected:hover .tab-label {
+    -fx-text-fill: #1F509A; /* Đổi màu chữ thành trắng khi hover trên tab hiện tại */
+}
+
+.tab-pane .tab:focused {
+    -fx-effect: null;
+}
+
+.tab-pane:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
