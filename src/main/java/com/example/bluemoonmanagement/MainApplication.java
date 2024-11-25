@@ -17,7 +17,7 @@ public class MainApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(),screenWidth, screenHeight);
         stage.setTitle("Apartment Management System");
 
-        stage.setScene(scene);-
+        stage.setScene(scene);
         stage.show();
 
     public static void main(String[] args) {
