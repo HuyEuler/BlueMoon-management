@@ -9,42 +9,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="609.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddResident_Controller">
-    <children>
-        <Label layoutX="20.0" layoutY="74.0" text="Họ và tên" />
-        <TextField fx:id="txtName" layoutX="91.0" layoutY="70.0" prefHeight="26.0" prefWidth="425.0" />
+<AnchorPane prefHeight="662.0" prefWidth="609.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddResident_Controller">
+    <Label layoutX="20.0" layoutY="74.0" text="Họ và tên"/>
+    <TextField fx:id="txtName" layoutX="91.0" layoutY="70.0" prefHeight="26.0" prefWidth="425.0"/>
 
-        <Label layoutX="19.0" layoutY="121.0" text="Giới tính" />
-        <ChoiceBox fx:id="genderChoiceBox" layoutX="90.0" layoutY="117.0" prefHeight="26.0" prefWidth="62.0" />
+    <Label layoutX="19.0" layoutY="121.0" text="Giới tính"/>
+    <ChoiceBox fx:id="genderChoiceBox" layoutX="90.0" layoutY="117.0" prefHeight="26.0" prefWidth="62.0"/>
 
-        <Label layoutX="19.0" layoutY="168.0" text="Ngày sinh" />
-        <DatePicker fx:id="birthSelectionBox" layoutX="89.0" layoutY="164.0" prefHeight="26.0" prefWidth="200.0" />
+    <Label layoutX="19.0" layoutY="168.0" text="Ngày sinh"/>
+    <DatePicker fx:id="birthSelectionBox" layoutX="89.0" layoutY="164.0" prefHeight="26.0" prefWidth="200.0"/>
 
-        <Label layoutX="18.0" layoutY="222.0" text="Số CCCD" />
-        <TextField fx:id="txtAddress" layoutX="88.0" layoutY="218.0" prefWidth="200.0" />
+    <Label layoutX="18.0" layoutY="222.0" text="Số CCCD"/>
+    <TextField fx:id="txtAddress" layoutX="88.0" layoutY="218.0" prefWidth="200.0"/>
 
-        <Label layoutX="18.0" layoutY="270.0" text="Quốc tịch" />
-        <TextField fx:id="txtCountry" layoutX="87.0" layoutY="266.0" prefWidth="200.0" />
+    <Label layoutX="18.0" layoutY="270.0" text="Quốc tịch"/>
+    <TextField fx:id="txtCountry" layoutX="87.0" layoutY="266.0" prefWidth="200.0"/>
 
-        <Label layoutX="21.0" layoutY="313.0" text="Dân tộc" />
-        <TextField fx:id="txtRegion" layoutX="87.0" layoutY="309.0" prefHeight="26.0" prefWidth="69.0" />
+    <Label layoutX="21.0" layoutY="313.0" text="Dân tộc"/>
+    <TextField fx:id="txtRegion" layoutX="87.0" layoutY="309.0" prefHeight="26.0" prefWidth="69.0"/>
 
-        <Label layoutX="20.0" layoutY="359.0" text="Tầng" />
-        <ChoiceBox fx:id="floorChoiceBox" layoutX="87.0" layoutY="354.0" prefHeight="26.0" prefWidth="62.0" />
+    <Label layoutX="20.0" layoutY="359.0" text="Tầng"/>
+    <ChoiceBox fx:id="floorChoiceBox" layoutX="87.0" layoutY="354.0" prefHeight="26.0" prefWidth="62.0"/>
 
-        <Label layoutX="197.0" layoutY="359.0" text="Phòng" />
-        <TextField fx:id="txtRoom" layoutX="255.0" layoutY="354.0" prefHeight="26.0" prefWidth="62.0" />
+    <Label layoutX="197.0" layoutY="359.0" text="Phòng"/>
+    <TextField fx:id="txtRoom" layoutX="255.0" layoutY="354.0" prefHeight="26.0" prefWidth="62.0"/>
 
-        <Button layoutX="87.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="26.0" prefWidth="51.0" text="Lưu" />
-        <Button layoutX="205.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="54.0" text="Hủy" />
-      <Label layoutX="92.0" layoutY="23.0" text="Chào mừng cư dân mới tới chung cư BlueMoon">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Label layoutX="19.0" layoutY="413.0" text="Mối quan hệ với chủ hộ" />
-      <TextField fx:id="txtMQH" layoutX="157.0" layoutY="409.0" prefHeight="26.0" prefWidth="252.0" />
-      <Label layoutX="19.0" layoutY="453.0" text="Lý do" />
-      <TextArea fx:id="txtLyDo" layoutX="66.0" layoutY="453.0" prefHeight="145.0" prefWidth="474.0" wrapText="true" />
-    </children>
+    <Button layoutX="87.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="26.0"
+            prefWidth="51.0" text="Lưu"/>
+    <Button layoutX="205.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0"
+            prefWidth="54.0" text="Hủy"/>
+    <Label layoutX="92.0" layoutY="23.0" text="Chào mừng cư dân mới tới chung cư BlueMoon">
+        <font>
+          <Font name="System Bold" size="19.0"/>
+        </font>
+    </Label>
+    <Label layoutX="19.0" layoutY="413.0" text="Mối quan hệ với chủ hộ"/>
+    <TextField fx:id="txtMQH" layoutX="157.0" layoutY="409.0" prefHeight="26.0" prefWidth="252.0"/>
+    <Label layoutX="19.0" layoutY="453.0" text="Lý do"/>
+    <TextArea fx:id="txtLyDo" layoutX="66.0" layoutY="453.0" prefHeight="145.0" prefWidth="474.0" wrapText="true"/>
 </AnchorPane>

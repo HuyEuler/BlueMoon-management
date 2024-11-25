@@ -1,6 +1,5 @@
 package com.example.bluemoonmanagement.controllers.Account_management;
 
-import com.example.bluemoonmanagement.controllers.DataManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;

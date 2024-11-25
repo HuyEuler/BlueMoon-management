@@ -29,9 +29,9 @@
       <Tab text="Căn hộ">
          <GridPane>
             <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1000.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
             </columnConstraints>
             <rowConstraints>
                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -154,7 +154,7 @@
                   </font>
                </Button>
             </GridPane>
-            <VBox alignment="CENTER" maxHeight="200.0" prefHeight="150.0" style="-fx-background-color: #8ABFA3;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <VBox alignment="CENTER" maxHeight="150.0" minHeight="100.0" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #8ABFA3;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="15.0" right="15.0" />
                </GridPane.margin>
@@ -174,9 +174,9 @@
       <Tab text="Cư dân">
          <GridPane>
             <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1000.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
             </columnConstraints>
             <rowConstraints>
                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -243,7 +243,7 @@
                      <Insets left="10.0" right="10.0" />
                   </GridPane.margin>
                </Button>
-               <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#openEditResidentWindow" prefHeight="200.0" prefWidth="300.0" text="Sửa thông tin cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#openEditResidentWindow" prefHeight="200.0" prefWidth="300.0" text="Sửa thông tin" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -434,9 +434,9 @@
       <Tab text="Phương tiện">
          <GridPane>
             <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1000.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="200.0" />
             </columnConstraints>
             <rowConstraints>
                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />

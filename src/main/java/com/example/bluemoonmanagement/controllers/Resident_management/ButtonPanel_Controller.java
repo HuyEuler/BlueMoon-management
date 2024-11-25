@@ -1,5 +1,6 @@
 package com.example.bluemoonmanagement.controllers.Resident_management;
 
+import com.example.bluemoonmanagement.MainApplication;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+
+import java.io.IOException;
 
 // ============================== Added code
 
@@ -245,4 +248,28 @@ public class ButtonPanel_Controller {
     }
 
 
+    //Gọi PopUp hiển thị lịch sử cư trú của cư dân
+    private void showActivityByID(int id) throws IOException {
+        DataManager dataManager = DataManager.getInstance();
+        dataManager.setApartmentID(id);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_activity.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Apartment Management System");
+        stage.setResizable(false);
+        stage.showAndWait();
+    }
+    //Gọi PopUp hiển thị thông tin của căn hộ
+    private void showOwnerByID(int id) throws IOException {
+        DataManager dataManager = DataManager.getInstance();
+        dataManager.setApartmentID(id);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_owner.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage  stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Apartment Management System");
+        stage.setResizable(false);
+        stage.showAndWait();
+    }
 }

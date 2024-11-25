@@ -3,6 +3,7 @@ module com.example.bluemoonmanagement {
     requires javafx.fxml;
     requires java.sql;
     requires java.prefs;
+    requires java.desktop;
 
     opens com.example.bluemoonmanagement to javafx.fxml;
     exports com.example.bluemoonmanagement;

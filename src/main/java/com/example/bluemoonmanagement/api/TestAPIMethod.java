@@ -1,18 +1,26 @@
 package com.example.bluemoonmanagement.api;
 
-import com.example.bluemoonmanagement.models.Fee;
-import com.example.bluemoonmanagement.models.Payment;
-import com.example.bluemoonmanagement.models.User;
+import com.example.bluemoonmanagement.MainApplication;
+import com.example.bluemoonmanagement.models.*;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import static com.example.bluemoonmanagement.api.ActivityAPI.getAllActivityOfResident;
+import static com.example.bluemoonmanagement.api.ApartmentAPI.getResidentsFromApartmentId;
 import static com.example.bluemoonmanagement.api.FeeAPI.*;
 import static com.example.bluemoonmanagement.api.LoginAPI.*;
 import static com.example.bluemoonmanagement.api.UserAPI.*;
+import static com.example.bluemoonmanagement.common.GlobalVariable.screenHeight;
+import static com.example.bluemoonmanagement.common.GlobalVariable.screenWidth;
 
 public class TestAPIMethod {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        // 1. Test gọi các API cho phần đăng nhập của người quản lý
 //
 //        // Test chức năng xác thực username password
@@ -34,7 +42,12 @@ public class TestAPIMethod {
 //
 //        // 2. Test gọi các API cho chức năng quản lý cư dân
 
-
+//
+//          List<Activity> activityList = getAllActivityOfResident(1);
+//          System.out.printf("getResidentsFromApartmentId(1) executed successfully, list size: %d\n", activityList.size());
+//          for (Activity activity : activityList) {
+//              System.out.println(activity);
+//          }
         // Test FeeAPI
         // 1. addFee
 //        if(addFee("Phí cố định", 1000, true, 1, new java.sql.Date(System.currentTimeMillis()), 1)) {
@@ -49,7 +62,7 @@ public class TestAPIMethod {
 //            System.out.println("Delete fee successfully");
 //        }
         // 4. getFeeList()
-//        List<Fee> fees = getFeeList();
+//        List<Fee> fees = getAllFees();
 //        if (fees != null) {
 //            System.out.println("getFeeList() executed successfully, list size: " + fees.size());
 //            for (Fee fee : fees) {
