@@ -47,7 +47,7 @@ public class showActivity_controller {
 
     public void initialize() {
         DataManager dataManager = DataManager.getInstance();
-        id = 1;//dataManager.getApartmentID();
+        id = dataManager.getApartmentID();
         setInfomationResident();
         setTable();
     }
