@@ -80,7 +80,12 @@ public class DeleteFeeController {
                             s = "Dịch vụ";
                         }
                         else{
-                            s = "Quản lý";
+                            if (fee.getFeeType() == FeeType.VEHICLE_FEE){
+                                s = "Phương tiện";
+                            }
+                            else {
+                                s="Quản lý";
+                            }
                         }
                     }
                     lbLoaiPhi.setText("Loại phí: " +  s);

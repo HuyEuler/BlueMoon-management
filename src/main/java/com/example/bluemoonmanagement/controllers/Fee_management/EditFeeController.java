@@ -34,7 +34,8 @@ public class EditFeeController {
         ObservableList<String> feeTypeNames = FXCollections.observableArrayList(
                 getFeeTypeInVietnamese(FeeType.CONTRIBUTION_FEE),
                 getFeeTypeInVietnamese(FeeType.SERVICE_FEE),
-                getFeeTypeInVietnamese(FeeType.MANAGEMENT_FEE)
+                getFeeTypeInVietnamese(FeeType.MANAGEMENT_FEE),
+                getFeeTypeInVietnamese(FeeType.VEHICLE_FEE)
         );
         cbLoaiPhi.setItems(feeTypeNames);
         cbLoaiPhi.setValue(null);
@@ -99,6 +100,8 @@ public class EditFeeController {
                 return "Dịch vụ";
             case MANAGEMENT_FEE:
                 return "Quản lý";
+            case VEHICLE_FEE:
+                return "Phương tiện";
             default:
                 return "Không xác định";
         }
@@ -111,6 +114,8 @@ public class EditFeeController {
                 return FeeType.SERVICE_FEE;
             case "Quản lý":
                 return FeeType.MANAGEMENT_FEE;
+            case "Phương tiện":
+                return FeeType.VEHICLE_FEE;
             default:
                 throw new IllegalArgumentException("Loại phí không hợp lệ: " + feeTypeName);
         }
