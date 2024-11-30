@@ -3,6 +3,7 @@ package com.example.bluemoonmanagement.controllers.Fee_management;
 import com.example.bluemoonmanagement.api.ApartmentAPI;
 import com.example.bluemoonmanagement.api.FeeAPI;
 import com.example.bluemoonmanagement.api.PaymentAPI;
+import com.example.bluemoonmanagement.api.VehicleAPI;
 import com.example.bluemoonmanagement.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import javafx.scene.control.ChoiceBox;
 
 import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -58,12 +60,37 @@ public class AddPaymentController {
             List<Apartment> apartmentList =ApartmentAPI.getAllApartment();
             for (Apartment apartment : apartmentList){
                 Integer apartmentID = apartment.getApartmentId();
-                Double amountDue = ratePerSquareMeter *  apartment.getArea();
+                Fee fee = FeeAPI.getFeeById(selectedFeeId);
+                double amountDue = 0.0;
+                if (fee.getFeeType() == FeeType.VEHICLE_FEE){
+                    List<Vehicle> vehicles = VehicleAPI.getAllVehiclesByApartmentId(apartmentID);
+                    int xemay = 0;
+                    int oto = 0;
+                    int xedap = 0;
+                    for (Vehicle vehicle: vehicles){
+                        if (vehicle.getType().equals(("Xe máy"))){
+                            xemay+=1;
+                        } else if (vehicle.getType().equals("Ô tô")) {
+                            oto +=1;
+                        } else xedap +=1;
+                    }
+                    if (fee.getName().equals("Phí gửi ô tô")){
+                        amountDue = ratePerSquareMeter * oto;
+                    } else if (fee.getName().equals("Phí gửi xe máy")){
+                        amountDue = ratePerSquareMeter * xemay;
+                    } else amountDue = ratePerSquareMeter * xedap;
+                }
+                else {
+                    amountDue = ratePerSquareMeter *  apartment.getArea();
+                }
                 Date currentDate = new Date();
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(currentDate);
                 int month = calendar.get(Calendar.MONTH) + 1;
                 int year = calendar.get(Calendar.YEAR);
+                if (amountDue==0){
+                    continue;
+                }
                 Payment payment = new Payment(selectedFeeId, apartmentID, amountDue, 0, currentDate, month, year, PaymentStatus.PENDING);
                 boolean updated =PaymentAPI.addPayment(payment);
                 if (updated) {

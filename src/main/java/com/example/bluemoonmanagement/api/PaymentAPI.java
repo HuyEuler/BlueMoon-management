@@ -297,6 +297,70 @@ public class PaymentAPI {
         return payments;
     }
 
+    public static List<Payment> getPendingPayments() {
+        String query = "SELECT * FROM Payment WHERE status = ?";
+        List<Payment> payments = new ArrayList<>();
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, PaymentStatus.PENDING.toString());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Payment payment = new Payment();
+                payment.setPaymentId(resultSet.getInt("paymentId"));
+                payment.setFeeId(resultSet.getInt("feeId"));
+                payment.setApartmentId(resultSet.getInt("apartmentId"));
+                payment.setAmountDue(resultSet.getDouble("amountDue"));
+                payment.setAmountPaid(resultSet.getDouble("amountPaid"));
+                payment.setPaymentDate(resultSet.getDate("paymentDate"));
+                payment.setPayForMonth(resultSet.getInt("payForMonth"));
+                payment.setPayForYear(resultSet.getInt("payForYear"));
+                payment.setStatus(PaymentStatus.valueOf(resultSet.getString("status")));
+
+                payments.add(payment);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return payments;
+    }
+
+    public static List<Payment> getOverduePayments() {
+        String query = "SELECT * FROM Payment WHERE status = ?";
+        List<Payment> payments = new ArrayList<>();
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, PaymentStatus.OVERDUE.toString());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Payment payment = new Payment();
+                payment.setPaymentId(resultSet.getInt("paymentId"));
+                payment.setFeeId(resultSet.getInt("feeId"));
+                payment.setApartmentId(resultSet.getInt("apartmentId"));
+                payment.setAmountDue(resultSet.getDouble("amountDue"));
+                payment.setAmountPaid(resultSet.getDouble("amountPaid"));
+                payment.setPaymentDate(resultSet.getDate("paymentDate"));
+                payment.setPayForMonth(resultSet.getInt("payForMonth"));
+                payment.setPayForYear(resultSet.getInt("payForYear"));
+                payment.setStatus(PaymentStatus.valueOf(resultSet.getString("status")));
+
+                payments.add(payment);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return payments;
+    }
+
 
     public static void main(String[] args) {
 //        Calendar calendar = Calendar.getInstance();

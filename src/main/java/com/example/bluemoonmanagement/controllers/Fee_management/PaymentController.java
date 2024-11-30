@@ -119,7 +119,7 @@ public class PaymentController {
                     for (Apartment apartment: apartmentList){
                         if (apartment.getRoom().equals(selectedRoom)) {
                             selectedApartmentID = apartment.getApartmentId();
-                            if (typeFee.equals("SERVICE_FEE") || typeFee.equals("MANAGEMENT_FEE")) {
+                            if (typeFee.equals("SERVICE_FEE") || typeFee.equals("MANAGEMENT_FEE") || typeFee.equals("VEHICLE_FEE")) {
                                 List<Payment> paymentList=PaymentAPI.getPaymentsByApartmentId(selectedApartmentID);
                                 for (Payment payment : paymentList) {
                                     if (payment.getFeeId() == selectedFeeID) {
@@ -138,6 +138,9 @@ public class PaymentController {
                                         String formattedAmount = decimalFormat.format(amount);
                                         lbPhaiNop.setText(formattedAmount + " VNĐ");
                                         break;
+                                    } else {
+                                        lbHienThi.setText("Đã đóng xong phí này!");
+                                        lbPhaiNop.setText("Không");
                                     }
                                 }
                             } else {  //CONTRIBUTION_FEE

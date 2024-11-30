@@ -129,6 +129,8 @@ public class ShowFeeController {
                 return "Quản lý";
             case CONTRIBUTION_FEE:
                 return "Thiện nguyện";
+            case VEHICLE_FEE:
+                return "Phương tiện";
             default:
                 return "Khác";
         }

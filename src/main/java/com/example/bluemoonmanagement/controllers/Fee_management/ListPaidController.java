@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,12 +37,20 @@ public class ListPaidController {
     private TableColumn<Show, Double> cSoTien;
     @FXML
     private TableView<Show> tableView;
+    @FXML
+    private Label label;
     private final NumberFormat currencyFormat = NumberFormat.getNumberInstance(new Locale("vi", "VN"));
+    private String listType;
+    public void setListType(String listType) {
+        this.listType = listType;
+        loadTableData();
+    }
+
 
     @FXML
     public void initialize() {
         configureTableColumns();
-        loadTableData();
+//        loadTableData();
     }
 
     private void configureTableColumns() {
@@ -65,10 +74,25 @@ public class ListPaidController {
     }
 
     private void loadTableData() {
-        List<Payment> paidPayments = PaymentAPI.getPaidPayments();
+        List<Payment> payments;
+        System.out.println("Giá trị listType trong controller: " + listType);
+        if ("paid".equals(listType)) {
+            payments = PaymentAPI.getPaidPayments();
+            label.setText("Danh sách đã nộp phí");
+        }
+        else{
+            if ("pending".equals(listType)) {
+                payments = PaymentAPI.getPendingPayments();
+                label.setText("Danh sách chưa nộp phí");
+            }
+            else{
+                payments=PaymentAPI.getOverduePayments();
+                label.setText("Danh sách còn nợ phí");
+            }
+        }
         List<Show> showTables = FXCollections.observableArrayList();
 
-        for (Payment payment : paidPayments) {
+        for (Payment payment : payments) {
             int feeId = payment.getFeeId();
             Fee fee = FeeAPI.getFeeById(feeId);
             String feeType;
@@ -77,6 +101,8 @@ public class ListPaidController {
                 feeType = "Thiện nguyện";
             } else if (fee.getFeeType() == FeeType.SERVICE_FEE) {
                 feeType = "Dịch vụ";
+            } else if (fee.getFeeType() == FeeType.VEHICLE_FEE){
+                feeType = "Phương tiện";
             } else {
                 feeType = "Quản lý";
             }
@@ -90,8 +116,14 @@ public class ListPaidController {
                     payment.getPayForMonth(),
                     payment.getPayForYear(),
                     feeType,
-                    payment.getAmountPaid()
+                    3.0
             );
+            if ("paid".equals(listType)) {
+                show.setSoTien(payment.getAmountPaid());
+            }
+            else{
+                show.setSoTien(payment.getAmountDue() - payment.getAmountPaid());
+            }
             showTables.add(show);
         }
         ObservableList<Show> shows = FXCollections.observableArrayList(showTables);
@@ -106,7 +138,7 @@ class Show {
     private final Integer cThang;
     private final Integer cNam;
     private final String cLoaiPhi;
-    private final Double SoTien;
+    private Double SoTien;
 
     public Show(String LoaiPhi, String CanHo, Integer cThang, Integer cNam, String cLoaiPhi, Double SoTien) {
         this.LoaiPhi = LoaiPhi;
@@ -133,5 +165,8 @@ class Show {
     }
     public Double getSoTien() {
         return SoTien;
+    }
+    public void setSoTien(Double SoTien){
+        this.SoTien = SoTien;
     }
 }
