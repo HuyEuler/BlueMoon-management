@@ -54,27 +54,26 @@ Table Activity{
 
 Ref : Activity.residentId > Resident.residentId
 
-Table Fee{
-  feeId int [primary key, increment]
-  name nvarchar(100)
-  cost int
-  mandatory bit
-  cycle int
-  expiration date
-  status int
+Table Fee {
+    feeId INT [pk, increment]
+    name VARCHAR(255) [not null]
+    ratePerSquareMeter DOUBLE [not null]
+    isMandatory BOOLEAN [not null]
+    feeType VARCHAR(50) [note: 'SERVICE_FEE, MANAGEMENT_FEE, CONTRIBUTION_FEE']
 }
 
-Table Payment{
-  paymentId int [primary key, increment]
-  feeId int
-  apartmentId int
-  timeValidate date
-  payForMonth int
-  payForYear int
-  isLate bit
+Table Payment {
+    paymentId INT [pk, increment]
+    feeId INT [ref: > Fee.feeId]
+    apartmentId INT  [not null, ref: > Apartment.apartmentId]
+    amountDue DOUBLE [not null]
+    amountPaid DOUBLE [not null]
+    paymentDate DATE [not null]
+    payForMonth INT [not null, note: '1 to 12']
+    payForYear INT [not null]
+    status VARCHAR(50) [note: 'PENDING, PAID, OVERDUE']
 }
-Ref : Payment.apartmentId > Apartment.apartmentId
-Ref : Payment.feeId > Fee.feeId
+
 
 Table Vehicle{
   vehicleId int [primary key, increment]
