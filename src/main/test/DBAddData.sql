@@ -58,7 +58,7 @@ INSERT INTO Fee (name, ratePerSquareMeter, isMandatory, feeType) VALUES
     ('Phí môi trường', 1650, FALSE, 'SERVICE_FEE'),
     ('Phí gửi ô tô', 1200000, FALSE, 'VEHICLE_FEE'),
     ('Phí gửi xe máy', 70000, FALSE, 'VEHICLE_FEE'),
-    ('Phí gửi xe đạp', 30000, FALSE, 'VEHICLE_FEE')
+    ('Phí gửi xe đạp', 30000, FALSE, 'VEHICLE_FEE'),
     ('Phí người nghèo', 0, FALSE, 'CONTRIBUTION_FEE');
 
 
