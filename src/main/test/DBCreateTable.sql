@@ -42,6 +42,7 @@ CREATE TABLE `Resident` (
   phoneNumber VARCHAR(12),
   nationality VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   relationshipWithOwner VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  isOwner BIT,
   status INT,
   FOREIGN KEY (apartmentId) REFERENCES `Apartment`(apartmentId)
 );

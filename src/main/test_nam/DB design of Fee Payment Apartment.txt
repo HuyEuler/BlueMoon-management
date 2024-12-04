@@ -1,0 +1,36 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Fee {
+    feeId INT [pk, increment]
+    name VARCHAR(255) [not null]
+    ratePerSquareMeter DOUBLE [not null]
+    isMandatory BOOLEAN [not null]
+    feeType VARCHAR(50) [note: 'SERVICE_FEE, MANAGEMENT_FEE, CONTRIBUTION_FEE']
+}
+
+Table Payment {
+    paymentId INT [pk, increment]
+    feeId INT [ref: > Fee.feeId]
+    apartmentId INT  [not null, ref: > Apartment.apartmentId]
+    amountDue DOUBLE [not null]
+    amountPaid DOUBLE [not null]
+    paymentDate DATE [not null]
+    payForMonth INT [not null, note: '1 to 12']
+    payForYear INT [not null]
+    status VARCHAR(50) [note: 'PENDING, PAID, OVERDUE']
+}
+
+Table Apartment {
+    apartmentId INT [pk, increment]
+    ownerId INT [not null]
+    area DOUBLE [not null]  // Diện tích căn hộ
+    floor INT [not null]
+    roomNumber VARCHAR(50) [not null]
+}
+
+// Ref: posts.user_id > users.id // many-to-one
+
+// Ref: users.id < follows.following_user_id
+
+// Ref: users.id < follows.followed_user_id
