@@ -155,7 +155,5 @@ public class ApartmentAPI {
         }
         return residents;
     }
-
-
 }
 
