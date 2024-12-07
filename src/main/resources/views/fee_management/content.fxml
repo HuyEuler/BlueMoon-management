@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="850.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.ShowFeeController">
+<GridPane prefHeight="850.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.ShowFeeController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="700.0" prefWidth="1000.0" />
    </columnConstraints>
@@ -66,7 +66,7 @@
       <columns>
          <TableColumn fx:id="cMaPhi" maxWidth="190.0" minWidth="98.0" prefWidth="98.0" text="Mã phí " />
          <TableColumn fx:id="cTenPhi" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="271.3333435058594" text="Tên phí" />
-         <TableColumn fx:id="cHoaDon" maxWidth="1.7976931348623157E308" minWidth="148.0" prefWidth="258.6666564941406" text="Hoá đơn (Số tiền/m2)" />
+         <TableColumn fx:id="cHoaDon" maxWidth="1.7976931348623157E308" minWidth="148.0" prefWidth="258.6666564941406" text="Đơn giá" />
          <TableColumn fx:id="cBatBuoc" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="210.66668701171875" text="Bắt buộc" />
          <TableColumn fx:id="cLoaiPhi" minWidth="0.0" prefWidth="259.33331298828125" text="Loại phí" />
       </columns>
