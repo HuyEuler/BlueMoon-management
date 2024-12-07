@@ -33,11 +33,11 @@ VALUES
   (2, '', '');
 
 -- Chèn dữ liệu vào bảng Resident trước
-INSERT INTO `Resident` (apartmentId, name, birthday, gender, phoneNumber, nationality, relationshipWithOwner, status)
+INSERT INTO `Resident` (apartmentId, name, birthday, gender, phoneNumber, nationality, relationshipWithOwner, isOwner, status)
 VALUES
-  (NULL, 'Nguyễn Văn A', '1990-05-15', 1, '0123456789', 'Việt Nam', 'Chủ sở hữu', 1),
-  (NULL, 'Nguyễn Văn C', '2015-09-23', 1, '0123456710', 'Việt Nam', 'Con', 1),
-  (NULL, 'Trần Thị B', '1985-08-10', 0, '0987654321', 'Việt Nam', 'Chủ sở hữu', 1);
+  (NULL, 'Nguyễn Văn A', '1990-05-15', 1, '0123456789', 'Việt Nam', 'Chủ sở hữu', 1, 1),
+  (NULL, 'Nguyễn Văn C', '2015-09-23', 1, '0123456710', 'Việt Nam', 'Con', 0, 1),
+  (NULL, 'Trần Thị B', '1985-08-10', 0, '0987654321', 'Việt Nam', 'Chủ sở hữu', 1, 1);
 
 -- Chèn dữ liệu vào bảng Apartment (sử dụng apartmentId đã được tự động tạo ra)
 INSERT INTO `Apartment` (ownerId, area, floor, room) VALUES
@@ -58,7 +58,7 @@ INSERT INTO Fee (name, ratePerSquareMeter, isMandatory, feeType) VALUES
     ('Phí môi trường', 1650, FALSE, 'SERVICE_FEE'),
     ('Phí gửi ô tô', 1200000, FALSE, 'VEHICLE_FEE'),
     ('Phí gửi xe máy', 70000, FALSE, 'VEHICLE_FEE'),
-    ('Phí gửi xe đạp', 30000, FALSE, 'VEHICLE_FEE')
+    ('Phí gửi xe đạp', 30000, FALSE, 'VEHICLE_FEE'),
     ('Phí người nghèo', 0, FALSE, 'CONTRIBUTION_FEE');
 
 
