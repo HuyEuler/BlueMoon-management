@@ -120,7 +120,11 @@ public class AddPaymentController {
     }
 
     private void addPayment(ActionEvent event) {
-        if (selectedFeeId != -1) {
+        if (selectedFeeId == -1) {
+            showAlert("Lỗi!!!", "Vui lòng chọn khoản phí cần tạo thanh toán.");
+            return;
+        }
+        else {
             List<Apartment> apartmentList = ApartmentAPI.getAllApartment();
             ObservableList<ShowPayment> payments = tableView.getItems();
 
