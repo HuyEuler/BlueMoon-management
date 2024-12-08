@@ -326,5 +326,31 @@ public class ResidentAPI {
         }
         return false;
     }
+
+    public static List<Resident> getAllDataFromResidentTableInDB() {
+        List<Resident> residents = new ArrayList<>();
+        String query = "SELECT * FROM Resident";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                residents.add(new Resident(
+                        rs.getInt("residentId"),
+                        rs.getInt("apartmentId"),
+                        rs.getString("name"),
+                        rs.getString("birthday"),
+                        rs.getBoolean("gender"),
+                        rs.getString("phoneNumber"),
+                        rs.getString("nationality"),
+                        rs.getString("relationshipWithOwner"),
+                        rs.getBoolean("isOwner"),
+                        rs.getInt("status")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return residents;
+    }
 }
 
