@@ -136,7 +136,7 @@ public class Resident {
                 ", status=" + getStatusDescription(status) +
                 '}';
     }
-    private String getStatusDescription(int status) {
+    public String getStatusDescription(int status) {
         return switch (status) {
             case 0 -> "Chuyển khỏi chung cư";
             case 1 -> "Đăng ký thường trú tại chung cư";

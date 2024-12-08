@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+import com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller;
 import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 public class MainApplication extends Application {

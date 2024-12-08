@@ -26,7 +26,7 @@ public class EditAccountController {
 
         if (!Objects.equals(getPassword(USER.getId()), password)) {
             showAlert("Error","Sai mật khẩu!");
-        } else if (newPassword == null || rewritePassword == null) {
+        } else if (newPassword == "" || rewritePassword == "") {
             showAlert("Error","Mật khẩu mới không được để trống!");
         } else if (!Objects.equals(newPassword, rewritePassword)) {
             showAlert("Error","Mật khẩu nhập lại không trùng!");
