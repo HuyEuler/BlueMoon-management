@@ -3,63 +3,128 @@ package com.example.bluemoonmanagement.controllers.Resident_management;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import com.example.bluemoonmanagement.models.Resident;
+import com.example.bluemoonmanagement.models.Apartment;
+import com.example.bluemoonmanagement.api.ApartmentAPI;
+import com.example.bluemoonmanagement.api.ResidentAPI;
 
+import java.util.List;
 
 public class AddResident_Controller {
 
-    @FXML
-    private TextField txtName, txtAddress, txtCountry, txtRegion, txtRoom, txtMQH;
+    @FXML private ChoiceBox<String> residentRoom;
+    @FXML private TextField residentName;
+    @FXML private DatePicker residentDOB;
+    @FXML private ChoiceBox<String> residentGender;
+    @FXML private TextField residentPhoneNumber;
+    @FXML private TextField residentNation;
+    @FXML private TextField residentRelationship;
+    @FXML private ChoiceBox<String> residentIsOwner;
+    @FXML private ChoiceBox<String> residentStatus;
+    @FXML private TextArea residentNote;
 
-    @FXML
-    private ChoiceBox<String> genderChoiceBox, floorChoiceBox;
+    //private List<String> existingEntries; // To check for duplicates
+    private List<String> availableRooms; // Rooms from apartmentList
+    private int currentCount;
 
-    @FXML
-    private DatePicker birthSelectionBox;
+    private List<String> roomNameUniqueList;
+    private List<String> roomOwnerUniqueList;
 
-    @FXML
-    private TextArea txtLyDo;
+    private Resident newResident;
 
-    @FXML
-    private void initialize() {
-        // Initialize fields and choice boxes
-        genderChoiceBox.getItems().addAll("Nam", "Nữ");
+//    public void setExistingEntries(List<String> existingEntries) {
+//        this.existingEntries = existingEntries;
+//    }
+    public void setCurrentCount(int currentCount){
+        this.currentCount = currentCount;
+    }
 
-        floorChoiceBox.getItems().clear();
-        for (int i = 1; i <= 10; i++) {
-            floorChoiceBox.getItems().add("Tầng " + i);
-        }
+    public void setAvailableRooms(List<String> availableRooms) {
+        this.availableRooms = availableRooms;
+        residentRoom.getItems().addAll(availableRooms);
+    }
 
-        //roomSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1));
+    public void setRoomNameUniqueList(List<String> roomNameUniqueList){
+        this.roomNameUniqueList = roomNameUniqueList;
+    }
+
+    public void setRoomOwnerUniqueList(List<String> roomOwnerUniqueList){
+        this.roomOwnerUniqueList = roomOwnerUniqueList;
+    }
+
+    public Resident getNewResident() {
+        return newResident;
+    }
+
+    @FXML private void initialize(){
+        residentGender.getItems().addAll("Nam", "Nữ");
+        residentIsOwner.getItems().addAll("Có", "Không");
+        residentStatus.getItems().addAll("Thường trú", "Tạm trú", "Tạm vắng");
     }
 
     @FXML
     private void handleSave() {
-        // Retrieve data and process it
-        String name = txtName.getText();
-        String gender = genderChoiceBox.getValue();
-        String dob = (birthSelectionBox.getValue() != null) ? birthSelectionBox.getValue().toString() : "";
-        String personID = txtAddress.getText();
-        String country = txtCountry.getText();
-        String region = txtRegion.getText();
-        String floor = floorChoiceBox.getValue();
-        String room = txtRoom.getText();
-        String mqh = txtMQH.getText();
-        String lyDo = txtLyDo.getText();
+        String room = residentRoom.getValue();
+        String name = residentName.getText();
+        String dob = residentDOB.getValue() != null ? residentDOB.getValue().toString() : null;
+        String gender = residentGender.getValue();
+        String phoneNumber = residentPhoneNumber.getText();
+        String nationality = residentNation.getText();
+        String relationship = residentRelationship.getText();
+        String isOwner = residentIsOwner.getValue();
+        String status = residentStatus.getValue();
+        String note = residentNote.getText();
 
-        // Save data to the database or perform further actions
-        System.out.println("Resident Information Saved: " + name + ", " + gender + ", " + dob + ", " + personID + ", " + country + ", " + region + ", " + floor + ", " + room);
+        if (room == null || name == null || dob == null || gender == null ||
+                phoneNumber == null || isOwner == null || status == null) {
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Chỉ được bỏ trống 'Quốc tịch', 'Quan hệ với chủ hộ' và 'Lý do'.");
+            return;
+        }
 
-        //closeWindow();
+        int roomId = ApartmentAPI.getApartmentIdByRoom(room);
 
-        // Close the window after saving
-        Stage stage = (Stage) txtName.getScene().getWindow();
+        int statusInt = switch (status) {
+            case "Thường trú" -> 1;
+            case "Tạm trú" -> 2;
+            case "Tạm vắng" -> 3;
+            default -> -1;
+        };
+
+        String roomNameUniqueCheck = roomId + "|" + name;
+        String roomOwnerUniqueCheck = roomId + "|" + true;
+
+        if (roomNameUniqueList.contains(roomNameUniqueCheck)) {
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có người có tên " + name + ".");
+            return;
+        }
+
+        if (isOwner.equals("Có") && roomOwnerUniqueList.contains(roomOwnerUniqueCheck)){
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
+            return;
+        }
+
+        newResident = new Resident(currentCount+1, roomId, name, dob, gender.equals("Nam"), phoneNumber,
+                nationality, relationship, isOwner.equals("Có"), statusInt);
+        ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
+                nationality, relationship, isOwner.equals("Có"),
+                statusInt,
+                note);
+
+        Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void handleCancel() {
-        // Close the window without saving
-        Stage stage = (Stage) txtName.getScene().getWindow();
+        newResident = null;
+        Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

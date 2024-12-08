@@ -145,4 +145,22 @@ public class Resident {
             default -> "Unknown";
         };
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Resident other = (Resident) obj;
+
+        return this.residentId == other.getResidentId();
+    }
+    
 }
+
+
+

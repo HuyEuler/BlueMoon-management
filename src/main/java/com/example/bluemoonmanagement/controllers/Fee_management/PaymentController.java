@@ -57,7 +57,7 @@ public class PaymentController {
         if (selectPaymentID != -1) {
             Payment payment = PaymentAPI.getPaymentById(selectPaymentID);
             payment.setAmountPaid(payment.getAmountPaid() + Integer.parseInt(tfTienNop.getText()));
-            if (payment.getAmountPaid() == payment.getAmountDue()){
+            if (payment.getAmountPaid() >= payment.getAmountDue()){
                 payment.setStatus(PaymentStatus.PAID);
             }
             updated =PaymentAPI.updatePayment(payment);

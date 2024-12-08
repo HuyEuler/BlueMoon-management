@@ -52,5 +52,5 @@
       </font>
    </CheckBox>
    <ChoiceBox fx:id="cbLoaiPhi" layoutX="133.0" layoutY="220.0" prefHeight="25.0" prefWidth="284.0" />
-   <Label layoutX="54.0" layoutY="172.0" text="(Tính theo m2 hoặc phương tiện)" />
+   <Label layoutX="54.0" layoutY="172.0" text="(Tính theo m2)" />
 </AnchorPane>
