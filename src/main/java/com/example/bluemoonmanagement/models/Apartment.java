@@ -75,4 +75,18 @@ public class Apartment {
                 ", room='" + room + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Apartment other = (Apartment) obj;
+
+        return this.apartmentId == other.getApartmentId();
+    }
 }
