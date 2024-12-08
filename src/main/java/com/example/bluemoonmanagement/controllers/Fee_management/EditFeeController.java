@@ -75,21 +75,30 @@ public class EditFeeController {
     }
 
     private void updateFee(ActionEvent event) {
-        if (selectedFeeId != -1) {
-            String name = cbTenPhi.getValue();
-            float ratePerSquareMeter = Float.parseFloat(tfDonGia.getText());
-            boolean ismandatory = cbBatBuoc.isSelected();
-            String selectedTypeName = cbLoaiPhi.getValue();
-            FeeType feeType = getFeeTypeFromVietnamese(selectedTypeName);
-            Fee fee= new Fee(selectedFeeId, name, ratePerSquareMeter, ismandatory, feeType);
-            boolean updated = FeeAPI.updateFee(fee);
-
-            if (updated) {
-                Fee_Controller.getInstance().refreshFeeList();
-                showAlert("Cập nhật thành công!", "Thông tin khoản phí đã được cập nhật.");
-            } else {
-                showAlert("Lỗi!!", "Cập nhật thất bại.");
+        try {
+            if (selectedFeeId == -1) {
+                showAlert("Lỗi!!!", "Vui lòng chọn khoản phí cần sửa.");
+                return;
             }
+            else {
+                String name=cbTenPhi.getValue();
+                float ratePerSquareMeter=Float.parseFloat(tfDonGia.getText());
+                boolean ismandatory=cbBatBuoc.isSelected();
+                String selectedTypeName=cbLoaiPhi.getValue();
+                FeeType feeType=getFeeTypeFromVietnamese(selectedTypeName);
+                Fee fee=new Fee(selectedFeeId, name, ratePerSquareMeter, ismandatory, feeType);
+                boolean updated=FeeAPI.updateFee(fee);
+
+                if (updated) {
+                    Fee_Controller.getInstance().refreshFeeList();
+                    showAlert("Cập nhật thành công!", "Thông tin khoản phí đã được cập nhật.");
+                } else {
+                    showAlert("Lỗi!!", "Cập nhật thất bại.");
+                }
+            }
+        }
+        catch (Exception e){
+            showAlert("Đã xảy ra lỗi", "Vui lòng nhập đủ thông tin chỉnh sửa");
         }
     }
     private String getFeeTypeInVietnamese(FeeType feeType) {

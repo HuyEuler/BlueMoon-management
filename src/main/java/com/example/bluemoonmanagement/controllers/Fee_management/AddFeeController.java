@@ -64,7 +64,7 @@ public class AddFeeController {
         } catch (NumberFormatException e) {
             showAlert("Lỗi nhập liệu", "Vui lòng nhập đúng định dạng cho đơn giá.");
         } catch (Exception e) {
-            showAlert("Lỗi không xác định", "Đã xảy ra lỗi: " + e.getMessage());
+            showAlert("Đã xảy ra lỗi", "Vui lòng nhập đủ thông tin");
         }
     }
     private String getFeeTypeInVietnamese(FeeType feeType) {
