@@ -6,6 +6,7 @@ import com.example.bluemoonmanagement.models.Vehicle;
 import com.example.bluemoonmanagement.api.ResidentAPI;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,12 +21,12 @@ public class AddVehicle_Controller {
     @FXML private TextField vehicleLicense;
 
     private Vehicle vehicle;
-    private List<Integer> existingVehicles; // To check for duplicates
-
-
-    public void setExistingEntries(List<Integer> existingVehicles) {
-        this.existingVehicles = existingVehicles;
-    }
+//    private List<Integer> existingVehicles; // To check for duplicates
+//
+//
+//    public void setExistingEntries(List<Integer> existingVehicles) {
+//        this.existingVehicles = existingVehicles;
+//    }
 
     public Vehicle getNewVehicle(){
         return vehicle;
@@ -33,21 +34,20 @@ public class AddVehicle_Controller {
 
     @FXML
     private void initialize() {
-        // Update owner name based on selected resident ID
+
         for (Resident resident : ResidentAPI.getAllResidents()) {
-            vehicleOwnerID.getItems().add(String.valueOf(resident.getResidentId()));
+            vehicleOwnerID.getItems().add(resident.getResidentId() + ": " + resident.getName());
         }
 
         vehicleType.setItems(FXCollections.observableArrayList("Ô tô", "Xe máy", "Xe đạp", "Khác"));
 
         vehicleOwnerID.setOnAction(event -> {
-            String selectedId = vehicleOwnerID.getValue();
-            if (selectedId != null) {
-                Resident resident = ResidentAPI.getResidentById(Integer.parseInt(selectedId));
-                if (resident != null) {
-                    vehicleOwnerName.setText(resident.getName());
-                    vehicleOwnerName.setEditable(false);
-                }
+            int selectedId = parseNumber(vehicleOwnerID.getValue());
+
+            Resident resident = ResidentAPI.getResidentById(selectedId);
+            if (resident != null) {
+                vehicleOwnerName.setText(resident.getName());
+                vehicleOwnerName.setEditable(false);
             }
         });
     }
@@ -55,22 +55,41 @@ public class AddVehicle_Controller {
     @FXML
     private void handleSave() {
 
-        int residentId = Integer.parseInt(vehicleOwnerID.getValue());
+        String resID = vehicleOwnerID.getValue();
         String type = vehicleType.getValue();
         String licensePlate = vehicleLicense.getText();
 
-        vehicle = new Vehicle(existingVehicles.get(existingVehicles.size()-1)+1, residentId, type, licensePlate);
-        VehicleAPI.addVehicle(residentId, type, licensePlate);
+        if (resID == null || type == null || licensePlate == null){
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Không được bỏ trống thông tin nào khi thêm.");
+            return;
+        }
 
-        // Close the dialog
+        int residentId = parseNumber(vehicleOwnerID.getValue());
+
+        VehicleAPI.addVehicle(residentId, type, licensePlate);
+        List<Vehicle> veh = VehicleAPI.getAllVehicles();
+        int idOfNewAddedVehicle = veh.getLast().getVehicleId();
+        vehicle = new Vehicle(idOfNewAddedVehicle, residentId, type, licensePlate);
+
         Stage stage = (Stage) vehicleOwnerName.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void handleCancel() {
-        // Close the dialog without saving
         Stage stage = (Stage) vehicleOwnerName.getScene().getWindow();
         stage.close();
+    }
+
+    private int parseNumber(String input){
+        String[] parts = input.split(": ");
+        return Integer.parseInt(parts[0]);
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

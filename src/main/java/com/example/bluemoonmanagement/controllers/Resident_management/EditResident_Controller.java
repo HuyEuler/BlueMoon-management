@@ -93,6 +93,12 @@ public class EditResident_Controller {
         String status = residentStatus.getValue();
         String note = residentNote.getText();
 
+        if (room == null || name == null || dob == null || gender == null ||
+                phoneNumber == null || isOwner == null || status == null) {
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Chỉ được bỏ trống 'Quốc tịch', 'Quan hệ với chủ hộ' và 'Lý do'.");
+            return;
+        }
+
         int statusInt = switch (status) {
             case "Đã rời đi" -> 0;
             case "Thường trú" -> 1;
@@ -101,28 +107,12 @@ public class EditResident_Controller {
             default -> -1;
         };
 
-
-        if (room == null || room.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Room cannot be empty.");
-            return;
-        }
-        if (name == null || name.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Name cannot be empty.");
-            return;
-        }
-
-
         int roomId = ApartmentAPI.getApartmentIdByRoom(room);
-        //String roomNameUniqueCheck = roomId + "|" + name;
+
         String roomOwnerUniqueCheck = roomId + "|" + true;
 
-//        if (roomNameUniqueList.contains(roomNameUniqueCheck)) {
-//            showAlert(Alert.AlertType.ERROR, "Validation Error", "This resident already exists for the specified room.");
-//            return;
-//        }
-
         if (isOwner.equals("Có") && roomOwnerUniqueList.contains(roomOwnerUniqueCheck)){
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "The room is already owned.");
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
             return;
         }
 
@@ -132,7 +122,6 @@ public class EditResident_Controller {
         ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
         phoneNumber, nationality, relationship, isOwner.equals("Có"), statusInt, note);
 
-        // Close the window
         Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
     }

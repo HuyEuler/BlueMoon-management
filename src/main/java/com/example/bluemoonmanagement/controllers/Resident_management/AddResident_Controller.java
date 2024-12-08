@@ -75,44 +75,34 @@ public class AddResident_Controller {
         String status = residentStatus.getValue();
         String note = residentNote.getText();
 
-        int statusInt = switch (status){
+        if (room == null || name == null || dob == null || gender == null ||
+                phoneNumber == null || isOwner == null || status == null) {
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Chỉ được bỏ trống 'Quốc tịch', 'Quan hệ với chủ hộ' và 'Lý do'.");
+            return;
+        }
+
+        int roomId = ApartmentAPI.getApartmentIdByRoom(room);
+
+        int statusInt = switch (status) {
             case "Thường trú" -> 1;
             case "Tạm trú" -> 2;
             case "Tạm vắng" -> 3;
             default -> -1;
         };
-//        if (status.equals("Thường trú")){
-//            statusInt = 1;
-//        } else {
-//            statusInt = 2;
-//        }
 
-        int roomId = ApartmentAPI.getApartmentIdByRoom(room);
-
-        if (room == null || room.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Room cannot be empty.");
-            return;
-        }
-        if (name == null || name.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Name cannot be empty.");
-            return;
-        }
-
-        // Check for duplicates (room + residentName must be unique)
         String roomNameUniqueCheck = roomId + "|" + name;
         String roomOwnerUniqueCheck = roomId + "|" + true;
 
         if (roomNameUniqueList.contains(roomNameUniqueCheck)) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "This resident already exists for the specified room.");
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có người có tên " + name + ".");
             return;
         }
 
         if (isOwner.equals("Có") && roomOwnerUniqueList.contains(roomOwnerUniqueCheck)){
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "The room is already owned.");
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
             return;
         }
 
-        //newResident = new Resident(existingEntries.toArray().length+1, roomId, name, dob, gender.equals("Nam"), phoneNumber, nationality, relationship, isOwner.equals("Có"), statusInt);
         newResident = new Resident(currentCount+1, roomId, name, dob, gender.equals("Nam"), phoneNumber,
                 nationality, relationship, isOwner.equals("Có"), statusInt);
         ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
@@ -120,7 +110,6 @@ public class AddResident_Controller {
                 statusInt,
                 note);
 
-        // Close the window
         Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
     }

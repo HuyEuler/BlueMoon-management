@@ -29,6 +29,7 @@ import javafx.collections.transformation.FilteredList;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ButtonPanel_Controller {
     // ==================================================================
@@ -70,7 +71,6 @@ public class ButtonPanel_Controller {
     @FXML private Button addVehicleButton, deleteVehicleButton;
 
     private List<Vehicle> vehicleList = VehicleAPI.getAllVehicles();
-    private List<Vehicle> vehicleListToGetIndex = new ArrayList<>(vehicleList);
     private FilteredList<Vehicle> filteredVehicleList;
     ObservableList<Vehicle> observableVehicleList = FXCollections.observableArrayList(vehicleList);
 
@@ -374,13 +374,13 @@ public class ButtonPanel_Controller {
             AnchorPane root = loader.load();
             AddApartment_Controller controller = loader.getController();
 
-            List<Integer> existingEntries = apartmentListToGetIndex.stream()
-                    .map(Apartment::getApartmentId)
-                    .toList();
-            controller.setExistingEntries(existingEntries);
+//            List<Integer> existingEntries = apartmentListToGetIndex.stream()
+//                    .map(Apartment::getApartmentId)
+//                    .toList();
+//            controller.setExistingEntries(existingEntries);
 
             Stage stage = new Stage();
-            stage.setTitle("Add Apartment");
+            stage.setTitle("Thêm căn hộ");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.showAndWait();
@@ -393,13 +393,13 @@ public class ButtonPanel_Controller {
                         .anyMatch(apartment -> apartment.getRoom().equalsIgnoreCase(newApartment.getRoom()));
                 if (roomExists) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Duplicate Room");
-                    alert.setHeaderText("Room Already Exists");
-                    alert.setContentText("An apartment with the same room identifier already exists. Please use a different room identifier.");
+                    alert.setTitle("Lỗi");
+                    alert.setHeaderText("Phòng đã tồn tại");
+                    alert.setContentText("Phòng đang muốn thêm đã tồn tại. Hãy thêm một phòng khác.");
                     alert.showAndWait();
                 } else {
                     apartmentList.add(newApartment);
-                    apartmentListToGetIndex.add(newApartment);
+                    //apartmentListToGetIndex.add(newApartment);
                     observableApartmentList.setAll(apartmentList);
                     tableAddApartment.refresh();
                 }
@@ -416,9 +416,9 @@ public class ButtonPanel_Controller {
 
             if (selectedApartment == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("No Selection");
-                alert.setHeaderText("No Apartment Selected");
-                alert.setContentText("Please select an apartment to edit.");
+                alert.setTitle("Lỗi");
+                alert.setHeaderText("Không có phòng nào được chọn");
+                alert.setContentText("Hãy chọn một phòng để xóa.");
                 alert.showAndWait();
                 return;
             }
@@ -478,8 +478,8 @@ public class ButtonPanel_Controller {
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Unable to open the Edit Resident window.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không thể mở giao diện sửa căn hộ.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
@@ -491,17 +491,17 @@ public class ButtonPanel_Controller {
 
         if (selectedApartment == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Apartment Selected");
-            alert.setContentText("Please select an apartment to delete.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không có phòng nào được chọn");
+            alert.setContentText("Hãy chọn một phòng để xóa.");
             alert.showAndWait();
             return;
         }
 
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationAlert.setTitle("Delete Confirmation");
-        confirmationAlert.setHeaderText("Are you sure you want to delete this apartment?");
-        confirmationAlert.setContentText("Room: " + selectedApartment.getRoom());
+        confirmationAlert.setTitle("Xác nhận xóa");
+        confirmationAlert.setHeaderText("Bạn có chắc muốn xóa phòng này không?");
+        confirmationAlert.setContentText("Phòng: " + selectedApartment.getRoom());
 
         confirmationAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
@@ -512,9 +512,9 @@ public class ButtonPanel_Controller {
                 ApartmentAPI.deleteApartment(selectedApartment.getApartmentId());
 
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Deletion Successful");
+                successAlert.setTitle("Xóa thành công");
                 successAlert.setHeaderText(null);
-                successAlert.setContentText("The apartment has been successfully deleted.");
+                successAlert.setContentText("Đã xóa phòng.");
                 successAlert.showAndWait();
             }
         });
@@ -561,10 +561,56 @@ public class ButtonPanel_Controller {
             //System.out.println(newResident);
 
             if (newResident != null) {
-                residentList.add(newResident);
-                residentListToGetIndex.add(newResident);
-                observableResidentList.setAll(residentList); // Refresh observable list
-                tableAddResident.refresh(); // Refresh table view
+
+                if (newResident.getIsOwner()) {
+                    Apartment roomOfResident = ApartmentAPI.getApartmentById(newResident.getApartmentId());
+
+                    if (roomOfResident.getOwnerId() != null) {
+                        // Create a warning alert
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Cảnh báo");
+                        alert.setHeaderText("Phòng này đang có chủ sở hữu.");
+                        alert.setContentText("Bạn có muốn thay thế chủ sở hữu mới không?");
+
+                        // Add Yes and No buttons
+                        ButtonType buttonYes = new ButtonType("Có");
+                        ButtonType buttonNo = new ButtonType("Không", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                        alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+                        Optional<ButtonType> result = alert.showAndWait();
+
+                        // If Yes is clicked, run the code outside the block
+                        if (result.isPresent() && result.get() == buttonYes) {
+                            residentList.add(newResident);
+                            residentListToGetIndex.add(newResident);
+                            observableResidentList.setAll(residentList); // Refresh observable list
+                            tableAddResident.refresh();
+
+                            int index = apartmentList.indexOf(roomOfResident);
+                            roomOfResident.setOwnerId(newResident.getResidentId());
+                            apartmentList.set(index, roomOfResident);
+                            observableApartmentList.setAll(apartmentList);
+                            tableAddApartment.refresh();
+                            ApartmentAPI.updateOwnerApartment(roomOfResident.getApartmentId(), newResident.getResidentId());
+                        }
+                    }
+                     else {
+                        residentList.add(newResident);
+                        residentListToGetIndex.add(newResident);
+                        observableResidentList.setAll(residentList); // Refresh observable list
+                        tableAddResident.refresh();
+                    }
+
+//                    int index = apartmentList.indexOf(roomOfResident);
+//                    roomOfResident.setOwnerId(newResident.getResidentId());
+//                    apartmentList.set(index, roomOfResident);
+//                    observableApartmentList.setAll(apartmentList);
+//                    tableAddApartment.refresh();
+//                    ApartmentAPI.updateOwnerApartment(roomOfResident.getApartmentId(), newResident.getResidentId());
+                }
+
+
                 updatePermanentCount();
                 updateTemporaryCount();
                 updateAbsentCount();
@@ -573,8 +619,8 @@ public class ButtonPanel_Controller {
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Unable to open the Add Resident window.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không thể mở giao diện thêm cư dân.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
@@ -587,9 +633,9 @@ public class ButtonPanel_Controller {
 
             if (selectedResident == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("No Selection");
-                alert.setHeaderText("No Resident Selected");
-                alert.setContentText("Please select a resident to edit.");
+                alert.setTitle("Lỗi");
+                alert.setHeaderText("Không có cư dân nào được chọn");
+                alert.setContentText("Hãy chọn một cư dân để sửa thông tin.");
                 alert.showAndWait();
                 return;
             }
@@ -660,6 +706,15 @@ public class ButtonPanel_Controller {
                     observableApartmentList.setAll(apartmentList);
                     tableAddApartment.refresh();
 
+                } else {
+                    if (updatedResident.getIsOwner()){
+                        Apartment apartment = ApartmentAPI.getApartmentById(updatedResident.getApartmentId());
+                        int indexOfApartment = apartmentList.indexOf(apartment);
+                        apartment.setOwnerId(updatedResident.getResidentId());
+                        apartmentList.set(indexOfApartment, apartment);
+                        observableApartmentList.setAll(apartmentList);
+                        tableAddApartment.refresh();
+                    }
                 }
 
                 tableAddResident.refresh();
@@ -671,8 +726,8 @@ public class ButtonPanel_Controller {
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Unable to open the Edit Resident window.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không thể mở giao diện sửa cư dân.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
@@ -684,9 +739,9 @@ public class ButtonPanel_Controller {
 
         if (selectedResident == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Resident Selected");
-            alert.setContentText("Please select a resident to delete.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không có cư dân nào được chọn");
+            alert.setContentText("Hãy chọn một cư dân để xóa.");
             alert.showAndWait();
             return;
         }
@@ -694,19 +749,35 @@ public class ButtonPanel_Controller {
         int selectedResidentId = selectedResident.getResidentId();
 
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmAlert.setTitle("Confirm Deletion");
-        confirmAlert.setHeaderText("Are you sure you want to delete this resident?");
-        confirmAlert.setContentText("This action cannot be undone.");
-        ButtonType confirmButton = new ButtonType("Delete", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        confirmAlert.setTitle("Xác nhận xóa");
+        confirmAlert.setHeaderText("Bạn có chắc muốn xóa cư dân này không?");
+        confirmAlert.setContentText("Hành động này không thể khôi phục.");
+        ButtonType confirmButton = new ButtonType("Xóa", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelButton = new ButtonType("Hủy", ButtonBar.ButtonData.CANCEL_CLOSE);
         confirmAlert.getButtonTypes().setAll(confirmButton, cancelButton);
 
         confirmAlert.showAndWait().ifPresent(response -> {
             if (response == confirmButton) {
                 residentList.remove(selectedResident);
                 observableResidentList.setAll(residentList);
-
                 tableAddResident.refresh();
+
+                List<Vehicle> allVehicleOwnedByTheDeletedResident = VehicleAPI.getAllVehiclesByResidentId(selectedResidentId);
+
+                if (!allVehicleOwnedByTheDeletedResident.isEmpty()){
+                    vehicleList.removeAll(allVehicleOwnedByTheDeletedResident);
+                    observableVehicleList.setAll(vehicleList);
+                    tableAddVehicle.refresh();
+                }
+
+                if (selectedResident.getIsOwner()){
+                    Apartment apartment = ApartmentAPI.getApartmentById(selectedResident.getApartmentId());
+                    int index = apartmentList.indexOf(apartment);
+                    apartment.setOwnerId(null);
+                    apartmentList.set(index, apartment);
+                    observableApartmentList.setAll(apartmentList);
+                    tableAddApartment.refresh();
+                }
 
                 ResidentAPI.deleteResidentById(selectedResidentId, null);
 
@@ -716,9 +787,9 @@ public class ButtonPanel_Controller {
                 updateSumOfResident();
 
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Resident Deleted");
+                successAlert.setTitle("Xóa thành công");
                 successAlert.setHeaderText(null);
-                successAlert.setContentText("The resident has been successfully deleted.");
+                successAlert.setContentText("Cư dân đã được xóa.");
                 successAlert.showAndWait();
             }
         });
@@ -759,22 +830,16 @@ public class ButtonPanel_Controller {
             AnchorPane root = loader.load();
             AddVehicle_Controller addVehicleController = loader.getController();
 
-            List<Integer> existingEntries = vehicleListToGetIndex.stream()
-                    .map(Vehicle::getVehicleId)
-                    .toList();
-            addVehicleController.setExistingEntries(existingEntries);
-
             // Set up the stage for the popup
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Thêm phuong tien");
+            stage.setTitle("Thêm phương tiện");
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
             Vehicle newVehicle = addVehicleController.getNewVehicle();
             if (newVehicle != null) {
                 vehicleList.add(newVehicle);
-                vehicleListToGetIndex.add(newVehicle);
                 observableVehicleList.setAll(vehicleList);
                 tableAddVehicle.refresh();
                 updateCarCount();
@@ -785,8 +850,8 @@ public class ButtonPanel_Controller {
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Unable to open the Add Resident window.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không thể mở giao diện thêm phương tiện.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
@@ -798,17 +863,17 @@ public class ButtonPanel_Controller {
 
         if (selectedVehicle == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Vehicle Selected");
-            alert.setContentText("Please select a vehicle to delete.");
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không có phương tiện nào được chọn");
+            alert.setContentText("Hãy chọn một phương tiện để xóa.");
             alert.showAndWait();
             return;
         }
 
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationAlert.setTitle("Confirm Deletion");
-        confirmationAlert.setHeaderText("Delete Vehicle");
-        confirmationAlert.setContentText("Are you sure you want to delete this vehicle?");
+        confirmationAlert.setTitle("Xác nhận xóa");
+        confirmationAlert.setHeaderText("Xóa phương tiện");
+        confirmationAlert.setContentText("Bạn có chắc muốn xóa phương tiện này không?");
 
         confirmationAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
