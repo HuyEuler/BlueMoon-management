@@ -6,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -27,8 +26,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
 import java.io.IOException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ButtonPanel_Controller {
@@ -41,8 +41,8 @@ public class ButtonPanel_Controller {
     @FXML private TableColumn<Apartment, String> roomOwnerNameColumn, roomLabelColumn;
     @FXML private Button addApartmentButton, editApartmentButton, deleteApartmentButton, showOwnerButton;
 
-    private List<Apartment> apartmentList = ApartmentAPI.getAllApartment();
-    private List<Apartment> apartmentListToGetIndex = new ArrayList<>(apartmentList);
+    private final List<Apartment> apartmentList = ApartmentAPI.getAllApartment();
+    //private final List<Apartment> apartmentListToGetIndex = new ArrayList<>(apartmentList);
     private FilteredList<Apartment> filteredApartmentList;
     ObservableList<Apartment> observableApartmentList = FXCollections.observableArrayList(apartmentList);
 
@@ -58,8 +58,8 @@ public class ButtonPanel_Controller {
     @FXML private Label absentCountLabel, permanentCountLabel, temporaryCountLabel, sumOfResidentLabel;
     @FXML private Label carCountLabel, motorbikeCountLabel, bicycleCountLabel, otherTransportCountLabel;
 
-    private List<Resident> residentList = ResidentAPI.getAllResidents();
-    private List<Resident> residentListToGetIndex = ResidentAPI.getAllDataFromResidentTableInDB();//new ArrayList<>();
+    private final List<Resident> residentList = ResidentAPI.getAllResidents();
+    private final List<Resident> residentListToGetIndex = ResidentAPI.getAllDataFromResidentTableInDB();//new ArrayList<>();
     private FilteredList<Resident> filteredResidentList;
     ObservableList<Resident> observableResidentList = FXCollections.observableArrayList(residentList);
 
@@ -70,7 +70,7 @@ public class ButtonPanel_Controller {
     @FXML private TableColumn<Vehicle, String> vehicleOwnerNameColumn, vehicleType, vehicleLicense;
     @FXML private Button addVehicleButton, deleteVehicleButton;
 
-    private List<Vehicle> vehicleList = VehicleAPI.getAllVehicles();
+    private final List<Vehicle> vehicleList = VehicleAPI.getAllVehicles();
     private FilteredList<Vehicle> filteredVehicleList;
     ObservableList<Vehicle> observableVehicleList = FXCollections.observableArrayList(vehicleList);
 
@@ -86,7 +86,7 @@ public class ButtonPanel_Controller {
                 cellData -> {
                     Integer residentID = cellData.getValue().getOwnerId();
                     //System.out.println(residentID);
-                    String ownerName = (residentID == null) ? null : ResidentAPI.getResidentById(residentID).getName();
+                    String ownerName = (residentID == null) ? null : Objects.requireNonNull(ResidentAPI.getResidentById(residentID)).getName();
                     return new SimpleStringProperty(ownerName);
                 }
         );
@@ -128,7 +128,7 @@ public class ButtonPanel_Controller {
         deleteApartmentButton.setOnAction(event -> deleteSelectedApartment());
         addApartmentButton.setOnAction(event -> openAddApartmentWindow());
         editApartmentButton.setOnAction(event -> openEditApartmentWindow());
-
+        showOwnerButton.setOnAction(event -> showOwnerByID());
         // ================================================================
         // BẮT ĐẦU BẢNG QUẢN LÝ DÂN CƯ ====================================
 
@@ -139,6 +139,7 @@ public class ButtonPanel_Controller {
                 cellData -> {
                     int roomId = cellData.getValue().getApartmentId();
                     Apartment apartment = ApartmentAPI.getApartmentById(roomId);
+                    assert apartment != null;
                     String roomLabel = apartment.getRoom();
                     return new SimpleStringProperty(roomLabel);
                 }
@@ -179,102 +180,7 @@ public class ButtonPanel_Controller {
         deleteResidentButton.setOnAction(event -> deleteSelectedResident());
         addResidentButton.setOnAction(event -> openAddResidentWindow());
         editResidentButton.setOnAction(event -> openEditResidentWindow());
-
-        // ==================================================================
-
-        showActivityButton.setOnAction(event -> {
-            Stage inputStage = new Stage();
-            inputStage.initModality(Modality.APPLICATION_MODAL);
-            inputStage.setTitle("Enter Apartment ID");
-
-            ChoiceBox<Integer> idChoiceBox = new ChoiceBox<>();
-            List<Integer> availableRooms = apartmentList.stream()
-                    .map(Apartment::getApartmentId)
-                    .toList();
-
-            idChoiceBox.getItems().addAll(availableRooms);
-
-            // Create buttons
-            Button confirmButton = new Button("OK");
-            Button cancelButton = new Button("Cancel");
-
-            // Layout
-            VBox layout = new VBox(10);
-            layout.setPadding(new Insets(10));
-            layout.getChildren().addAll(new Label("Please select the Apartment ID:"), idChoiceBox, confirmButton, cancelButton);
-
-            // Scene
-            Scene scene = new Scene(layout);
-            inputStage.setScene(scene);
-
-            // Confirm button functionality
-            confirmButton.setOnAction(e -> {
-                Integer selectedId = idChoiceBox.getValue();
-                if (selectedId == null) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Please select an Apartment ID.");
-                    alert.showAndWait();
-                    return;
-                }
-
-                inputStage.close();
-                try {
-                    showActivityByID(selectedId);
-                } catch (IOException ex) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading activity window: " + ex.getMessage());
-                    alert.showAndWait();
-                }
-            });
-
-            cancelButton.setOnAction(e -> inputStage.close());
-            inputStage.showAndWait();
-        });
-
-        showOwnerButton.setOnAction(event -> {
-            Stage inputStage = new Stage();
-            inputStage.initModality(Modality.APPLICATION_MODAL);
-            inputStage.setTitle("Enter Apartment ID");
-
-            ChoiceBox<Integer> idChoiceBox = new ChoiceBox<>();
-            List<Integer> availableRooms = apartmentList.stream()
-                    .map(Apartment::getApartmentId)
-                    .toList();
-
-            idChoiceBox.getItems().addAll(availableRooms);
-
-            // Create buttons
-            Button confirmButton = new Button("OK");
-            Button cancelButton = new Button("Cancel");
-
-            // Layout
-            VBox layout = new VBox(10);
-            layout.setPadding(new Insets(10));
-            layout.getChildren().addAll(new Label("Please select the Apartment ID:"), idChoiceBox, confirmButton, cancelButton);
-
-            // Scene
-            Scene scene = new Scene(layout);
-            inputStage.setScene(scene);
-
-            // Confirm button functionality
-            confirmButton.setOnAction(e -> {
-                Integer selectedId = idChoiceBox.getValue();
-                if (selectedId == null) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Please select an Apartment ID.");
-                    alert.showAndWait();
-                    return;
-                }
-
-                inputStage.close();
-                try {
-                    showOwnerByID(selectedId);
-                } catch (IOException ex) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading activity window: " + ex.getMessage());
-                    alert.showAndWait();
-                }
-            });
-
-            cancelButton.setOnAction(e -> inputStage.close());
-            inputStage.showAndWait();
-        });
+        showActivityButton.setOnAction(event -> showActivityByID());
 
         // ==================================================================
 
@@ -317,18 +223,14 @@ public class ButtonPanel_Controller {
         addVehicleButton.setOnAction(event -> openAddVehicleWindow());
 
         vehicleOwnerNameColumn.setCellValueFactory(cellData -> {
-            String ownerName = ResidentAPI.getResidentById(cellData.getValue().getResidentId()).getName();
+            String ownerName = Objects.requireNonNull(ResidentAPI.getResidentById(cellData.getValue().getResidentId())).getName();
             return new SimpleStringProperty(ownerName);
         }
         );
 
-        vehicleType.setCellValueFactory(cellData -> {
-            return new SimpleStringProperty(cellData.getValue().getType());
-        });
+        vehicleType.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType()));
 
-        vehicleLicense.setCellValueFactory(cellData -> {
-            return new SimpleStringProperty(cellData.getValue().getLicensePlate());
-        });
+        vehicleLicense.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLicensePlate()));
 
         tableAddVehicle.setItems(observableVehicleList);
 
@@ -343,7 +245,7 @@ public class ButtonPanel_Controller {
             tableAddVehicle.refresh();
         });
 
-        tableAddVehicle.setRowFactory(tv -> new TableRow<Vehicle>() {
+        tableAddVehicle.setRowFactory(tv -> new TableRow<>() {
             @Override
             protected void updateItem(Vehicle vehicle, boolean empty) {
                 super.updateItem(vehicle, empty);
@@ -449,6 +351,7 @@ public class ButtonPanel_Controller {
                     residentNeedToBeUpdated.getResidentId() != currentOwnerId) {
                 Resident oldOwner = ResidentAPI.getResidentById(selectedApartment.getOwnerId());
                 int index = residentList.indexOf(oldOwner);
+                assert oldOwner != null;
                 oldOwner.setIsOwner(false);
                 residentList.set(index, oldOwner);
                 observableResidentList.addAll(residentList);
@@ -565,6 +468,7 @@ public class ButtonPanel_Controller {
                 if (newResident.getIsOwner()) {
                     Apartment roomOfResident = ApartmentAPI.getApartmentById(newResident.getApartmentId());
 
+                    assert roomOfResident != null;
                     if (roomOfResident.getOwnerId() != null) {
                         // Create a warning alert
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -683,6 +587,7 @@ public class ButtonPanel_Controller {
                 if (updatedResident.getApartmentId() == selectedResident.getApartmentId()) {
 
                     Apartment apartment = ApartmentAPI.getApartmentById(selectedResident.getApartmentId());
+                    assert apartment != null;
                     int apartmentID = apartment.getApartmentId();
                     int indexOfAartment = apartmentList.indexOf(apartment);
                     Apartment newApartment = null;
@@ -710,6 +615,7 @@ public class ButtonPanel_Controller {
                     if (updatedResident.getIsOwner()){
                         Apartment apartment = ApartmentAPI.getApartmentById(updatedResident.getApartmentId());
                         int indexOfApartment = apartmentList.indexOf(apartment);
+                        assert apartment != null;
                         apartment.setOwnerId(updatedResident.getResidentId());
                         apartmentList.set(indexOfApartment, apartment);
                         observableApartmentList.setAll(apartmentList);
@@ -773,6 +679,7 @@ public class ButtonPanel_Controller {
                 if (selectedResident.getIsOwner()){
                     Apartment apartment = ApartmentAPI.getApartmentById(selectedResident.getApartmentId());
                     int index = apartmentList.indexOf(apartment);
+                    assert apartment != null;
                     apartment.setOwnerId(null);
                     apartmentList.set(index, apartment);
                     observableApartmentList.setAll(apartmentList);
@@ -919,30 +826,71 @@ public class ButtonPanel_Controller {
         otherTransportCountLabel.setText(String.valueOf(count));
     }
 
-    private void showActivityByID(int id) throws IOException {
-        DataManager dataManager = DataManager.getInstance();
-        dataManager.setApartmentID(id);
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_activity.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Apartment Management System");
-        stage.setResizable(false);
-        stage.showAndWait();
+    public void showActivityByID() {
+        try {
+            Resident selectedResident = tableAddResident.getSelectionModel().getSelectedItem();
+
+            if (selectedResident == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText("Không có cư dân nào được chọn");
+                alert.setContentText("Hãy chọn một cư dân để sửa thông tin.");
+                alert.showAndWait();
+                return;
+            }
+
+            int id = selectedResident.getResidentId();
+
+            DataManager dataManager = DataManager.getInstance();
+            dataManager.setApartmentID(id);
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_activity.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Apartment Management System");
+            stage.setResizable(false);
+            stage.showAndWait();
+        }
+        catch (Exception e) {
+            System.out.println("Error");
+        }
     }
 
 
     //Gọi PopUp hiển thị thông tin của căn hộ
-    public void showOwnerByID(int id) throws IOException {
-        DataManager dataManager = DataManager.getInstance();
-        dataManager.setApartmentID(id);
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_owner.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Apartment Management System");
-        stage.setResizable(false);
-        stage.showAndWait();
+    private void showOwnerByID() {
+        try {
+            Apartment selectedApartment = tableAddApartment.getSelectionModel().getSelectedItem();
+
+            if (selectedApartment == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText("Không có phòng nào được chọn");
+                alert.setContentText("Hãy chọn một phòng để xóa.");
+                alert.showAndWait();
+                return;
+            }
+
+            int id = selectedApartment.getApartmentId();
+
+            DataManager dataManager = DataManager.getInstance();
+            dataManager.setApartmentID(id);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_owner.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Apartment Management System");
+            stage.setResizable(false);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không thể mở giao diện thống kê nhân khẩu.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
 

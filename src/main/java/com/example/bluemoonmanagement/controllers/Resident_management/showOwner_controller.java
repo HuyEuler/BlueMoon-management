@@ -31,6 +31,7 @@ public class showOwner_controller {
 
     private int id;
 
+    @FXML
     public void initialize() {
         DataManager dataManager = DataManager.getInstance();
         id = dataManager.getApartmentID();
@@ -38,6 +39,7 @@ public class showOwner_controller {
         assert apartment != null;
         lbNumberRoom.setText("Danh sách cư dân phòng %s".formatted(apartment.getRoom()));
         setTable();
+        System.out.println("zookeeper");
     }
 
     private void setTable() {
