@@ -7,51 +7,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.DeleteFeeController">
-   <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
-      <children>
-         <Label alignment="CENTER" layoutX="122.0" layoutY="13.0" prefHeight="45.0" prefWidth="356.0" text="XÓA PHÍ" textAlignment="CENTER" textFill="WHITE">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.DeleteFeeController">
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
+        <Label alignment="CENTER" layoutX="251.0" layoutY="18.0" text="XÓA PHÍ" textAlignment="CENTER" textFill="WHITE">
+           <font>
+               <Font name="System Bold" size="24.0" />
+           </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="90.0" minHeight="151.0" minWidth="500.0" opacity="0.8" prefHeight="225.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
+        <AnchorPane layoutX="75.0" layoutY="100.0" prefHeight="100.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-border-style: solid;">
+            <Label fx:id="lbDonGia" layoutX="25.0" layoutY="40.0" prefHeight="25.0" prefWidth="300.0">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <Label fx:id="lbBatBuoc" layoutX="25.0" layoutY="70.0" prefHeight="25.0" prefWidth="300.0">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <Label fx:id="lbLoaiPhi" layoutX="25.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+        </AnchorPane>
+        <ChoiceBox fx:id="cbTenPhi" layoutX="75.0" layoutY="30.0" prefHeight="25.0" prefWidth="350.0" />
+        <Label layoutX="75.0" layoutY="10.0" text="Chọn khoản phí cần xoá" textFill="WHITE">
             <font>
-               <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
-         </Label>
-      </children>
-   </AnchorPane>
-   <AnchorPane layoutX="50.0" layoutY="95.0" minHeight="151.0" minWidth="500.0" opacity="0.9" prefHeight="225.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
-      <children>
-         <AnchorPane layoutX="20.0" layoutY="110.0" prefHeight="100.0" prefWidth="460.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10;">
-            <children>
-                <Label fx:id="lbDonGia" layoutX="20.0" layoutY="35.0" prefHeight="25.0" prefWidth="300.0">
-                    <font>
-                      <Font size="16.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lbBatBuoc" layoutX="20.0" layoutY="60.0" prefHeight="25.0" prefWidth="300.0">
-                    <font>
-                      <Font size="16.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lbLoaiPhi" layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0">
-                    <font>
-                      <Font size="16.0" />
-                    </font>
-                </Label>
-            </children>
-         </AnchorPane>
-         <ChoiceBox fx:id="cbTenPhi" layoutX="256.0" layoutY="20.0" prefHeight="25.0" prefWidth="221.0" />
-          <Label layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="230.0" text="Chọn khoản phí cần xoá" textFill="WHITE">
-              <font>
-                  <Font name="System Bold" size="20.0" />
-              </font>
-          </Label>
-          <Label fx:id="lbTenPhi" alignment="CENTER" layoutX="20.0" layoutY="80.0" prefHeight="30.0" prefWidth="470.0" text="Thông tin khoản phí xoá" textFill="WHITE">
-              <font>
-                  <Font name="System Bold" size="20.0" />
-              </font>
-          </Label>
-      </children>
-   </AnchorPane>
-    <Button fx:id="btHuy" layoutX="320.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" style="-fx-background-color: #809bce;" text="Huỷ" textFill="WHITE">
+        </Label>
+        <Label fx:id="lbTenPhi" alignment="CENTER" layoutX="75.0" layoutY="70.0" prefHeight="27.0" prefWidth="350.0" text="Thông tin khoản phí xoá" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <Button fx:id="btHuy" layoutX="320.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" text="Huỷ" textFill="WHITE">
         <font>
             <Font name="System Bold" size="16.0" />
         </font>
@@ -59,7 +53,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
     </Button>
-    <Button fx:id="btXoa" layoutX="50.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" style="-fx-background-color: #809bce;" text="Xoá" textFill="WHITE">
+    <Button fx:id="btXoa" layoutX="50.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" text="Xoá" textFill="WHITE">
         <font>
             <Font name="System Bold" size="16.0" />
         </font>

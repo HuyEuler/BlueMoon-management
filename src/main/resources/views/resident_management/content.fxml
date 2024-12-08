@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="850.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller">
+<GridPane prefHeight="850.0" prefWidth="1600.0" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -29,9 +29,9 @@
       <Tab text="Căn hộ">
          <GridPane>
             <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="150.0" />
                <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1000.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="150.0" />
             </columnConstraints>
             <rowConstraints>
                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -99,7 +99,7 @@
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                </rowConstraints>
-               <Button fx:id="addApartmentButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Thêm căn hộ" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <Button fx:id="addApartmentButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Thêm căn hộ" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                   <graphic>
                      <ImageView fitHeight="50.0" fitWidth="50.0">
                         <Image url="@../../images/addOwner.png" />
@@ -112,7 +112,7 @@
                      <Font name="System Bold" size="18.0" />
                   </font>
                </Button>
-               <Button fx:id="editApartmentButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Sửa chủ căn hộ" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <Button fx:id="editApartmentButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Sửa chủ căn hộ" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                   <graphic>
                      <ImageView fitHeight="50.0" fitWidth="70.0">
                         <Image url="@../../images/editOwner.png" />
@@ -125,7 +125,7 @@
                      <Font name="System Bold" size="18.0" />
                   </font>
                </Button>
-               <Button fx:id="deleteApartmentButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Xóa căn hộ" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <Button fx:id="deleteApartmentButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Xóa căn hộ" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                   <graphic>
                      <ImageView fitHeight="50.0" fitWidth="50.0">
                         <Image url="@../../images/deleteOwner.png" />
@@ -138,7 +138,7 @@
                      <Font name="System Bold" size="18.0" />
                   </font>
                </Button>
-               <Button fx:id="showOwnerButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Thống kê nhân khẩu" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+               <Button fx:id="showOwnerButton" alignment="CENTER" contentDisplay="TOP" minHeight="100.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Thống kê nhân khẩu" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                   <graphic>
                      <ImageView fitHeight="50.0" fitWidth="50.0">
                         <Image url="@../../images/showApartment.png" />
@@ -177,14 +177,14 @@
                <TableView fx:id="tableAddResident" prefHeight="292.0" prefWidth="766.0" GridPane.rowIndex="1">
                   <columns>
                      <TableColumn fx:id="residentRoomLabelColumn" prefWidth="75.0" text="Phòng" />
-                     <TableColumn fx:id="residentNameColumn" prefWidth="75.0" text="Họ và tên" />
-                     <TableColumn fx:id="residentDOBColumn" prefWidth="75.0" text="Ngày sinh" />
-                     <TableColumn fx:id="residentGenderColumn" prefWidth="75.0" text="Giới tính" />
-                     <TableColumn fx:id="residentPhoneNumberColumn" prefWidth="75.0" text="Số điện thoại" />
-                     <TableColumn fx:id="residentNationColumn" prefWidth="75.0" text="Quốc tịch" />
-                     <TableColumn fx:id="residentRelationshipColumn" prefWidth="75.0" text="Quan hệ với chủ hộ" />
-                     <TableColumn fx:id="residentIsOwnerColumn" prefWidth="75.0" text="Có là chủ hộ?" />
-                     <TableColumn fx:id="residentStatusColumn" prefWidth="75.0" text="Trạng thái" />
+                     <TableColumn fx:id="residentNameColumn" prefWidth="144.33331298828125" text="Họ và tên" />
+                     <TableColumn fx:id="residentDOBColumn" prefWidth="104.33331298828125" text="Ngày sinh" />
+                     <TableColumn fx:id="residentGenderColumn" prefWidth="73.33331298828125" text="Giới tính" />
+                     <TableColumn fx:id="residentPhoneNumberColumn" prefWidth="86.6666259765625" text="Số điện thoại" />
+                     <TableColumn fx:id="residentNationColumn" prefWidth="108.66668701171875" text="Quốc tịch" />
+                     <TableColumn fx:id="residentRelationshipColumn" prefWidth="136.33331298828125" text="Quan hệ với chủ hộ" />
+                     <TableColumn fx:id="residentIsOwnerColumn" prefWidth="107.0" text="Có là chủ hộ?" />
+                     <TableColumn fx:id="residentStatusColumn" prefWidth="256.0" text="Trạng thái" />
                   </columns>
                   <columnResizePolicy>
                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -202,15 +202,15 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="80.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="80.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="80.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="80.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                </rowConstraints>
-               <Button fx:id="addResidentButton" alignment="CENTER" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Thêm cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <Button fx:id="addResidentButton" alignment="CENTER" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Thêm cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -223,7 +223,7 @@
                      <Insets left="10.0" right="10.0" />
                   </GridPane.margin>
                </Button>
-               <Button fx:id="editResidentButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Sửa thông tin cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <Button fx:id="editResidentButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Sửa thông tin cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -236,7 +236,7 @@
                      <Insets left="10.0" right="10.0" />
                   </GridPane.margin>
                </Button>
-               <Button fx:id="deleteResidentButton" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Xóa cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <Button fx:id="deleteResidentButton" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Xóa cư dân" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -249,7 +249,7 @@
                      <Insets left="10.0" right="10.0" />
                   </GridPane.margin>
                </Button>
-               <Button fx:id="showActivityButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Lịch sử cư trú" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+               <Button fx:id="showActivityButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Lịch sử cư trú" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -271,11 +271,11 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <GridPane style="-fx-background-color: #A2D2DF;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -440,11 +440,15 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="80.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="80.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                </rowConstraints>
-               <Button fx:id="addVehicleButton" alignment="CENTER" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Thêm phương tiện" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <Button fx:id="addVehicleButton" alignment="CENTER" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Thêm phương tiện" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -452,7 +456,7 @@
                      <Insets left="10.0" right="10.0" />
                   </GridPane.margin>
                </Button>
-               <Button fx:id="deleteVehicleButton" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #809bce;" text="Xóa thông tin" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <Button fx:id="deleteVehicleButton" contentDisplay="TOP" minHeight="80.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Xóa thông tin" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -469,11 +473,11 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <GridPane style="-fx-background-color: #A2D2DF;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">

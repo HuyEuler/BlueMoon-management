@@ -6,20 +6,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.ListPaidController">
-    <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="30.0" prefHeight="32.0" prefWidth="600.0" styleClass="header_fee" stylesheets="@../views_styles.css" text="Danh sách đã nộp" textAlignment="CENTER">
-        <font>
-            <Font size="22.0" />
-        </font>
-    </Label>
-   <TableView fx:id="tableView" layoutX="18.0" layoutY="70.0" prefHeight="321.0" prefWidth="565.0">
+<AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.ListPaidController">
+   <TableView fx:id="tableView" layoutY="70.0" prefHeight="500.0" prefWidth="900.0">
      <columns>
-       <TableColumn fx:id="cTenPhi" prefWidth="146.0" text="Tên phí" />
-       <TableColumn fx:id="cCanHo" prefWidth="63.0" text="Căn hộ" />
-         <TableColumn fx:id="cThang" prefWidth="56.0" text="Tháng" />
-         <TableColumn fx:id="cNam" prefWidth="51.0" text="Năm" />
-         <TableColumn fx:id="cLoaiPhi" prefWidth="104.0" text="Loại phí" />
-         <TableColumn fx:id="cSoTien" prefWidth="144.0" text="Số tiền" />
+       <TableColumn fx:id="cTenPhi" prefWidth="180.0" text="Tên phí" />
+       <TableColumn fx:id="cCanHo" prefWidth="120.0" text="Căn hộ" />
+         <TableColumn fx:id="cThang" prefWidth="100.0" text="Tháng" />
+         <TableColumn fx:id="cNam" prefWidth="100.0" text="Năm" />
+         <TableColumn fx:id="cLoaiPhi" prefWidth="190.0" text="Loại phí" />
+         <TableColumn fx:id="cSoTien" minWidth="0.0" prefWidth="209.0" text="Số tiền" />
      </columns>
    </TableView>
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="900.0"
+                style="-fx-background-color: #809bce;">
+        <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="13.0" prefHeight="32.0"
+               prefWidth="600.0" styleClass="header_fee" stylesheets="@../views_styles.css" text="DANH SÁCH ĐÃ NỘP"
+               textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="30.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
 </AnchorPane>

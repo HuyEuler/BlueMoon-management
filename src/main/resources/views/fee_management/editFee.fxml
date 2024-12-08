@@ -8,49 +8,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="453.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.EditFeeController">
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="31.0" prefHeight="17.0" prefWidth="183.0" styleClass="header_fee" stylesheets="@../views_styles.css" text="Sửa phí" textAlignment="CENTER">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.EditFeeController">
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
+        <Label alignment="CENTER" layoutX="122.0" layoutY="13.0" prefHeight="45.0" prefWidth="356.0" text="SỬA PHÍ" textAlignment="CENTER" textFill="WHITE">
+           <font>
+               <Font name="System Bold" size="30.0" />
+           </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="148.0" opacity="0.78" prefHeight="187.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
+        <CheckBox fx:id="cbBatBuoc" layoutX="75.0" layoutY="150.0" mnemonicParsing="false">
+          <font>
+              <Font size="15.0" />
+          </font>
+        </CheckBox>
+        <Label layoutX="100.0" layoutY="150.0" text="Bắt buộc" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfDonGia" layoutX="75.0" layoutY="60.0" prefHeight="25.0" prefWidth="350.0" />
+        <ChoiceBox fx:id="cbLoaiPhi" layoutX="75.0" layoutY="110.0" prefHeight="25.0" prefWidth="350.0" />
+        <Label layoutX="75.0" layoutY="90.0" prefHeight="21.0" prefWidth="59.0" text="Loại phí" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="75.0" layoutY="40.0" text="Đơn giá" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+       <Label fx:id="lbChinhSua" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="500.0" text="Chỉnh sửa" textFill="WHITE">
+           <font>
+             <Font name="System Bold" size="18.0" />
+           </font>
+       </Label>
+    </AnchorPane>
+    <Button fx:id="btHuy" layoutX="320.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" text="Huỷ" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+    </Button>
+    <Button fx:id="btCapNhat" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" text="Cập nhật" textFill="WHITE">
         <font>
-            <Font size="20.0" />
-        </font>
-    </Label>
-    <Label layoutX="23.0" layoutY="81.0" prefHeight="21.0" prefWidth="189.0" text="Chọn khoản phí cần sửa">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
-    <Label layoutX="47.0" layoutY="171.0" text="Đơn giá">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
-    <Label layoutX="343.0" layoutY="171.0" text="Bắt buộc">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
-    <Label layoutX="47.0" layoutY="226.0" prefHeight="21.0" prefWidth="59.0" text="Loại phí">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
-    <Button fx:id="btHuy" layoutX="109.0" layoutY="284.0" mnemonicParsing="false" text="Huỷ">
-        <font>
-        <Font size="15.0" />
+        <Font name="System Bold" size="15.0" />
         </font>
     </Button>
-    <Button fx:id="btCapNhat" layoutX="321.0" layoutY="284.0" mnemonicParsing="false" text="Cập nhật">
-        <font>
-        <Font size="15.0" />
-        </font>
-    </Button>
-    <TextField fx:id="tfDonGia" layoutX="139.0" layoutY="169.0" prefHeight="25.0" prefWidth="146.0" />
-    <CheckBox fx:id="cbBatBuoc" layoutX="415.0" layoutY="173.0" mnemonicParsing="false" />
-    <ChoiceBox fx:id="cbTenPhi" layoutX="222.0" layoutY="79.0" prefHeight="25.0" prefWidth="224.0" />
-    <Label fx:id="lbChinhSua" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="127.0" prefHeight="25.0" prefWidth="500.0" style="-fx-font-weight: bold;" text="Chỉnh sửa">
-        <font>
-          <Font size="18.0" />
-        </font>
-    </Label>
-   <ChoiceBox fx:id="cbLoaiPhi" layoutX="139.0" layoutY="224.0" prefHeight="25.0" prefWidth="262.0" />
+    <AnchorPane layoutX="50.0" layoutY="79.0" prefHeight="70.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
+        <ChoiceBox fx:id="cbTenPhi" layoutX="75.0" layoutY="35.0" prefHeight="25.0" prefWidth="350.0" />
+        <Label layoutX="75.0" layoutY="10.0" text="Chọn khoản phí cần sửa" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+    </AnchorPane>
 </AnchorPane>

@@ -7,52 +7,58 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="286.0" prefWidth="566.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.PaymentController">
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="14.0" prefHeight="17.0" prefWidth="183.0" styleClass="header_fee" stylesheets="@../views_styles.css" text="Nộp phí" textAlignment="CENTER">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.PaymentController">
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
+        <Label alignment="CENTER" layoutX="122.0" layoutY="13.0" prefHeight="45.0" prefWidth="356.0" text="NỘP PHÍ" textAlignment="CENTER" textFill="WHITE">
+           <font>
+               <Font name="System Bold" size="30.0" />
+           </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="92.0" opacity="0.8" prefHeight="237.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
+        <Label layoutX="75.0" layoutY="10.0" text="Tên phí" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="75.0" layoutY="60.0" text="Căn hộ" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <ChoiceBox fx:id="cbTenPhi" layoutX="75.0" layoutY="30.0" prefWidth="350.0" />
+        <ChoiceBox fx:id="cbSoPhong" layoutX="75.0" layoutY="80.0" prefHeight="25.0" prefWidth="350.0" />
+        <Label fx:id="lbHienThi" alignment="CENTER" layoutX="75.0" layoutY="117.0" text="Không có khoản phí cần đóng" textFill="WHITE">
+           <font>
+               <Font name="System Bold Italic" size="15.0" />
+           </font>
+        </Label>
+        <Label layoutX="75.0" layoutY="150.0" text="Số tiền nộp" textFill="WHITE">
+            <font>
+              <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfTienNop" layoutX="162.0" layoutY="150.0" prefHeight="25.0" prefWidth="263.0" />
+        <Label layoutX="75.0" layoutY="190.0" text="Số tiền phải nộp" textFill="WHITE">
+            <font>
+              <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField layoutX="200.0" layoutY="190.0" prefHeight="25.0" prefWidth="225.0" />
+        <Label fx:id="lbPhaiNop" layoutX="204.0" layoutY="193.0" text="None">
+          <font>
+              <Font name="System Bold Italic" size="14.0" />
+          </font>
+        </Label>
+    </AnchorPane>
+    <Button fx:id="btHuy" layoutX="320.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" text="Huỷ" textFill="WHITE">
         <font>
-            <Font size="22.0" />
-        </font>
-    </Label>
-    <Label layoutX="51.0" layoutY="58.0" prefHeight="21.0" prefWidth="58.0" text="Tên phí">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
-    <Label layoutX="364.0" layoutY="58.0" text="Căn hộ">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
-    <Button fx:id="btHuy" layoutX="161.0" layoutY="206.0" mnemonicParsing="false" text="Huỷ">
-        <font>
-        <Font size="15.0" />
+        <Font name="System Bold" size="15.0" />
         </font>
     </Button>
-    <Button fx:id="btNop" layoutX="375.0" layoutY="206.0" mnemonicParsing="false" text="Nộp">
+    <Button fx:id="btNop" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="230.0" text="Nộp" textFill="WHITE">
         <font>
-        <Font size="15.0" />
+        <Font name="System Bold" size="15.0" />
         </font>
     </Button>
-    <Label layoutX="42.0" layoutY="147.0" text="Số tiền nộp">
-        <font>
-          <Font size="15.0" />
-        </font>
-    </Label>
-    <Label layoutX="289.0" layoutY="146.0" text="Số tiền phải nộp">
-        <font>
-          <Font size="15.0" />
-        </font>
-    </Label>
-    <ChoiceBox fx:id="cbSoPhong" layoutX="427.0" layoutY="56.0" prefHeight="25.0" prefWidth="106.0" />
-    <Label fx:id="lbPhaiNop" layoutX="411.0" layoutY="148.0" prefHeight="20.0" prefWidth="137.0" text="None">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
-   <ChoiceBox fx:id="cbTenPhi" layoutX="129.0" layoutY="56.0" prefHeight="25.0" prefWidth="174.0" />
-   <TextField fx:id="tfTienNop" layoutX="129.0" layoutY="144.0" prefHeight="25.0" prefWidth="137.0" />
-   <Label fx:id="lbHienThi" alignment="CENTER" layoutX="90.0" layoutY="104.0" prefHeight="17.0" prefWidth="398.0" text="Không có khoản phí cần đóng">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </Label>
 </AnchorPane>

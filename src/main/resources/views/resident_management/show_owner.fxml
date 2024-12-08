@@ -28,7 +28,7 @@
     <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #809bce;" />
     <Label fx:id="lbNumberRoom" text="Danh sách cư dân phòng" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <font>
-          <Font name="System Bold" size="33.0" />
+          <Font name="System Bold" size="24.0" />
         </font>
     </Label>
 </GridPane>

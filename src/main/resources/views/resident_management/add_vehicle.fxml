@@ -7,28 +7,62 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="329.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddVehicle_Controller">
-    <children>
-        <Label layoutX="186.0" layoutY="14.0" text="Thêm phương tiện">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;"
+            stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddVehicle_Controller">
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0"
+                style="-fx-background-color: #809bce;">
+        <Label alignment="CENTER" layoutX="184.0" layoutY="18.0" text="THÊM PHƯƠNG TIỆN" textAlignment="CENTER"
+               textFill="WHITE">
             <font>
-                <Font name="System Bold" size="19.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Label>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="94.0" prefHeight="232.0" prefWidth="500.0"
+                style="-fx-background-color: #809bce;">
+        <TextField fx:id="vehicleLicense" layoutX="75.0" layoutY="180.0" prefWidth="350.0"/>
 
-        <Label layoutX="90.0" layoutY="73.0" text="ID chủ sở hữu" />
-        <ChoiceBox fx:id="vehicleOwnerID" layoutX="184.0" layoutY="68.0" prefHeight="26.0" prefWidth="94.0" />
+        <Label layoutX="75.0" layoutY="160.0" text="Biển kiểm soát" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <ChoiceBox fx:id="vehicleType" layoutX="75.0" layoutY="130.0" prefWidth="350.0"/>
 
-        <Label layoutX="82.0" layoutY="114.0" text="Tên chủ sở hữu" />
-        <TextField fx:id="vehicleOwnerName" layoutX="184.0" layoutY="109.0" prefHeight="26.0" prefWidth="266.0" />
+        <Label layoutX="75.0" layoutY="110.0" text="Loại phương tiện" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="vehicleOwnerName" layoutX="75.0" layoutY="80.0" prefWidth="350.0"/>
 
-        <Label layoutX="72.0" layoutY="154.0" text="Loại phương tiện" />
-        <ChoiceBox fx:id="vehicleType" layoutX="184.0" layoutY="149.0" prefHeight="26.0" prefWidth="86.0" />
+        <Label layoutX="75.0" layoutY="60.0" text="Tên chủ sở hữu" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <ChoiceBox fx:id="vehicleOwnerID" layoutX="75.0" layoutY="30.0" prefWidth="350.0"/>
 
-        <Label layoutX="84.0" layoutY="196.0" text="Biển kiểm soát" />
-        <TextField fx:id="vehicleLicense" layoutX="184.0" layoutY="192.0" prefWidth="200.0" />
+        <Label layoutX="75.0" layoutY="10.0" text="ID chủ sở hữu" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
 
-        <Button layoutX="101.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="26.0" prefWidth="82.0" text="Lưu" />
-        <Button layoutX="343.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="82.0" text="Hủy" />
+    <Button layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="26.0"
+            prefWidth="230.0" text="Lưu" textFill="WHITE">
+        <font>
+        <Font name="System Bold" size="15.0"/>
+        </font>
+    </Button>
+    <Button layoutX="320.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0"
+            prefWidth="230.0" text="Hủy" textFill="WHITE">
+        <font>
+        <Font name="System Bold" size="15.0"/>
+        </font>
+    </Button>
 
-    </children>
 </AnchorPane>

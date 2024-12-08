@@ -8,19 +8,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="404.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.AddPaymentController">
-   <Label layoutX="67.0" layoutY="14.0" prefHeight="39.0" prefWidth="359.0" style="-fx-font-weight: bold;" text="Tạo thanh toán phí quản lý và phí dịch vụ hàng tháng ">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.AddPaymentController">
+    <AnchorPane layoutX="50.0" layoutY="85.0" minHeight="70.0" minWidth="500.0" opacity="0.8" prefHeight="70.0"
+                prefWidth="500.0" style="-fx-background-color: #809bce;">
+        <Label layoutX="75.0" layoutY="10.0" text="Chọn phí tạo thanh toán" textFill="WHITE">
+           <font>
+               <Font name="System Bold" size="15.0"/>
+           </font>
+        </Label>
+        <ChoiceBox fx:id="cbTenPhi" layoutX="75.0" layoutY="30.0" prefHeight="25.0" prefWidth="350.0"/>
+    </AnchorPane>
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
+        <Label alignment="CENTER" layoutX="101.0" layoutY="-11.0" prefHeight="93.0" prefWidth="398.0" text="TẠO THANH TOÁN PHÍ QUẢN LÝ VÀ PHÍ DỊCH VỤ HÀNG THÁNG" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+           <font>
+               <Font name="System Bold" size="24.0" />
+           </font>
+        </Label>
+    </AnchorPane>
+   <Button fx:id="btTao" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="500.0" stylesheets="@../views_styles.css" text="Tạo thanh toán" textFill="WHITE">
       <font>
-         <Font size="14.0" />
-      </font>
-   </Label>
-   <Label layoutX="32.0" layoutY="69.0" text="Chọn phí tạo thanh toán" />
-   <ChoiceBox fx:id="cbTenPhi" layoutX="237.0" layoutY="65.0" prefHeight="25.0" prefWidth="218.0" />
-   <Button fx:id="btTao" layoutX="204.0" layoutY="361.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="97.0" text="Tạo thanh toán" />
-   <TableView fx:id="tableView" layoutX="17.0" layoutY="110.0" prefHeight="224.0" prefWidth="472.0">
+         <Font name="System Bold" size="15.0" />
+      </font></Button>
+   <TableView fx:id="tableView" layoutX="50.0" layoutY="155.0" prefHeight="180.0" prefWidth="500.0">
      <columns>
-       <TableColumn fx:id="cSoPhong" prefWidth="196.0" text="Số phòng" />
-       <TableColumn fx:id="cSoTien" prefWidth="275.0" text="Số tiền phải đóng" />
+       <TableColumn fx:id="cSoPhong" prefWidth="216.0" text="Số phòng" />
+       <TableColumn fx:id="cSoTien" prefWidth="283.0" text="Số tiền phải đóng" />
      </columns>
    </TableView>
 </AnchorPane>
