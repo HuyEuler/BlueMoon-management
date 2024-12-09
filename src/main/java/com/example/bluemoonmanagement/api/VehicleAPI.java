@@ -155,5 +155,36 @@ public class VehicleAPI {
         return vehicles;
     }
 
+    // Phương thức trả về tất cả vehicle của 1 resident
+    public static List<Vehicle> getAllVehiclesByResidentId(int residentId) {
+        List<Vehicle> vehicles = new ArrayList<>();
+        String query = """
+            SELECT v.vehicleId, v.residentId, v.type, v.licensePlate 
+            FROM Vehicle v 
+            WHERE v.residentId = ?
+        """;
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, residentId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Vehicle vehicle = new Vehicle(
+                        rs.getInt("vehicleId"),
+                        rs.getInt("residentId"),
+                        rs.getString("type"),
+                        rs.getString("licensePlate")
+                );
+                vehicles.add(vehicle);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return vehicles;
+    }
+
 }
 

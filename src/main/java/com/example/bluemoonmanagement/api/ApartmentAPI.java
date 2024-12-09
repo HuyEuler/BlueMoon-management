@@ -120,6 +120,10 @@ public class ApartmentAPI {
         String query = "DELETE FROM Apartment WHERE apartmentId = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
+            List<Resident> residents = getResidentsFromApartmentId(id);
+            for(Resident resident : residents){
+                ResidentAPI.deleteResidentById(resident.getResidentId(), "Phá dỡ căn hộ");
+            }
             stmt.setInt(1, id);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
