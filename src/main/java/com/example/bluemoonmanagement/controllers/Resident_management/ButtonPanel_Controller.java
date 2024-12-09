@@ -843,8 +843,11 @@ public class ButtonPanel_Controller {
 
             DataManager dataManager = DataManager.getInstance();
             dataManager.setApartmentID(id);
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_activity.fxml"));
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/resident_management/show_activity.fxml"));
+
             Scene scene = new Scene(fxmlLoader.load());
+
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Apartment Management System");
@@ -852,7 +855,12 @@ public class ButtonPanel_Controller {
             stage.showAndWait();
         }
         catch (Exception e) {
-            System.out.println("Error");
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Không thể mở giao diện");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
     }
 
@@ -876,7 +884,7 @@ public class ButtonPanel_Controller {
             DataManager dataManager = DataManager.getInstance();
             dataManager.setApartmentID(id);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/views/resident_management/show_owner.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/resident_management/show_owner.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);

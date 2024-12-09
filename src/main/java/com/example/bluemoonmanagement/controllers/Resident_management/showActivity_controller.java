@@ -1,6 +1,7 @@
 package com.example.bluemoonmanagement.controllers.Resident_management;
 
 import com.example.bluemoonmanagement.models.Activity;
+import com.example.bluemoonmanagement.models.Apartment;
 import com.example.bluemoonmanagement.models.Resident;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import java.util.Objects;
 import static com.example.bluemoonmanagement.api.ActivityAPI.getAllActivityOfResident;
 import static com.example.bluemoonmanagement.api.ApartmentAPI.getApartmentById;
 import static com.example.bluemoonmanagement.api.ResidentAPI.getResidentById;
+import static java.util.Objects.requireNonNull;
 
 public class showActivity_controller {
     @FXML
@@ -59,8 +61,9 @@ public class showActivity_controller {
         tNumberPhone.setText(resident.getPhoneNumber());
         tBirthday.setText(resident.getBirthday());
         tGender.setText(!Objects.equals(resident.getGender(), "Male") ? "Nam" : "Nữ");
-        tNumberApartment.setText(Objects.requireNonNull(getApartmentById(id)).getRoom());
         tRelationship.setText(resident.getRelationshipWithOwner());
+        tNumberApartment.setText((requireNonNull(getApartmentById(resident.getApartmentId()))).getRoom());
+
 
     }
 
