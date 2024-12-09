@@ -431,6 +431,10 @@ public class ButtonPanel_Controller {
                 residentList.removeIf(resident -> resident.getApartmentId() == selectedApartment.getApartmentId());
                 observableResidentList.setAll(residentList);
                 tableAddResident.refresh();
+                updatePermanentCount();
+                updateTemporaryCount();
+                updateAbsentCount();
+                updateSumOfResident();
 
                 vehicleList.removeIf(vehicle -> {
                     Resident resident = ResidentAPI.getResidentById(vehicle.getResidentId());
@@ -439,6 +443,10 @@ public class ButtonPanel_Controller {
 
                 observableVehicleList.setAll(vehicleList);
                 tableAddVehicle.refresh();
+                updateCarCount();
+                updateBicycleCount();
+                updateMotorbikeCount();
+                updateỌtherTransportCount();
 
                 ApartmentAPI.deleteApartment(selectedApartment.getApartmentId());
 
@@ -729,6 +737,11 @@ public class ButtonPanel_Controller {
                     vehicleList.removeAll(allVehicleOwnedByTheDeletedResident);
                     observableVehicleList.setAll(vehicleList);
                     tableAddVehicle.refresh();
+
+                    updateCarCount();
+                    updateBicycleCount();
+                    updateMotorbikeCount();
+                    updateỌtherTransportCount();
                 }
 
 
