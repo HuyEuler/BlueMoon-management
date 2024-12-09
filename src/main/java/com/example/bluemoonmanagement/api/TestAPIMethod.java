@@ -106,7 +106,7 @@ public class TestAPIMethod {
 //        System.out.println(vehicle.toString());
 
 //              Thêm 1 vehicle mới
-//        VehicleAPI.addVehicle(5, "Xe máy", "29H2-439.37");
+//        VehicleAPI.addVehicle(1, "Xe máy", "29H2-439.37");
 
 //              Chỉnh sửa thông tin vehicle
 //        VehicleAPI.editVehicle(3, 5, "Xe đạp", null);
@@ -130,6 +130,11 @@ public class TestAPIMethod {
 //        for(Vehicle vehicle : vehicles){
 //            System.out.println(vehicle.toString());
 //        }
+
+        List<Vehicle> vehicles = VehicleAPI.getAllVehiclesByResidentId(1);
+        for(Vehicle vehicle : vehicles){
+            System.out.println(vehicle.toString());
+        }
 
 
         // ***********************************************************************

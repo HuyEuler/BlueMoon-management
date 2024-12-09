@@ -47,7 +47,6 @@ public class ButtonPanel_Controller {
     private Button addApartmentButton, editApartmentButton, deleteApartmentButton, showOwnerButton;
 
     private List<Apartment> apartmentList = ApartmentAPI.getAllApartment();
-    private List<Apartment> apartmentListToGetIndex = new ArrayList<>(apartmentList);
     private FilteredList<Apartment> filteredApartmentList;
     ObservableList<Apartment> observableApartmentList = FXCollections.observableArrayList(apartmentList);
 
@@ -293,10 +292,7 @@ public class ButtonPanel_Controller {
             AnchorPane root = loader.load();
             AddApartment_Controller controller = loader.getController();
 
-//            List<Integer> existingEntries = apartmentListToGetIndex.stream()
-//                    .map(Apartment::getApartmentId)
-//                    .toList();
-//            controller.setExistingEntries(existingEntries);
+            controller.setExistingApartments(apartmentList);
 
             Stage stage = new Stage();
             stage.setTitle("Thêm căn hộ");
@@ -308,20 +304,10 @@ public class ButtonPanel_Controller {
 
             if (newApartment != null) {
 
-                boolean roomExists = apartmentList.stream()
-                        .anyMatch(apartment -> apartment.getRoom().equalsIgnoreCase(newApartment.getRoom()));
-                if (roomExists) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Lỗi");
-                    alert.setHeaderText("Phòng đã tồn tại");
-                    alert.setContentText("Phòng đang muốn thêm đã tồn tại. Hãy thêm một phòng khác.");
-                    alert.showAndWait();
-                } else {
-                    apartmentList.add(newApartment);
-                    //apartmentListToGetIndex.add(newApartment);
-                    observableApartmentList.setAll(apartmentList);
-                    tableAddApartment.refresh();
-                }
+                apartmentList.add(newApartment);
+                observableApartmentList.setAll(apartmentList);
+                tableAddApartment.refresh();
+
             }
 
         } catch (Exception e) {
@@ -441,6 +427,26 @@ public class ButtonPanel_Controller {
                 apartmentList.remove(selectedApartment);
                 observableApartmentList.remove(selectedApartment);
                 tableAddApartment.refresh();
+
+                residentList.removeIf(resident -> resident.getApartmentId() == selectedApartment.getApartmentId());
+                observableResidentList.setAll(residentList);
+                tableAddResident.refresh();
+                updatePermanentCount();
+                updateTemporaryCount();
+                updateAbsentCount();
+                updateSumOfResident();
+
+                vehicleList.removeIf(vehicle -> {
+                    Resident resident = ResidentAPI.getResidentById(vehicle.getResidentId());
+                    return resident != null && resident.getApartmentId() == selectedApartment.getApartmentId();
+                });
+
+                observableVehicleList.setAll(vehicleList);
+                tableAddVehicle.refresh();
+                updateCarCount();
+                updateBicycleCount();
+                updateMotorbikeCount();
+                updateỌtherTransportCount();
 
                 ApartmentAPI.deleteApartment(selectedApartment.getApartmentId());
 
@@ -731,6 +737,11 @@ public class ButtonPanel_Controller {
                     vehicleList.removeAll(allVehicleOwnedByTheDeletedResident);
                     observableVehicleList.setAll(vehicleList);
                     tableAddVehicle.refresh();
+
+                    updateCarCount();
+                    updateBicycleCount();
+                    updateMotorbikeCount();
+                    updateỌtherTransportCount();
                 }
 
 

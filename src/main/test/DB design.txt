@@ -4,39 +4,40 @@
 
 Table User{
   userId int [primary key, increment]
-  name nvarchar(50)
-  birthday date
-  phoneNumber nvarchar(12)
+  name nvarchar(50) [not null]
+  birthday date [not null]
+  phoneNumber nvarchar(12) [not null]
   image varbinary(MAX)
   address nvarchar(100)
 }
 
 Table Login{
   userId int [primary key, unique]
-  username varchar(50)
-  password varchar(50)
+  username varchar(50) [not null]
+  password varchar(50) [not null]
 }
 
 Ref : Login.userId > User.userId
 
 Table Resident {
   residentId int [primary key, increment]
-  apartmentId int
-  name nvarchar(50)
-  birthday date
+  apartmentId int [not null]
+  name nvarchar(50) [not null]
+  birthday date [not null]
   gender bit
-  phoneNumber nvarchar(12)
-  nationallity nvarchar(50)
-  relationshipWithOwner nvarchar(50)
-  status int
+  phoneNumber nvarchar(12) [not null]
+  nationality nvarchar(50)
+  isOwner bit [not null]
+  relationshipWithOwner nvarchar(50) [not null]
+  status int [not null]
 }
 
 Table Apartment{
   apartmentId int [primary key, increment]
-  ownerId int
-  area float
-  floor int
-  room nvarchar(20)
+  ownerId int [not null]
+  area float [not null]
+  floor int [not null]
+  room nvarchar(20) [not null]
 }
 
 Ref : Apartment.ownerId > Resident.residentId
@@ -44,10 +45,10 @@ Ref : Resident.apartmentId > Apartment.apartmentId
 
 Table Activity{
   activityId int [primary key, increment]
-  residentId int
-  status int
-  timeIn date
-  timeOut date
+  residentId int [not null]
+  status int [not null]
+  timeIn date [not null]
+  timeOut date [not null]
   note nvarchar(500)
 }
 
@@ -77,9 +78,9 @@ Ref : Payment.feeId > Fee.feeId
 
 Table Vehicle{
   vehicleId int [primary key, increment]
-  residentId int
-  type nvarchar(30)
-  licensePlate varchar(30)
+  residentId int [not null]
+  type nvarchar(30) [not null]
+  licensePlate varchar(30) [not null]
 }
 Ref : Vehicle.residentId > Resident.residentId
 

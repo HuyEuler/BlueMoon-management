@@ -138,10 +138,10 @@ public class Resident {
     }
     public String getStatusDescription(int status) {
         return switch (status) {
-            case 0 -> "Chuyển khỏi chung cư";
-            case 1 -> "Đăng ký thường trú tại chung cư";
-            case 2 -> "Đăng ký tạm trú tại chung cư";
-            case 3 -> "Đăng ký tạm vắng";
+            case 0 -> "Đã rời đi";
+            case 1 -> "Thường trú";
+            case 2 -> "Tạm trú";
+            case 3 -> "Tạm vắng";
             default -> "Unknown";
         };
     }

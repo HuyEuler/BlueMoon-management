@@ -29,7 +29,7 @@ VALUES
 -- Chèn dữ liệu vào bảng Login
 INSERT INTO `Login` (userId, username, password)
 VALUES
-  (1, 'admin', 'password123'),
+  (1, 'admin', 'admin'),
   (2, '', '');
 
 -- Chèn dữ liệu vào bảng Resident trước

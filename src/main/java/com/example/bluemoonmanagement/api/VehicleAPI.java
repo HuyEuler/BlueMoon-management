@@ -155,7 +155,7 @@ public class VehicleAPI {
         return vehicles;
     }
 
-
+    // Phương thức trả về tất cả vehicle của 1 resident
     public static List<Vehicle> getAllVehiclesByResidentId(int residentId) {
         List<Vehicle> vehicles = new ArrayList<>();
         String query = """

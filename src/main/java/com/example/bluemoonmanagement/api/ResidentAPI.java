@@ -296,7 +296,7 @@ public class ResidentAPI {
     // Xóa Resident theo id
     // Trường note : Ghi chú (nếu có) khi rời chung cư, nếu không có điền null
     public static boolean deleteResidentById(int id, String note) {
-        String query = "UPDATE Resident SET status = 0 WHERE residentId = ?";
+        String query = "UPDATE Resident SET status = 0, apartmentId = NULL WHERE residentId = ?";
         String queryDeleteVehicle = "DELETE FROM Vehicle WHERE residentId = ?";
         Resident deletedResident = getResidentById(id);
         // Lấy ngày hiện tại
