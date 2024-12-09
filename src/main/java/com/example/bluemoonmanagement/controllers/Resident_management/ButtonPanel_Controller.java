@@ -394,6 +394,9 @@ public class ButtonPanel_Controller {
                 tableAddResident.refresh();
             }
 
+            updateSumOfResident();
+            updatePermanentCount();
+
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
