@@ -95,8 +95,9 @@ public class EditResident_Controller {
         String status = residentStatus.getValue();
         String note = residentNote.getText();
 
-        if (room == null || name == null || dob == null || gender == null ||
-                phoneNumber == null || isOwner == null || status == null) {
+        if (room == null || room.isEmpty() || name == null || name.isEmpty() || dob == null || dob.isEmpty() ||
+                gender == null || gender.isEmpty() || phoneNumber == null || phoneNumber.isEmpty() ||
+                isOwner == null || isOwner.isEmpty() || status == null || status.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Lỗi", "Chỉ được bỏ trống 'Quốc tịch', 'Quan hệ với chủ hộ' và 'Lý do'.");
             return;
         }
