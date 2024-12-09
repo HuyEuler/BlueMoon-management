@@ -33,7 +33,7 @@ public class AddResident_Controller {
 
     private Resident newResident;
 
-//    public void setExistingEntries(List<String> existingEntries) {
+    //    public void setExistingEntries(List<String> existingEntries) {
 //        this.existingEntries = existingEntries;
 //    }
     public void setCurrentCount(int currentCount){
@@ -124,11 +124,15 @@ public class AddResident_Controller {
 
                 if (result.isPresent() && result.get() == buttonYes) {
                     ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
-                          nationality, relationship, true, statusInt, note);
+                            nationality, relationship, true, statusInt, note);
                 } else {
                     return;
                 }
 
+            } else {
+                ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
+                        nationality, relationship, true, statusInt, note);
+                ApartmentAPI.updateOwnerApartment(roomId, currentCount+1);
             }
         } else {
             ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,

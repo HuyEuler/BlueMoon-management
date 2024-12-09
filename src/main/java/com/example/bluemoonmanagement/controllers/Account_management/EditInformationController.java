@@ -25,22 +25,29 @@ public class EditInformationController {
     DataManager dataManager = DataManager.getInstance();
 
     public void onOk() {
-        System.out.println("OK");
-        String tenbql = TenBQL.getText();
-        String ngaysinh = NgaySinh.getValue().toString();
-        String sdt = SDT.getText();
-        String diachi = DiaChi.getText();
-        String password = Password.getText();
+        try {
+            String tenbql = TenBQL.getText();
+            String ngaysinh = NgaySinh.getValue().toString();
+            String sdt = SDT.getText();
+            String diachi = DiaChi.getText();
+            String password = Password.getText();
 
-        if (!Objects.equals(getPassword(USER.getId()), password)) {
-            showAlert("Error","Sai mật khẩu!");
-        } else if (updateUser(USER.getId(), tenbql, ngaysinh, sdt, diachi)){
-            dataManager.setUserName(tenbql);
-            dataManager.setUserBirthday(ngaysinh);
-            dataManager.setPhoneNumber(sdt);
-            dataManager.setAddress(diachi);
-            showAlert("Successful", "Cập nhập thông tin thành công!");
-            closeWindow();
+            if (tenbql == null || sdt == null || diachi == null) {
+                showAlert("Error", "Phải nhập đầy đủ thông tin");
+            }
+
+            if (!Objects.equals(getPassword(USER.getId()), password)) {
+                showAlert("Error", "Sai mật khẩu!");
+            } else if (updateUser(USER.getId(), tenbql, ngaysinh, sdt, diachi)) {
+                dataManager.setUserName(tenbql);
+                dataManager.setUserBirthday(ngaysinh);
+                dataManager.setPhoneNumber(sdt);
+                dataManager.setAddress(diachi);
+                showAlert("Successful", "Cập nhập thông tin thành công!");
+                closeWindow();
+            }
+        } catch (Exception e) {
+            showAlert("Error", "Phải nhập đầy đủ thông tin");
         }
     }
 

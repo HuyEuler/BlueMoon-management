@@ -19,22 +19,26 @@ public class EditAccountController {
     private Button okButton;
 
     public void onOk() {
-        System.out.println("OK");
-        String password = OldPassword.getText();
-        String newPassword = NewPassword.getText();
-        String rewritePassword = RewritePassword.getText();
+        try {
+            String password = OldPassword.getText();
+            String newPassword = NewPassword.getText();
+            String rewritePassword = RewritePassword.getText();
 
-        if (!Objects.equals(getPassword(USER.getId()), password)) {
-            showAlert("Error","Sai mật khẩu!");
-        } else if (newPassword == "" || rewritePassword == "") {
-            showAlert("Error","Mật khẩu mới không được để trống!");
-        } else if (!Objects.equals(newPassword, rewritePassword)) {
-            showAlert("Error","Mật khẩu nhập lại không trùng!");
-        } else if (Objects.equals(password, newPassword)) {
-            showAlert("Error","Mật khẩu mới không được trùng mật khẩu cũ!");
-        } else if (updateLogin(USER.getId(), getUsername(USER.getId()), newPassword)){
-            showAlert("Successful", "Cập nhập mật khẩu mới thành công!");
-            closeWindow();
+            if (!Objects.equals(getPassword(USER.getId()), password)) {
+                showAlert("Error", "Sai mật khẩu!");
+            } else if (newPassword == "" || rewritePassword == "") {
+                showAlert("Error", "Mật khẩu mới không được để trống!");
+            } else if (!Objects.equals(newPassword, rewritePassword)) {
+                showAlert("Error", "Mật khẩu nhập lại không trùng!");
+            } else if (Objects.equals(password, newPassword)) {
+                showAlert("Error", "Mật khẩu mới không được trùng mật khẩu cũ!");
+            } else if (updateLogin(USER.getId(), getUsername(USER.getId()), newPassword)) {
+                showAlert("Successful", "Cập nhập mật khẩu mới thành công!");
+                closeWindow();
+            }
+        }
+        catch (Exception e) {
+            showAlert("Error", "Không được để trống");
         }
     }
 
