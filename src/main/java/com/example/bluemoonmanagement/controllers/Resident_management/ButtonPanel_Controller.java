@@ -1,15 +1,12 @@
 package com.example.bluemoonmanagement.controllers.Resident_management;
-import com.example.bluemoonmanagement.MainApplication;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -589,9 +586,9 @@ public class ButtonPanel_Controller {
                     Apartment apartment = ApartmentAPI.getApartmentById(selectedResident.getApartmentId());
                     assert apartment != null;
                     int apartmentID = apartment.getApartmentId();
-                    int indexOfAartment = apartmentList.indexOf(apartment);
+                    int indexOfApartment = apartmentList.indexOf(apartment);
                     Apartment newApartment = null;
-                    //System.out.println("Index of apartment: " + indexOfAartment);
+                    //System.out.println("Index of apartment: " + indexOfApartment);
 
                     if (selectedResident.getIsOwner()) {
                         if (!updatedResident.getIsOwner()){
@@ -607,7 +604,7 @@ public class ButtonPanel_Controller {
                             ApartmentAPI.updateOwnerApartment(apartmentID, updatedResident.getResidentId());
                         }
                     }
-                    apartmentList.set(indexOfAartment, newApartment);
+                    apartmentList.set(indexOfApartment, newApartment);
                     observableApartmentList.setAll(apartmentList);
                     tableAddApartment.refresh();
 
@@ -900,6 +897,4 @@ public class ButtonPanel_Controller {
             alert.showAndWait();
         }
     }
-
-
 }
