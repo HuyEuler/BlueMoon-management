@@ -96,26 +96,31 @@ public class DeleteFeeController {
         }
     }
     private void deleteFee(ActionEvent event) {
-        if (selectedFeeId == -1) {
-            showAlert("Lỗi!!!", "Vui lòng chọn khoản phí cần xoá.");
-            return;
+        try {
+            if (selectedFeeId == -1) {
+                showAlert("Lỗi!!!", "Vui lòng chọn khoản phí cần xoá.");
+                return;
+            }
+            Alert confirmationAlert=new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Xác nhận xóa");
+            confirmationAlert.setHeaderText("Xoá khoản phí này?");
+            confirmationAlert.setContentText("Bạn có chắc chắn muốn xóa khoản phí này?");
+            if (confirmationAlert.showAndWait().orElse(null) != ButtonType.OK) {
+                return;
+            }
+            boolean isDeleted=FeeAPI.deleteFee(selectedFeeId);
+            if (isDeleted) {
+                Fee_Controller.getInstance().refreshFeeList();
+                showAlert("Xoá Thành công!", "Khoản phí đã được xóa thành công.");
+                clearFields();
+                loadFeeList();
+                selectedFeeId=-1;
+            } else {
+                showAlert("Lỗi!!!", "Không thể xóa khoản phí. Vui lòng thử lại.");
+            }
         }
-        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationAlert.setTitle("Xác nhận xóa");
-        confirmationAlert.setHeaderText("Xoá khoản phí này?");
-        confirmationAlert.setContentText("Bạn có chắc chắn muốn xóa khoản phí này?");
-        if (confirmationAlert.showAndWait().orElse(null) != ButtonType.OK) {
-            return;
-        }
-        boolean isDeleted = FeeAPI.deleteFee(selectedFeeId);
-        if (isDeleted) {
-            Fee_Controller.getInstance().refreshFeeList();
-            showAlert("Xoá Thành công!", "Khoản phí đã được xóa thành công.");
-            clearFields();
-            loadFeeList();
-            selectedFeeId = -1;
-        } else {
-            showAlert("Lỗi!!!", "Không thể xóa khoản phí. Vui lòng thử lại.");
+        catch (Exception e){
+            showAlert("Lỗi", "Vui lòng chọn đủ thông tin");
         }
     }
 

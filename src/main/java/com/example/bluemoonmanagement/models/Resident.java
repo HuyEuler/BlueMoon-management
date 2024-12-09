@@ -136,7 +136,7 @@ public class Resident {
                 ", status=" + getStatusDescription(status) +
                 '}';
     }
-    private String getStatusDescription(int status) {
+    public String getStatusDescription(int status) {
         return switch (status) {
             case 0 -> "Chuyển khỏi chung cư";
             case 1 -> "Đăng ký thường trú tại chung cư";
@@ -145,5 +145,22 @@ public class Resident {
             default -> "Unknown";
         };
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Resident other = (Resident) obj;
+
+        return this.residentId == other.getResidentId();
+    }
+    
 }
+
+
 

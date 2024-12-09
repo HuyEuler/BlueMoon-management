@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +16,7 @@
     <rowConstraints>
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
     </rowConstraints>
-    <TabPane blendMode="BLUE" depthTest="ENABLE" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="900.0" prefWidth="1600.0" rotateGraphic="true" stylesheets="@views_styles.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="500.0" tabMinHeight="50.0" tabMinWidth="150.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+    <TabPane blendMode="BLUE" depthTest="ENABLE" minHeight="500.0" minWidth="600.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="900.0" prefWidth="1600.0" rotateGraphic="true" stylesheets="@views_styles.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="500.0" tabMinHeight="50.0" tabMinWidth="200.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <Tab onSelectionChanged="#loadHome" text="Trang chủ">
             <GridPane prefHeight="850.0" prefWidth="1600.0">
                 <columnConstraints>
@@ -25,6 +26,7 @@
                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <fx:include fx:id="LoginTab" source="home/content.fxml" />
+            <Pane maxHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
             </GridPane>
         </Tab>
         <Tab onSelectionChanged="#loadResident" text="Quản lý cư dân">
@@ -40,16 +42,17 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="500.0" prefHeight="750.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <fx:include fx:id="ResidentTab" source="resident_management/content.fxml" GridPane.rowIndex="1" />
                     <Label text="Quản lý dân cư" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                         <font>
-                            <Font name="System Bold" size="54.0" />
+                            <Font name="System Bold" size="48.0" />
                         </font>
                     </Label>
                 </GridPane>
+            <Pane maxHeight="10.0" prefHeight="10.0" style="-fx-background-color: #FFFFFF;" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
             </GridPane>
         </Tab>
         <Tab onSelectionChanged="#loadFee" text="Quản lý phí thu">
@@ -58,12 +61,13 @@
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                 </columnConstraints>
                 <rowConstraints>
+               <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 </rowConstraints>
-                <GridPane>
+                <GridPane GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="300.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="800.0" prefWidth="1100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="300.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -75,11 +79,9 @@
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         </columnConstraints>
                         <rowConstraints>
-                            <RowConstraints maxHeight="105.0" minHeight="0.0" prefHeight="105.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="700.0" minHeight="300.0" prefHeight="650.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="0.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="0.0" prefHeight="130.0" vgrow="SOMETIMES" />
                         </rowConstraints>
-                        <fx:include fx:id="FeeTab_button_left" source="fee_management/button_panel_left.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <fx:include fx:id="FeeTab_button_left" source="fee_management/button_panel_left.fxml" GridPane.columnIndex="0" />
                     </GridPane>
                     <GridPane GridPane.columnIndex="2">
                         <columnConstraints>
@@ -88,13 +90,17 @@
                             <ColumnConstraints />
                         </columnConstraints>
                         <rowConstraints>
-                            <RowConstraints maxHeight="105.0" minHeight="0.0" prefHeight="105.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="700.0" minHeight="300.0" prefHeight="650.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="0.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="0.0" prefHeight="130.0" vgrow="SOMETIMES" />
                         </rowConstraints>
-                        <fx:include fx:id="FeeTab_button_right" source="fee_management/button_panel_right.fxml" GridPane.rowIndex="1" />
+                        <fx:include fx:id="FeeTab_button_right" source="fee_management/button_panel_right.fxml" />
                     </GridPane>
                 </GridPane>
+            <Pane maxHeight="10.0" prefHeight="10.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label text="Quản lý phí thu" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
             </GridPane>
         </Tab>
         <Tab onSelectionChanged="#loadAccount" text="Tài khoản">
@@ -123,6 +129,7 @@
                     <fx:include fx:id="AccountTab_content" source="account/content.fxml" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                     <fx:include fx:id="AccountTab_button" source="account/button_panel.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 </GridPane>
+            <Pane maxHeight="20.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" GridPane.valignment="TOP" />
             </GridPane>
         </Tab>
     </TabPane>

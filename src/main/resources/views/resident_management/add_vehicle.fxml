@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;"
+            stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bluemoonmanagement.controllers.Resident_management.AddVehicle_Controller">
+    <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0"
+                style="-fx-background-color: #809bce;">
+        <Label alignment="CENTER" layoutX="184.0" layoutY="18.0" text="THÊM PHƯƠNG TIỆN" textAlignment="CENTER"
+               textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="94.0" prefHeight="232.0" prefWidth="500.0"
+                style="-fx-background-color: #809bce;">
+        <TextField fx:id="vehicleLicense" layoutX="75.0" layoutY="180.0" prefWidth="350.0"/>
+
+        <Label layoutX="75.0" layoutY="160.0" text="Biển kiểm soát" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <ChoiceBox fx:id="vehicleType" layoutX="75.0" layoutY="130.0" prefWidth="350.0"/>
+
+        <Label layoutX="75.0" layoutY="110.0" text="Loại phương tiện" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="vehicleOwnerName" layoutX="75.0" layoutY="80.0" prefWidth="350.0"/>
+
+        <Label layoutX="75.0" layoutY="60.0" text="Tên chủ sở hữu" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <ChoiceBox fx:id="vehicleOwnerID" layoutX="75.0" layoutY="30.0" prefWidth="350.0"/>
+
+        <Label layoutX="75.0" layoutY="10.0" text="ID chủ sở hữu" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+
+    <Button layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="26.0"
+            prefWidth="230.0" text="Lưu" textFill="WHITE">
+        <font>
+        <Font name="System Bold" size="15.0"/>
+        </font>
+    </Button>
+    <Button layoutX="320.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0"
+            prefWidth="230.0" text="Hủy" textFill="WHITE">
+        <font>
+        <Font name="System Bold" size="15.0"/>
+        </font>
+    </Button>
+
+</AnchorPane>

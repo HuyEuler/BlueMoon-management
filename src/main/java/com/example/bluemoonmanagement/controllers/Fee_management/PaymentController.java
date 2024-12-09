@@ -53,28 +53,36 @@ public class PaymentController {
         cbSoPhong.setItems(apartmentNames);
     }
     private void updatePayment(ActionEvent event) {
-        Boolean updated=null;
-        if (selectPaymentID != -1) {
-            Payment payment = PaymentAPI.getPaymentById(selectPaymentID);
-            payment.setAmountPaid(payment.getAmountPaid() + Integer.parseInt(tfTienNop.getText()));
-            if (payment.getAmountPaid() == payment.getAmountDue()){
-                payment.setStatus(PaymentStatus.PAID);
+        try {
+            Boolean updated=null;
+            if (selectPaymentID == -1 || selectedApartmentID == -1) {
+                showAlert("Lỗi!!!", "Vui lòng chọn đủ thông tin.");
+                return;
             }
-            updated =PaymentAPI.updatePayment(payment);
+            if (selectPaymentID != -1) {
+                Payment payment=PaymentAPI.getPaymentById(selectPaymentID);
+                payment.setAmountPaid(payment.getAmountPaid() + Integer.parseInt(tfTienNop.getText()));
+                if (payment.getAmountPaid() >= payment.getAmountDue()) {
+                    payment.setStatus(PaymentStatus.PAID);
+                }
+                updated=PaymentAPI.updatePayment(payment);
+            } else {
+                Date currentDate=new Date();
+                Calendar calendar=Calendar.getInstance();
+                calendar.setTime(currentDate);
+                int month=calendar.get(Calendar.MONTH) + 1;
+                int year=calendar.get(Calendar.YEAR);
+                Payment payment=new Payment(selectedFeeID, selectedApartmentID, 0, Integer.parseInt(tfTienNop.getText()), currentDate, month, year, PaymentStatus.PAID);
+                updated=PaymentAPI.addPayment(payment);
+            }
+            if (updated) {
+                showAlert("Nộp phí thành công!", "Đã nộp thành công khoản phí.");
+            } else {
+                showAlert("Lỗi!!", "Có lỗi xảy ra.");
+            }
         }
-        else{
-            Date currentDate = new Date();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(currentDate);
-            int month = calendar.get(Calendar.MONTH) + 1;
-            int year = calendar.get(Calendar.YEAR);
-            Payment payment = new Payment(selectedFeeID, selectedApartmentID, 0, Integer.parseInt(tfTienNop.getText()) ,currentDate, month, year, PaymentStatus.PAID);
-            updated =PaymentAPI.addPayment(payment);
-        }
-        if (updated) {
-            showAlert("Nộp phí thành công!", "Đã nộp thành công khoản phí.");
-        } else {
-            showAlert("Lỗi!!","Có lỗi xảy ra.");
+        catch(Exception e){
+            showAlert("Đã xảy ra lỗi", "Vui lòng nhập số tiền nộp");
         }
     }
     private void loadPayment(){

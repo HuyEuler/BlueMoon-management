@@ -1,4 +1,4 @@
-package com.example.bluemoonmanagement.controllers;
+package com.example.bluemoonmanagement.controllers.Account_management;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

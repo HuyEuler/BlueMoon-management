@@ -64,5 +64,19 @@ public class Vehicle {
                 ", licensePlate='" + licensePlate + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Vehicle other = (Vehicle) obj;
+
+        return this.vehicleId == other.getVehicleId();
+    }
 }
 

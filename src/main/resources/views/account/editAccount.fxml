@@ -9,33 +9,33 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../views_styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Account_management.EditAccountController">
     <AnchorPane minHeight="70.0" minWidth="600.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #809bce;">
-        <Label alignment="CENTER" layoutX="122.0" layoutY="13.0" prefHeight="45.0" prefWidth="356.0" text="ĐỔI MẬT KHẨU" textAlignment="CENTER" textFill="WHITE">
+        <Label alignment="CENTER" layoutX="211.0" layoutY="18.0" text="ĐỔI MẬT KHẨU" textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
     </AnchorPane>
-    <AnchorPane layoutX="50.0" layoutY="125.0" minHeight="151.0" minWidth="500.0" opacity="0.9" prefHeight="151.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
-        <Label layoutX="102.0" layoutY="20.0" text="Mật khẩu cũ" textFill="WHITE">
+    <AnchorPane layoutX="50.0" layoutY="98.0" minHeight="151.0" minWidth="500.0" opacity="0.9" prefHeight="221.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
+        <Label layoutX="75.0" layoutY="19.0" text="Mật khẩu cũ" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="20.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <Label layoutX="87.0" layoutY="60.0" text="Mật khẩu mới" textFill="WHITE">
+        <Label layoutX="75.0" layoutY="81.0" text="Mật khẩu mới" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="20.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <Label layoutX="4.0" layoutY="100.0" text="Nhập lại mật khẩu mới" textFill="WHITE">
+        <Label layoutX="75.0" layoutY="145.0" text="Nhập lại mật khẩu mới" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="20.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="OldPassword" layoutX="230.0" layoutY="20.0" prefHeight="25.0" prefWidth="250.0" />
-        <PasswordField fx:id="NewPassword" layoutX="230.0" layoutY="60.0" prefHeight="25.0" prefWidth="250.0" />
-        <PasswordField fx:id="RewritePassword" layoutX="230.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" />
+        <PasswordField fx:id="OldPassword" layoutX="75.0" layoutY="40.0" prefHeight="25.0" prefWidth="350.0" />
+        <PasswordField fx:id="NewPassword" layoutX="75.0" layoutY="101.0" prefHeight="25.0" prefWidth="350.0" />
+        <PasswordField fx:id="RewritePassword" layoutX="75.0" layoutY="166.0" prefHeight="25.0" prefWidth="350.0" />
     </AnchorPane>
-    <Button fx:id="okButton" defaultButton="true" layoutX="50.0" layoutY="320.0" mnemonicParsing="false" onAction="#onOk" prefHeight="35.0" prefWidth="230.0" text="OK" textFill="WHITE">
+    <Button fx:id="okButton" defaultButton="true" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#onOk" prefHeight="35.0" prefWidth="230.0" text="OK" textFill="WHITE">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>
@@ -43,7 +43,7 @@
             <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Button layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="35.0" prefWidth="230.0" text="CANCEL" textFill="WHITE">
+    <Button layoutX="320.0" layoutY="350.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="35.0" prefWidth="230.0" text="CANCEL" textFill="WHITE">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>

@@ -1,5 +1,4 @@
 package com.example.bluemoonmanagement;
-import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 
 import javafx.application.Application;
@@ -9,8 +8,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-
+import com.example.bluemoonmanagement.controllers.Resident_management.ButtonPanel_Controller;
+import static com.example.bluemoonmanagement.common.GlobalVariable.*;
 
 public class MainApplication extends Application {
     @Override
@@ -22,7 +21,7 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:src/main/resources/images/hotel-icon.png"));
         stage.show();
-    }
+}
 
     public static void main(String[] args) {
         launch();

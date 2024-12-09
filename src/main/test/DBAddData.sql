@@ -29,7 +29,7 @@ VALUES
 -- Chèn dữ liệu vào bảng Login
 INSERT INTO `Login` (userId, username, password)
 VALUES
-  (1, 'admin', 'password123'),
+  (1, 'admin', 'admin'),
   (2, '', '');
 
 -- Chèn dữ liệu vào bảng Resident trước
@@ -54,13 +54,11 @@ VALUES
 INSERT INTO Fee (name, ratePerSquareMeter, isMandatory, feeType) VALUES
     ('Phí quản lý chung cư', 10000, TRUE, 'MANAGEMENT_FEE'),
     ('Phí đất đai nhà ở', 5000, TRUE, 'MANAGEMENT_FEE'),
-    ('Phí điện', 9000, TRUE, 'SERVICE_FEE'),
+    ('Phí điện', 0, TRUE, 'SERVICE_FEE'),
     ('Phí môi trường', 1650, FALSE, 'SERVICE_FEE'),
     ('Phí gửi ô tô', 1200000, FALSE, 'VEHICLE_FEE'),
     ('Phí gửi xe máy', 70000, FALSE, 'VEHICLE_FEE'),
-    ('Phí gửi xe đạp', 30000, FALSE, 'VEHICLE_FEE'),
-    ('Phí người nghèo', 0, FALSE, 'CONTRIBUTION_FEE');
-
+    ('Phí gửi xe đạp', 30000, FALSE, 'VEHICLE_FEE');
 
 -- Chèn dữ liệu vào bảng Payment
 INSERT INTO Payment (feeId, apartmentId, amountDue, amountPaid, paymentDate, payForMonth, payForYear, status) VALUES
