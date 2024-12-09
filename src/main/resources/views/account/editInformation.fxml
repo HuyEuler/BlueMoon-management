@@ -19,7 +19,7 @@
    </AnchorPane>
    <AnchorPane layoutX="50.0" layoutY="79.0" minHeight="200.0" minWidth="500.0" opacity="0.8" prefHeight="260.0" prefWidth="500.0" style="-fx-background-color: #809bce;">
       <TextField fx:id="TenBQL" layoutX="75.0" layoutY="25.0" prefHeight="25.0" prefWidth="350.0" />
-      <DatePicker fx:id="NgaySinh" layoutX="75.0" layoutY="75.0" prefHeight="25.0" prefWidth="350.0" />
+      <DatePicker fx:id="NgaySinh" editable="false" layoutX="75.0" layoutY="75.0" prefHeight="25.0" prefWidth="350.0" />
       <TextField fx:id="SDT" layoutX="75.0" layoutY="125.0" prefHeight="25.0" prefWidth="350.0" />
       <TextField fx:id="DiaChi" layoutX="75.0" layoutY="175.0" prefHeight="25.0" prefWidth="350.0" />
       <Label layoutX="74.0" layoutY="5.0" text="Đại diện ban quản lý" textFill="WHITE">

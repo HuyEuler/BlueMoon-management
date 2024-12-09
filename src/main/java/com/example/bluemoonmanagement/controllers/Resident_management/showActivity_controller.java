@@ -63,8 +63,6 @@ public class showActivity_controller {
         tGender.setText(!Objects.equals(resident.getGender(), "Male") ? "Nam" : "Nữ");
         tRelationship.setText(resident.getRelationshipWithOwner());
         tNumberApartment.setText((requireNonNull(getApartmentById(resident.getApartmentId()))).getRoom());
-
-
     }
 
     private void setTable() {

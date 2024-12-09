@@ -1,6 +1,7 @@
 package com.example.bluemoonmanagement.controllers.Resident_management;
 import com.example.bluemoonmanagement.api.ApartmentAPI;
 import com.example.bluemoonmanagement.api.ResidentAPI;
+import com.example.bluemoonmanagement.models.Apartment;
 import com.example.bluemoonmanagement.models.Resident;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class EditResident_Controller {
 
@@ -119,8 +121,36 @@ public class EditResident_Controller {
         updatedResident = new Resident(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"), phoneNumber,
                 nationality, relationship, isOwner.equals("Có"), statusInt);
 
-        ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
-        phoneNumber, nationality, relationship, isOwner.equals("Có"), statusInt, note);
+        if (isOwner.equals("Có")) {
+            Apartment roomOfResident = ApartmentAPI.getApartmentById(updatedResident.getApartmentId());
+            if (roomOfResident.getOwnerId() != null) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Cảnh báo");
+                alert.setHeaderText("Phòng này đang có chủ sở hữu");
+                alert.setContentText("Bạn có muốn thay thế chủ sở hữu mới không?");
+
+                ButtonType buttonYes = new ButtonType("Có");
+                ButtonType buttonNo = new ButtonType("Không", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == buttonYes) {
+                    ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
+                            phoneNumber, nationality, relationship, true, statusInt, note);
+                } else {
+                    return;
+                }
+
+            }
+        } else {
+            ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
+                    phoneNumber, nationality, relationship, false, statusInt, note);
+        }
+
+//        ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
+//        phoneNumber, nationality, relationship, isOwner.equals("Có"), statusInt, note);
 
         Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();

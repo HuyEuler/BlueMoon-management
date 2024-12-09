@@ -26,10 +26,6 @@ public class EditApartment_Controller {
         this.currentOwnerId = currentOwnerId;
     }
 
-    public Integer getCurrentOwnerId(){
-        return currentOwnerId;
-    }
-
     public Resident getResidentNeedToBeAdded(){
         return residentNeedToBeAdded;
     }
@@ -46,21 +42,8 @@ public class EditApartment_Controller {
         roomOwnerID.getItems().addAll("A: Cư dân mới");
 
         for (Resident resident : ResidentAPI.getAllResidents()) {
-            roomOwnerID.getItems().add(String.valueOf(resident.getResidentId()) + ": " + resident.getName());
+            roomOwnerID.getItems().add(resident.getResidentId() + ": " + resident.getName());
         }
-
-//        roomOwnerID.setOnAction(event -> {
-//            String selectedId = roomOwnerID.getValue().substring(0, 1);
-//            if (!selectedId.equals("N")) {
-//                Resident resident = ResidentAPI.getResidentById(Integer.parseInt(selectedId));
-//                if (resident != null) {
-//                    roomOwnerName.setText(resident.getName());
-//                }
-//            } else {
-//                roomOwnerName.setText("");
-//            }
-//            roomOwnerName.setEditable(false);
-//        });
 
         roomOwnerID.setOnAction(event -> {
             String selectedId = roomOwnerID.getValue().substring(0, 1);
@@ -76,6 +59,8 @@ public class EditApartment_Controller {
                 roomOwnerName.setText("");
                 if (selectedId.equals("N")){
                     roomOwnerName.setEditable(false);
+                } else {
+                    roomOwnerName.setEditable(true);
                 }
             }
         });
@@ -128,24 +113,23 @@ public class EditApartment_Controller {
             residentNeedToBeUpdated = ResidentAPI.getResidentById(currentOwnerId);
             if (residentNeedToBeUpdated != null){
                 residentNeedToBeUpdated.setIsOwner(false);
+                ResidentAPI.updateResidentById(currentOwnerId, apartmentId,
+                        residentNeedToBeUpdated.getName(),
+                        residentNeedToBeUpdated.getBirthday(), residentNeedToBeUpdated.getGender(),
+                        residentNeedToBeUpdated.getPhoneNumber(), residentNeedToBeUpdated.getNationality(),
+                        residentNeedToBeUpdated.getRelationshipWithOwner(), false,
+                        residentNeedToBeUpdated.getStatus(), null);
             }
-
-            ResidentAPI.updateResidentById(currentOwnerId, apartmentId,
-                    residentNeedToBeUpdated.getName(),
-                    residentNeedToBeUpdated.getBirthday(), residentNeedToBeUpdated.getGender(),
-                    residentNeedToBeUpdated.getPhoneNumber(), residentNeedToBeUpdated.getNationality(),
-                    residentNeedToBeUpdated.getRelationshipWithOwner(), false,
-                    residentNeedToBeUpdated.getStatus(), null);
 
         }
         else if (index.equals("A")){
             ownerID = ResidentAPI.getAllDataFromResidentTableInDB().size()+1;
 
-            ResidentAPI.addResident(room, roomOwnerName.getText(), null, true,
+            residentNeedToBeAdded = ResidentAPI.addResident(room, roomOwnerName.getText(), null, true,
             null, null, "Chủ hộ", true, 1, null);
 
-            residentNeedToBeAdded = new Resident(ownerID, apartmentId, roomOwnerName.getText(), null, true, null,
-                    null, "Chủ hộ", true, 1);
+//            residentNeedToBeAdded = new Resident(ownerID, apartmentId, roomOwnerName.getText(), null, true, null,
+//                    null, "Chủ hộ", true, 1);
 
         }
         else {
