@@ -1,7 +1,6 @@
 package com.example.bluemoonmanagement.controllers.Resident_management;
 
 import com.example.bluemoonmanagement.models.Activity;
-import com.example.bluemoonmanagement.models.Apartment;
 import com.example.bluemoonmanagement.models.Resident;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -23,13 +22,9 @@ public class showActivity_controller {
     @FXML
     private TableView<Activity> tableView;
     @FXML
-    private TableColumn<Activity, String> cMa;
-    @FXML
     private TableColumn<Activity, String> cTrangThai;
     @FXML
     private TableColumn<Activity, String> cNgayVao;
-    @FXML
-    private TableColumn<Activity, String> cNgayRa;
     @FXML
     private TableColumn<Activity, String> cGhiChu;
     @FXML
@@ -67,10 +62,7 @@ public class showActivity_controller {
 
     private void setTable() {
         List<Activity> activityList = getAllActivityOfResident(id);
-
-        cMa.setCellValueFactory(new PropertyValueFactory<>("activityId"));
         cTrangThai.setCellValueFactory(new PropertyValueFactory<>("status"));
-
         cTrangThai.setCellValueFactory(cellData -> {
             int status = cellData.getValue().getStatus();
             String statusText = switch (status) {
@@ -82,11 +74,8 @@ public class showActivity_controller {
             };
             return new SimpleStringProperty(statusText);
         });
-
-        cNgayVao.setCellValueFactory(new PropertyValueFactory<>("timeIn"));
-        cNgayRa.setCellValueFactory(new PropertyValueFactory<>("timeOut"));
+        cNgayVao.setCellValueFactory(new PropertyValueFactory<>("timeOut"));
         cGhiChu.setCellValueFactory(new PropertyValueFactory<>("note"));
-
         tableView.setItems(FXCollections.observableArrayList(activityList));
     }
 }
