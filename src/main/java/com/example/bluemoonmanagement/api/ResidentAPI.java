@@ -74,7 +74,7 @@ public class ResidentAPI {
                             relationshipWithOwner, isOwner, status);
 
                     // Thêm sự kiện người dùng đăng ký thường trú / tạm trú vào Activity
-                    ActivityAPI.addActivity(residentId, status, formattedDate, null, note);
+                    ActivityAPI.addActivity(residentId, status, null, formattedDate, note);
                     if(isOwner){
                         ApartmentAPI.updateOwnerApartment(apartmentId, residentId);
                     }
@@ -123,7 +123,7 @@ public class ResidentAPI {
                             relationshipWithOwner, isOwner, status);
 
                     // Thêm sự kiện người dùng đăng ký thường trú / tạm trú vào Activity
-                    ActivityAPI.addActivity(residentId, status, formattedDate, null, note);
+                    ActivityAPI.addActivity(residentId, status, null, formattedDate, note);
                     if(isOwner){
                         ApartmentAPI.updateOwnerApartment(apartmentId, residentId);
                     }
