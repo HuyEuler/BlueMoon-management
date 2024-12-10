@@ -175,6 +175,7 @@ UPDATE Resident SET apartmentId = 12 WHERE residentId = 57;
 -- Chèn dữ liệu vào bảng Activity
 INSERT INTO Activity (residentId, status, timeIn, timeOut, note) VALUES
     (1, 0, '2020-01-01', '2020-01-10', 'Du lịch nước ngoài'),
+    (1, 0, '2020-01-01', '2020-01-10', 'Du lịch nước ngoài'),
     (1, 0, '2020-01-15', '2020-05-25', 'Đi công tác'),
     (1, 0, '2020-05-26', '2024-01-20', 'Đi làm xa'),
     (1, 1, '2024-01-25', NULL, 'Cư trú tại căn hộ'),

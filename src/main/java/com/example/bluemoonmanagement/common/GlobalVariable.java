@@ -10,7 +10,6 @@ public class GlobalVariable {
     public static Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
     public static double screenWidth = screenBounds.getWidth() * 0.8;
     public static double screenHeight = screenBounds.getHeight() * 0.8;
-
     public static User USER = getUser(1);
 
 }
