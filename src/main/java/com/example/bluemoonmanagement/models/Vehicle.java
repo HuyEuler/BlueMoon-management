@@ -76,7 +76,7 @@ public class Vehicle {
 
         Vehicle other = (Vehicle) obj;
 
-        return this.vehicleId == other.getVehicleId();
+        return this.licensePlate.equals(other.getLicensePlate());
     }
 }
 
