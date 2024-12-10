@@ -11,6 +11,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 public class EditResident_Controller {
 
     @FXML private ChoiceBox<String> residentRoom;
@@ -167,7 +172,24 @@ public class EditResident_Controller {
     private void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
-        alert.setContentText(content);
+
+        TextFlow textFlow = new TextFlow();
+
+        Text normalText1 = new Text("Chỉ được bỏ trống ");
+        Text boldText1 = new Text("Quốc tịch");
+        boldText1.setStyle("-fx-font-weight: bold;");
+        Text normalText2 = new Text(", ");
+        Text boldText2 = new Text("Quan hệ với chủ hộ");
+        boldText2.setStyle("-fx-font-weight: bold;");
+        Text normalText3 = new Text(", và ");
+        Text boldText3 = new Text("Lý do");
+        boldText3.setStyle("-fx-font-weight: bold;");
+        Text normalText4 = new Text(".");
+
+        textFlow.getChildren().addAll(normalText1, boldText1, normalText2, boldText2, normalText3, boldText3, normalText4);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setContent(textFlow);
+
         alert.showAndWait();
     }
 }
