@@ -152,6 +152,7 @@ public class ButtonPanel_Controller {
                 cellData -> {
                     int roomId = cellData.getValue().getApartmentId();
                     Apartment apartment = ApartmentAPI.getApartmentById(roomId);
+                    assert apartment != null;
                     String roomLabel = apartment.getRoom();
                     return new SimpleStringProperty(roomLabel);
                 }

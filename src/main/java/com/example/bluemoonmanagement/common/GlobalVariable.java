@@ -8,8 +8,8 @@ import static com.example.bluemoonmanagement.api.UserAPI.getUser;
 
 public class GlobalVariable {
     public static Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-    public static double screenWidth = screenBounds.getWidth() * 1;
-    public static double screenHeight = screenBounds.getHeight() * 1;
+    public static double screenWidth = screenBounds.getWidth() * 0.8;
+    public static double screenHeight = screenBounds.getHeight() * 0.8;
 
     public static User USER = getUser(1);
 
