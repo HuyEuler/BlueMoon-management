@@ -10,6 +10,11 @@ import com.example.bluemoonmanagement.api.ResidentAPI;
 
 import java.util.List;
 import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 
 public class AddResident_Controller {
 
@@ -24,7 +29,6 @@ public class AddResident_Controller {
     @FXML private ChoiceBox<String> residentStatus;
     @FXML private TextArea residentNote;
 
-    //private List<String> existingEntries; // To check for duplicates
     private List<String> availableRooms; // Rooms from apartmentList
     private int currentCount;
 
@@ -33,9 +37,6 @@ public class AddResident_Controller {
 
     private Resident newResident;
 
-    //    public void setExistingEntries(List<String> existingEntries) {
-//        this.existingEntries = existingEntries;
-//    }
     public void setCurrentCount(int currentCount){
         this.currentCount = currentCount;
     }
@@ -125,7 +126,7 @@ public class AddResident_Controller {
 
                 if (result.isPresent() && result.get() == buttonYes) {
                     ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
-                            nationality, relationship, true, statusInt, note);
+                          nationality, relationship, true, statusInt, note);
                 } else {
                     return;
                 }
@@ -139,11 +140,6 @@ public class AddResident_Controller {
             ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
                     nationality, relationship, false, statusInt, note);
         }
-
-//        ResidentAPI.addResident(room, name, dob, gender.equals("Nam"), phoneNumber,
-//                nationality, relationship, isOwner.equals("Có"),
-//                statusInt,
-//                note);
 
         Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
@@ -160,7 +156,24 @@ public class AddResident_Controller {
     private void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
-        alert.setContentText(content);
+
+        TextFlow textFlow = new TextFlow();
+
+        Text normalText1 = new Text("Chỉ được bỏ trống ");
+        Text boldText1 = new Text("Quốc tịch");
+        boldText1.setStyle("-fx-font-weight: bold;");
+        Text normalText2 = new Text(", ");
+        Text boldText2 = new Text("Quan hệ với chủ hộ");
+        boldText2.setStyle("-fx-font-weight: bold;");
+        Text normalText3 = new Text(", và ");
+        Text boldText3 = new Text("Lý do");
+        boldText3.setStyle("-fx-font-weight: bold;");
+        Text normalText4 = new Text(".");
+
+        textFlow.getChildren().addAll(normalText1, boldText1, normalText2, boldText2, normalText3, boldText3, normalText4);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setContent(textFlow);
+
         alert.showAndWait();
     }
 }

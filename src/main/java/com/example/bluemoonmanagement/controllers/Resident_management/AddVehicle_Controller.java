@@ -1,5 +1,6 @@
 package com.example.bluemoonmanagement.controllers.Resident_management;
 
+import com.example.bluemoonmanagement.api.ApartmentAPI;
 import com.example.bluemoonmanagement.api.VehicleAPI;
 import com.example.bluemoonmanagement.models.Resident;
 import com.example.bluemoonmanagement.models.Vehicle;
@@ -21,12 +22,12 @@ public class AddVehicle_Controller {
     @FXML private TextField vehicleLicense;
 
     private Vehicle vehicle;
-//    private List<Integer> existingVehicles; // To check for duplicates
-//
-//
-//    public void setExistingEntries(List<Integer> existingVehicles) {
-//        this.existingVehicles = existingVehicles;
-//    }
+    private List<Vehicle> existingVehicles; // To check for duplicates
+
+
+    public void setExistingVehicles(List<Vehicle> existingVehicles) {
+        this.existingVehicles = existingVehicles;
+    }
 
     public Vehicle getNewVehicle(){
         return vehicle;
@@ -64,12 +65,27 @@ public class AddVehicle_Controller {
             return;
         }
 
-        int residentId = parseNumber(vehicleOwnerID.getValue());
+        int residentId = parseNumber(resID);
 
-        VehicleAPI.addVehicle(residentId, type, licensePlate);
-        List<Vehicle> veh = VehicleAPI.getAllVehicles();
-        int idOfNewAddedVehicle = veh.getLast().getVehicleId();
-        vehicle = new Vehicle(idOfNewAddedVehicle, residentId, type, licensePlate);
+        if (existingVehicles.isEmpty()) {
+            VehicleAPI.addVehicle(residentId, type, licensePlate);
+            List<Vehicle> veh = VehicleAPI.getAllVehicles();
+            int idOfNewAddedVehicle = veh.getLast().getVehicleId();
+            vehicle = new Vehicle(idOfNewAddedVehicle, residentId, type, licensePlate);
+        } else {
+            boolean vehicleExists = existingVehicles.stream()
+                    .anyMatch(vehicle -> vehicle.getLicensePlate().equalsIgnoreCase(licensePlate));
+
+            if (vehicleExists) {
+                showAlert(Alert.AlertType.ERROR, "Lỗi", "Phương tiện đang muốn thêm đã tồn tại. Hãy thêm một phương tiện khác!");
+                return;
+            } else {
+                VehicleAPI.addVehicle(residentId, type, licensePlate);
+                List<Vehicle> veh = VehicleAPI.getAllVehicles();
+                int idOfNewAddedVehicle = veh.getLast().getVehicleId();
+                vehicle = new Vehicle(idOfNewAddedVehicle, residentId, type, licensePlate);
+            }
+        }
 
         Stage stage = (Stage) vehicleOwnerName.getScene().getWindow();
         stage.close();

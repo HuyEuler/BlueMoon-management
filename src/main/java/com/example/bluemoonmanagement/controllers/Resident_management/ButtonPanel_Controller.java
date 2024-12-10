@@ -5,12 +5,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -21,15 +18,11 @@ import com.example.bluemoonmanagement.api.ApartmentAPI;
 import com.example.bluemoonmanagement.api.ResidentAPI;
 import com.example.bluemoonmanagement.api.VehicleAPI;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ButtonPanel_Controller {
     // ==================================================================
@@ -94,6 +87,8 @@ public class ButtonPanel_Controller {
         // ================================================================
         // BẮT ĐẦU BẢNG QUẢN LÝ CĂN HỘ ====================================
 
+        tableAddApartment.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         filteredApartmentList = new FilteredList<>(observableApartmentList, p -> true);
         tableAddApartment.setItems(filteredApartmentList);
 
@@ -140,7 +135,7 @@ public class ButtonPanel_Controller {
             }
         });
 
-        deleteApartmentButton.setOnAction(event -> deleteSelectedApartment());
+        deleteApartmentButton.setOnAction(event -> deleteSelectedApartments());
         addApartmentButton.setOnAction(event -> openAddApartmentWindow());
         editApartmentButton.setOnAction(event -> openEditApartmentWindow());
         showActivityButton.setOnAction(event -> showActivityByID());
@@ -149,6 +144,7 @@ public class ButtonPanel_Controller {
         // ================================================================
         // BẮT ĐẦU BẢNG QUẢN LÝ DÂN CƯ ====================================
 
+        tableAddResident.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         filteredResidentList = new FilteredList<>(observableResidentList, p -> true);
         tableAddResident.setItems(filteredResidentList);
 
@@ -192,7 +188,7 @@ public class ButtonPanel_Controller {
         updateSumOfResident();
 
 
-        deleteResidentButton.setOnAction(event -> deleteSelectedResident());
+        deleteResidentButton.setOnAction(event -> deleteSelectedResidents());
         addResidentButton.setOnAction(event -> openAddResidentWindow());
         editResidentButton.setOnAction(event -> openEditResidentWindow());
 
@@ -227,11 +223,11 @@ public class ButtonPanel_Controller {
 
         // =====================================================================
         // BẢNG QUẢN LÝ PHƯƠNG TIỆN
-
+        tableAddVehicle.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         filteredVehicleList = new FilteredList<>(observableVehicleList, p -> true);
         tableAddVehicle.setItems(filteredVehicleList);
 
-        deleteVehicleButton.setOnAction(event -> deleteSelectedVehicle());
+        deleteVehicleButton.setOnAction(event -> deleteSelectedVehicles());
         addVehicleButton.setOnAction(event -> openAddVehicleWindow());
 
         vehicleOwnerNameColumn.setCellValueFactory(cellData -> {
@@ -282,7 +278,7 @@ public class ButtonPanel_Controller {
         updateCarCount();
         updateBicycleCount();
         updateMotorbikeCount();
-        updateỌtherTransportCount();
+        updateOtherTransportCount();
 
     }
 
@@ -394,6 +390,9 @@ public class ButtonPanel_Controller {
                 tableAddResident.refresh();
             }
 
+            updateSumOfResident();
+            updatePermanentCount();
+
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -405,59 +404,118 @@ public class ButtonPanel_Controller {
     }
 
 
-    private void deleteSelectedApartment() {
-        Apartment selectedApartment = tableAddApartment.getSelectionModel().getSelectedItem();
+//    private void deleteSelectedApartment() {
+//        Apartment selectedApartment = tableAddApartment.getSelectionModel().getSelectedItem();
+//
+//        if (selectedApartment == null) {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Lỗi");
+//            alert.setHeaderText("Không có phòng nào được chọn");
+//            alert.setContentText("Hãy chọn một phòng để xóa.");
+//            alert.showAndWait();
+//            return;
+//        }
+//
+//        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+//        confirmationAlert.setTitle("Xác nhận xóa");
+//        confirmationAlert.setHeaderText("Bạn có chắc muốn xóa phòng này không?");
+//        confirmationAlert.setContentText("Phòng: " + selectedApartment.getRoom());
+//
+//        confirmationAlert.showAndWait().ifPresent(response -> {
+//            if (response == ButtonType.OK) {
+//                apartmentList.remove(selectedApartment);
+//                observableApartmentList.remove(selectedApartment);
+//                tableAddApartment.refresh();
+//
+//                residentList.removeIf(resident -> resident.getApartmentId() == selectedApartment.getApartmentId());
+//                observableResidentList.setAll(residentList);
+//                tableAddResident.refresh();
+//
+//                vehicleList.removeIf(vehicle -> {
+//                    Resident resident = ResidentAPI.getResidentById(vehicle.getResidentId());
+//                    return resident != null && resident.getApartmentId() == selectedApartment.getApartmentId();
+//                });
+//
+//                observableVehicleList.setAll(vehicleList);
+//                tableAddVehicle.refresh();
+//
+//                ApartmentAPI.deleteApartment(selectedApartment.getApartmentId());
+//
+//                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+//                successAlert.setTitle("Xóa thành công");
+//                successAlert.setHeaderText(null);
+//                successAlert.setContentText("Đã xóa phòng.");
+//                successAlert.showAndWait();
+//            }
+//        });
+//    }
 
-        if (selectedApartment == null) {
+    private void deleteSelectedApartments() {
+        ObservableList<Apartment> selectedApartments = tableAddApartment.getSelectionModel().getSelectedItems();
+
+        if (selectedApartments.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Lỗi");
             alert.setHeaderText("Không có phòng nào được chọn");
-            alert.setContentText("Hãy chọn một phòng để xóa.");
+            alert.setContentText("Hãy chọn ít nhất một phòng để xóa.");
             alert.showAndWait();
             return;
         }
 
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Xác nhận xóa");
-        confirmationAlert.setHeaderText("Bạn có chắc muốn xóa phòng này không?");
-        confirmationAlert.setContentText("Phòng: " + selectedApartment.getRoom());
+        confirmationAlert.setHeaderText("Bạn có chắc muốn xóa các phòng này không?");
+        confirmationAlert.setContentText("Danh sách phòng sẽ bị xóa: " +
+                selectedApartments.stream().map(Apartment::getRoom).reduce((a, b) -> a + ", " + b).orElse(""));
 
         confirmationAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                apartmentList.remove(selectedApartment);
-                observableApartmentList.remove(selectedApartment);
-                tableAddApartment.refresh();
+                // Create a list of apartments to delete to avoid concurrent modification issues
+                List<Apartment> apartmentsToDelete = new ArrayList<>(selectedApartments);
 
-                residentList.removeIf(resident -> resident.getApartmentId() == selectedApartment.getApartmentId());
-                observableResidentList.setAll(residentList);
+                for (Apartment apartment : apartmentsToDelete) {
+                    apartmentList.remove(apartment);
+                    observableApartmentList.remove(apartment);
+
+                    // Remove associated residents and vehicles
+                    residentList.removeIf(resident -> resident.getApartmentId() == apartment.getApartmentId());
+                    observableResidentList.setAll(residentList);
+
+                    vehicleList.removeIf(vehicle -> {
+                        Resident resident = ResidentAPI.getResidentById(vehicle.getResidentId());
+                        return resident != null && resident.getApartmentId() == apartment.getApartmentId();
+                    });
+
+                    observableVehicleList.setAll(vehicleList);
+
+                    // Delete the apartment from the database
+                    ApartmentAPI.deleteApartment(apartment.getApartmentId());
+                }
+
+                // Refresh the table
+                tableAddApartment.refresh();
                 tableAddResident.refresh();
+                tableAddVehicle.refresh();
+
                 updatePermanentCount();
                 updateTemporaryCount();
                 updateAbsentCount();
                 updateSumOfResident();
 
-                vehicleList.removeIf(vehicle -> {
-                    Resident resident = ResidentAPI.getResidentById(vehicle.getResidentId());
-                    return resident != null && resident.getApartmentId() == selectedApartment.getApartmentId();
-                });
-
-                observableVehicleList.setAll(vehicleList);
-                tableAddVehicle.refresh();
-                updateCarCount();
                 updateBicycleCount();
                 updateMotorbikeCount();
-                updateỌtherTransportCount();
-
-                ApartmentAPI.deleteApartment(selectedApartment.getApartmentId());
+                updateCarCount();
+                updateOtherTransportCount();
 
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Xóa thành công");
                 successAlert.setHeaderText(null);
-                successAlert.setContentText("Đã xóa phòng.");
+                successAlert.setContentText("Đã xóa các phòng đã chọn.");
                 successAlert.showAndWait();
             }
         });
     }
+
 
     public void openAddResidentWindow() {
         try {
@@ -703,23 +761,87 @@ public class ButtonPanel_Controller {
     }
 
 
-    public void deleteSelectedResident() {
-        Resident selectedResident = tableAddResident.getSelectionModel().getSelectedItem();
+//    public void deleteSelectedResident() {
+//        Resident selectedResident = tableAddResident.getSelectionModel().getSelectedItem();
+//
+//        if (selectedResident == null) {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Lỗi");
+//            alert.setHeaderText("Không có cư dân nào được chọn");
+//            alert.setContentText("Hãy chọn một cư dân để xóa.");
+//            alert.showAndWait();
+//            return;
+//        }
+//
+//        int selectedResidentId = selectedResident.getResidentId();
+//
+//        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+//        confirmAlert.setTitle("Xác nhận xóa");
+//        confirmAlert.setHeaderText("Bạn có chắc muốn xóa cư dân này không?");
+//        confirmAlert.setContentText("Hành động này không thể khôi phục.");
+//        ButtonType confirmButton = new ButtonType("Xóa", ButtonBar.ButtonData.OK_DONE);
+//        ButtonType cancelButton = new ButtonType("Hủy", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        confirmAlert.getButtonTypes().setAll(confirmButton, cancelButton);
+//
+//        confirmAlert.showAndWait().ifPresent(response -> {
+//            if (response == confirmButton) {
+//                residentList.remove(selectedResident);
+//                observableResidentList.setAll(residentList);
+//                tableAddResident.refresh();
+//
+//                List<Vehicle> allVehicleOwnedByTheDeletedResident = VehicleAPI.getAllVehiclesByResidentId(selectedResidentId);
+//
+//                if (!allVehicleOwnedByTheDeletedResident.isEmpty()){
+//                    vehicleList.removeAll(allVehicleOwnedByTheDeletedResident);
+//                    observableVehicleList.setAll(vehicleList);
+//                    tableAddVehicle.refresh();
+//                }
+//
+//                for (Apartment apartment: apartmentList){
+//                    if (apartment.getOwnerId() != null && apartment.getOwnerId() == selectedResidentId){
+//                        apartment.setOwnerId(null);
+//                        ApartmentAPI.updateOwnerApartment(apartment.getApartmentId(), null);
+//                    }
+//                }
+//                observableApartmentList.setAll(apartmentList);
+//                tableAddApartment.refresh();
+//
+//                ResidentAPI.deleteResidentById(selectedResidentId, null);
+//
+//                updateAbsentCount();
+//                updatePermanentCount();
+//                updateTemporaryCount();
+//                updateSumOfResident();
+//
+//                updateCarCount();
+//                updateMotorbikeCount();
+//                updateBicycleCount();
+//                updateOtherTransportCount();
+//
+//                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+//                successAlert.setTitle("Xóa thành công");
+//                successAlert.setHeaderText(null);
+//                successAlert.setContentText("Cư dân đã được xóa.");
+//                successAlert.showAndWait();
+//            }
+//        });
+//    }
 
-        if (selectedResident == null) {
+    public void deleteSelectedResidents() {
+        ObservableList<Resident> selectedResidents = tableAddResident.getSelectionModel().getSelectedItems();
+
+        if (selectedResidents.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Lỗi");
             alert.setHeaderText("Không có cư dân nào được chọn");
-            alert.setContentText("Hãy chọn một cư dân để xóa.");
+            alert.setContentText("Hãy chọn ít nhất một cư dân để xóa.");
             alert.showAndWait();
             return;
         }
 
-        int selectedResidentId = selectedResident.getResidentId();
-
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmAlert.setTitle("Xác nhận xóa");
-        confirmAlert.setHeaderText("Bạn có chắc muốn xóa cư dân này không?");
+        confirmAlert.setHeaderText("Bạn có chắc muốn xóa các cư dân này không?");
         confirmAlert.setContentText("Hành động này không thể khôi phục.");
         ButtonType confirmButton = new ButtonType("Xóa", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButton = new ButtonType("Hủy", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -727,55 +849,48 @@ public class ButtonPanel_Controller {
 
         confirmAlert.showAndWait().ifPresent(response -> {
             if (response == confirmButton) {
-                residentList.remove(selectedResident);
-                observableResidentList.setAll(residentList);
-                tableAddResident.refresh();
+                List<Resident> residentsToDelete = new ArrayList<>(selectedResidents);
 
-                List<Vehicle> allVehicleOwnedByTheDeletedResident = VehicleAPI.getAllVehiclesByResidentId(selectedResidentId);
+                for (Resident selectedResident : residentsToDelete) {
+                    int selectedResidentId = selectedResident.getResidentId();
 
-                if (!allVehicleOwnedByTheDeletedResident.isEmpty()){
-                    vehicleList.removeAll(allVehicleOwnedByTheDeletedResident);
-                    observableVehicleList.setAll(vehicleList);
-                    tableAddVehicle.refresh();
+                    // Remove the resident from the lists
+                    residentList.remove(selectedResident);
 
-                    updateCarCount();
-                    updateBicycleCount();
-                    updateMotorbikeCount();
-                    updateỌtherTransportCount();
-                }
-
-
-//                if (selectedResident.getIsOwner()) {
-//                    //List<Apartment> apartmentsNeedToBeModfied = new ArrayList<>();
-//                    for (Apartment apartment: apartmentList){
-//                        if (apartment.getOwnerId() == selectedResidentId){
-//                            apartment.setOwnerId(null);
-//                            ApartmentAPI.updateOwnerApartment(apartment.getApartmentId(), null);
-//                        }
-//                    }
-////                    Apartment apartment = ApartmentAPI.getApartmentById(selectedResident.getApartmentId());
-////                    int index = apartmentList.indexOf(apartment);
-////                    apartment.setOwnerId(null);
-////                    apartmentList.set(index, apartment);
-//                    observableApartmentList.setAll(apartmentList);
-//                    tableAddApartment.refresh();
-//                }
-
-                for (Apartment apartment: apartmentList){
-                    if (apartment.getOwnerId() != null && apartment.getOwnerId() == selectedResidentId){
-                        apartment.setOwnerId(null);
-                        ApartmentAPI.updateOwnerApartment(apartment.getApartmentId(), null);
+                    List<Vehicle> allVehiclesOwnedByTheDeletedResident = VehicleAPI.getAllVehiclesByResidentId(selectedResidentId);
+                    if (!allVehiclesOwnedByTheDeletedResident.isEmpty()) {
+                        vehicleList.removeAll(allVehiclesOwnedByTheDeletedResident);
                     }
+
+                    for (Apartment apartment : apartmentList) {
+                        if (apartment.getOwnerId() != null && apartment.getOwnerId() == selectedResidentId) {
+                            apartment.setOwnerId(null);
+                            ApartmentAPI.updateOwnerApartment(apartment.getApartmentId(), null);
+                        }
+                    }
+
+                    ResidentAPI.deleteResidentById(selectedResidentId, null);
                 }
+
+                // Update the observable lists and refresh the tables
+                observableResidentList.setAll(residentList);
+                observableVehicleList.setAll(vehicleList);
                 observableApartmentList.setAll(apartmentList);
+
+                tableAddResident.refresh();
+                tableAddVehicle.refresh();
                 tableAddApartment.refresh();
 
-                ResidentAPI.deleteResidentById(selectedResidentId, null);
-
+                // Update counts
                 updateAbsentCount();
                 updatePermanentCount();
                 updateTemporaryCount();
                 updateSumOfResident();
+
+                updateCarCount();
+                updateMotorbikeCount();
+                updateBicycleCount();
+                updateOtherTransportCount();
 
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Xóa thành công");
@@ -785,6 +900,7 @@ public class ButtonPanel_Controller {
             }
         });
     }
+
 
     private void updateAbsentCount() {
         long count = residentList.stream()
@@ -820,8 +936,8 @@ public class ButtonPanel_Controller {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/resident_management/add_vehicle.fxml"));
             AnchorPane root = loader.load();
             AddVehicle_Controller addVehicleController = loader.getController();
+            addVehicleController.setExistingVehicles(vehicleList);
 
-            // Set up the stage for the popup
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Thêm phương tiện");
@@ -836,7 +952,7 @@ public class ButtonPanel_Controller {
                 updateCarCount();
                 updateBicycleCount();
                 updateMotorbikeCount();
-                updateỌtherTransportCount();
+                updateOtherTransportCount();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -849,14 +965,47 @@ public class ButtonPanel_Controller {
     }
 
     @FXML
-    private void deleteSelectedVehicle() {
-        Vehicle selectedVehicle = tableAddVehicle.getSelectionModel().getSelectedItem();
+//    private void deleteSelectedVehicle() {
+//        Vehicle selectedVehicle = tableAddVehicle.getSelectionModel().getSelectedItem();
+//
+//        if (selectedVehicle == null) {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Lỗi");
+//            alert.setHeaderText("Không có phương tiện nào được chọn");
+//            alert.setContentText("Hãy chọn một phương tiện để xóa.");
+//            alert.showAndWait();
+//            return;
+//        }
+//
+//        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+//        confirmationAlert.setTitle("Xác nhận xóa");
+//        confirmationAlert.setHeaderText("Xóa phương tiện");
+//        confirmationAlert.setContentText("Bạn có chắc muốn xóa phương tiện này không?");
+//
+//        confirmationAlert.showAndWait().ifPresent(response -> {
+//            if (response == ButtonType.OK) {
+//
+//                vehicleList.remove(selectedVehicle);
+//                observableVehicleList.setAll(vehicleList);
+//                VehicleAPI.deleteVehicle(selectedVehicle.getVehicleId());
+//                tableAddVehicle.refresh();
+//                updateCarCount();
+//                updateBicycleCount();
+//                updateMotorbikeCount();
+//                updateOtherTransportCount();
+//
+//            }
+//        });
+//    }
 
-        if (selectedVehicle == null) {
+    private void deleteSelectedVehicles() {
+        ObservableList<Vehicle> selectedVehicles = tableAddVehicle.getSelectionModel().getSelectedItems();
+
+        if (selectedVehicles.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Lỗi");
             alert.setHeaderText("Không có phương tiện nào được chọn");
-            alert.setContentText("Hãy chọn một phương tiện để xóa.");
+            alert.setContentText("Hãy chọn ít nhất một phương tiện để xóa.");
             alert.showAndWait();
             return;
         }
@@ -864,23 +1013,31 @@ public class ButtonPanel_Controller {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Xác nhận xóa");
         confirmationAlert.setHeaderText("Xóa phương tiện");
-        confirmationAlert.setContentText("Bạn có chắc muốn xóa phương tiện này không?");
+        confirmationAlert.setContentText("Bạn có chắc muốn xóa các phương tiện đã chọn không?");
 
         confirmationAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
+                // Create a list to avoid concurrent modification
+                List<Vehicle> vehiclesToDelete = new ArrayList<>(selectedVehicles);
 
-                vehicleList.remove(selectedVehicle);
+                for (Vehicle vehicle : vehiclesToDelete) {
+                    vehicleList.remove(vehicle);
+                    VehicleAPI.deleteVehicle(vehicle.getVehicleId());
+                }
+
+                // Refresh observable list and table
                 observableVehicleList.setAll(vehicleList);
-                VehicleAPI.deleteVehicle(selectedVehicle.getVehicleId());
                 tableAddVehicle.refresh();
+
+                // Update counts
                 updateCarCount();
                 updateBicycleCount();
                 updateMotorbikeCount();
-                updateỌtherTransportCount();
-
+                updateOtherTransportCount();
             }
         });
     }
+
 
     private void updateCarCount() {
         long count = vehicleList.stream()
@@ -903,7 +1060,7 @@ public class ButtonPanel_Controller {
         bicycleCountLabel.setText(String.valueOf(count));
     }
 
-    private void updateỌtherTransportCount() {
+    private void updateOtherTransportCount() {
         long count = vehicleList.stream()
                 .filter(vehicle -> "Khác".equals(vehicle.getType()))
                 .count();
