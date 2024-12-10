@@ -28,11 +28,9 @@
         </effect>
         <TableView fx:id="tableView" layoutX="5.0" layoutY="40.0" prefHeight="510.0" prefWidth="595.0">
             <columns>
-                <TableColumn fx:id="cMa" prefWidth="75.0" text="Mã" />
-                <TableColumn fx:id="cTrangThai" prefWidth="173.0" text="Trạng thái" />
-                <TableColumn fx:id="cNgayVao" prefWidth="232.0" text="Ngày vào" />
-                <TableColumn fx:id="cNgayRa" prefWidth="225.0" text="Ngày ra" />
-                <TableColumn fx:id="cGhiChu" prefWidth="194.0" text="Ghi chú" />
+                <TableColumn fx:id="cTrangThai" prefWidth="174.0" text="Trạng thái" />
+                <TableColumn fx:id="cNgayVao" prefWidth="178.0" text="Thời điểm" />
+                <TableColumn fx:id="cGhiChu" prefWidth="190.0" text="Ghi chú" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
