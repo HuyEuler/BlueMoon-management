@@ -152,7 +152,6 @@ public class ButtonPanel_Controller {
                 cellData -> {
                     int roomId = cellData.getValue().getApartmentId();
                     Apartment apartment = ApartmentAPI.getApartmentById(roomId);
-                    assert apartment != null;
                     String roomLabel = apartment.getRoom();
                     return new SimpleStringProperty(roomLabel);
                 }
@@ -675,10 +674,7 @@ public class ButtonPanel_Controller {
 
             int selectedResidentId = selectedResident.getResidentId();
 
-            editController.setResidentData(selectedResident, selectedResidentId);
             List<String> availableRooms = apartmentList.stream().map(Apartment::getRoom).toList();
-            editController.setAvailableRooms(availableRooms);
-            editController.setResidentList(residentList);
 
             List<String> roomNameUniqueList = residentList.stream()
                     .map(resident -> resident.getApartmentId() + "|" + resident.getName())
@@ -693,6 +689,10 @@ public class ButtonPanel_Controller {
                         return null;
                     })
                     .toList();
+
+            editController.setResidentData(selectedResident, selectedResidentId);
+            editController.setAvailableRooms(availableRooms);
+            editController.setResidentList(residentList);
             editController.setRoomOwnerUniqueList(roomOwnerUniqueList);
 
             Stage stage = new Stage();
@@ -701,8 +701,8 @@ public class ButtonPanel_Controller {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-            // Get the updated resident
             Resident updatedResident = editController.getUpdatedResident();
+
             if (updatedResident != null) {
                 int index = residentList.indexOf(selectedResident);
                 residentList.set(index, updatedResident);
@@ -712,15 +712,17 @@ public class ButtonPanel_Controller {
 
                     Apartment apartment = ApartmentAPI.getApartmentById(selectedResident.getApartmentId());
                     int apartmentID = apartment.getApartmentId();
-                    int indexOfAartment = apartmentList.indexOf(apartment);
+                    int indexOfApartment = apartmentList.indexOf(apartment);
                     Apartment newApartment = null;
-                    //System.out.println("Index of apartment: " + indexOfAartment);
 
                     if (selectedResident.getIsOwner()) {
-                        if (!updatedResident.getIsOwner()){
+                        if (!updatedResident.getIsOwner()) {
                             newApartment = new Apartment(apartmentID, null,
                                     apartment.getArea(), apartment.getFloor(), apartment.getRoom());
                             ApartmentAPI.updateOwnerApartment(apartmentID, null);
+                        } else {
+                            newApartment = new Apartment(apartmentID, selectedResidentId,
+                                    apartment.getArea(), apartment.getFloor(), apartment.getRoom());
                         }
                     } else {
                         if (updatedResident.getIsOwner()){
@@ -730,7 +732,7 @@ public class ButtonPanel_Controller {
                             ApartmentAPI.updateOwnerApartment(apartmentID, updatedResident.getResidentId());
                         }
                     }
-                    apartmentList.set(indexOfAartment, newApartment);
+                    apartmentList.set(indexOfApartment, newApartment);
                     observableApartmentList.setAll(apartmentList);
                     tableAddApartment.refresh();
 

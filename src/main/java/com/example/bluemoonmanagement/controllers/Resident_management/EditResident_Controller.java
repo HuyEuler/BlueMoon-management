@@ -129,24 +129,31 @@ public class EditResident_Controller {
 
         if (isOwner.equals("Có")) {
             Apartment roomOfResident = ApartmentAPI.getApartmentById(updatedResident.getApartmentId());
+
             if (roomOfResident.getOwnerId() != null) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Cảnh báo");
-                alert.setHeaderText("Phòng này đang có chủ sở hữu");
-                alert.setContentText("Bạn có muốn thay thế chủ sở hữu mới không?");
 
-                ButtonType buttonYes = new ButtonType("Có");
-                ButtonType buttonNo = new ButtonType("Không", ButtonBar.ButtonData.CANCEL_CLOSE);
+                if (roomOfResident.getOwnerId() != residentId) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Cảnh báo");
+                    alert.setHeaderText("Phòng này đang có chủ sở hữu");
+                    alert.setContentText("Bạn có muốn thay thế chủ sở hữu mới không?");
 
-                alert.getButtonTypes().setAll(buttonYes, buttonNo);
+                    ButtonType buttonYes = new ButtonType("Có");
+                    ButtonType buttonNo = new ButtonType("Không", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                Optional<ButtonType> result = alert.showAndWait();
+                    alert.getButtonTypes().setAll(buttonYes, buttonNo);
 
-                if (result.isPresent() && result.get() == buttonYes) {
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == buttonYes) {
+                        ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
+                                phoneNumber, nationality, relationship, true, statusInt, note);
+                    } else {
+                        return;
+                    }
+                } else {
                     ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
                             phoneNumber, nationality, relationship, true, statusInt, note);
-                } else {
-                    return;
                 }
 
             }
