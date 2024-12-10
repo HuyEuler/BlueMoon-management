@@ -73,9 +73,7 @@ public class EditResident_Controller {
         );
         residentName.setText(resident.getName());
         residentDOB.setValue(resident.getBirthday() != null ? LocalDate.parse(resident.getBirthday()) : null);
-        residentGender.setValue(
-                resident.getGender() ? "Nam" : "Nữ"
-        );
+        residentGender.setValue(resident.getGender() ? "Nam" : "Nữ");
         residentPhoneNumber.setText(resident.getPhoneNumber());
         residentNation.setText(resident.getNationality());
         residentRelationship.setText(resident.getRelationshipWithOwner());
@@ -99,6 +97,21 @@ public class EditResident_Controller {
         String isOwner = residentIsOwner.getValue();
         String status = residentStatus.getValue();
         String note = residentNote.getText();
+
+        if (phoneNumber.length() > 11) {
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Số điện thoại chỉ được điền tối đa 11 ký tự.");
+            return;
+        }
+
+        if (!isOwner.equals("Có") && relationship.equals("Chủ sở hữu")){
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Có mâu thuẫn giữa quan hệ với chủ hộ và việc có là chủ hộ hay không.");
+            return;
+        }
+
+        if (isOwner.equals("Có") && !relationship.equals("Chủ sở hữu")){
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Có mâu thuẫn giữa quan hệ với chủ hộ và việc có là chủ hộ hay không.");
+            return;
+        }
 
         if (room == null || room.isEmpty() || name == null || name.isEmpty() || dob == null || dob.isEmpty() ||
                 gender == null || gender.isEmpty() || phoneNumber == null || phoneNumber.isEmpty() ||
@@ -129,24 +142,31 @@ public class EditResident_Controller {
 
         if (isOwner.equals("Có")) {
             Apartment roomOfResident = ApartmentAPI.getApartmentById(updatedResident.getApartmentId());
+
             if (roomOfResident.getOwnerId() != null) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Cảnh báo");
-                alert.setHeaderText("Phòng này đang có chủ sở hữu");
-                alert.setContentText("Bạn có muốn thay thế chủ sở hữu mới không?");
 
-                ButtonType buttonYes = new ButtonType("Có");
-                ButtonType buttonNo = new ButtonType("Không", ButtonBar.ButtonData.CANCEL_CLOSE);
+                if (roomOfResident.getOwnerId() != residentId) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Cảnh báo");
+                    alert.setHeaderText("Phòng này đang có chủ sở hữu");
+                    alert.setContentText("Bạn có muốn thay thế chủ sở hữu mới không?");
 
-                alert.getButtonTypes().setAll(buttonYes, buttonNo);
+                    ButtonType buttonYes = new ButtonType("Có");
+                    ButtonType buttonNo = new ButtonType("Không", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                Optional<ButtonType> result = alert.showAndWait();
+                    alert.getButtonTypes().setAll(buttonYes, buttonNo);
 
-                if (result.isPresent() && result.get() == buttonYes) {
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == buttonYes) {
+                        ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
+                                phoneNumber, nationality, relationship, true, statusInt, note);
+                    } else {
+                        return;
+                    }
+                } else {
                     ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
                             phoneNumber, nationality, relationship, true, statusInt, note);
-                } else {
-                    return;
                 }
 
             }
@@ -190,6 +210,13 @@ public class EditResident_Controller {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.setContent(textFlow);
 
+        alert.showAndWait();
+    }
+
+    private void showAlert2(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
         alert.showAndWait();
     }
 }

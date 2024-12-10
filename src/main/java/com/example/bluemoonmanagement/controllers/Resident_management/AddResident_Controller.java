@@ -77,6 +77,21 @@ public class AddResident_Controller {
         String status = residentStatus.getValue();
         String note = residentNote.getText();
 
+        if (phoneNumber.length() > 11) {
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Số điện thoại chỉ được điền tối đa 11 ký tự.");
+            return;
+        }
+
+        if (!isOwner.equals("Có") && relationship.equals("Chủ sở hữu")){
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Có mâu thuẫn giữa quan hệ với chủ hộ và việc có là chủ hộ hay không.");
+            return;
+        }
+
+        if (isOwner.equals("Có") && !relationship.equals("Chủ sở hữu")){
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Có mâu thuẫn giữa quan hệ với chủ hộ và việc có là chủ hộ hay không.");
+            return;
+        }
+
         if (room == null || room.isEmpty() || name == null || name.isEmpty() || dob == null || dob.isEmpty() ||
                 gender == null || gender.isEmpty() || phoneNumber == null || phoneNumber.isEmpty() ||
                 isOwner == null || isOwner.isEmpty() || status == null || status.isEmpty()) {
@@ -151,6 +166,13 @@ public class AddResident_Controller {
         newResident = null;
         Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
+    }
+
+    private void showAlert2(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
