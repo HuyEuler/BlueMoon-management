@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane minHeight="500.0" minWidth="800.0" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
+<GridPane minHeight="500.0" minWidth="800.0" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.TabController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
     </columnConstraints>
@@ -42,8 +42,8 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="500.0" prefHeight="750.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="81.60001220703126" minHeight="50.0" prefHeight="80.80000915527344" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="765.5999969482422" minHeight="500.0" prefHeight="759.9999908447265" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <fx:include fx:id="ResidentTab" source="resident_management/content.fxml" GridPane.rowIndex="1" />
                     <Label text="Quản lý dân cư" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -61,8 +61,8 @@
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                 </columnConstraints>
                 <rowConstraints>
-               <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="83.20000305175782" minHeight="70.0" prefHeight="83.20000305175782" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="766.5999969482422" minHeight="10.0" prefHeight="758.5999969482422" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <GridPane GridPane.rowIndex="1">
                     <columnConstraints>
