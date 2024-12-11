@@ -55,7 +55,7 @@ public class showActivity_controller {
         tName.setText(resident.getName());
         tNumberPhone.setText(resident.getPhoneNumber());
         tBirthday.setText(resident.getBirthday());
-        tGender.setText(!Objects.equals(resident.getGender(), "Male") ? "Nam" : "Nữ");
+        tGender.setText(resident.getGender() ? "Nam" : "Nữ");
         tRelationship.setText(resident.getRelationshipWithOwner());
         tNumberApartment.setText((requireNonNull(getApartmentById(resident.getApartmentId()))).getRoom());
     }
