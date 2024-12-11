@@ -42,6 +42,16 @@ public class EditResident_Controller {
         residentGender.getItems().addAll("Nam", "Nữ");
         residentIsOwner.getItems().addAll("Có", "Không");
         residentStatus.getItems().addAll("Thường trú", "Tạm trú", "Tạm vắng"); //, "Đã rời đi");
+
+        residentIsOwner.setOnAction(event -> {
+            String isOwner = residentIsOwner.getValue();
+            if (isOwner.equals("Có")) {
+                residentRelationship.setText("Chủ sở hữu");
+                residentRelationship.setEditable(false);
+            } else {
+                residentRelationship.setEditable(true);
+            }
+        });
     }
 
     public void setAvailableRooms(List<String> availableRooms) {
@@ -104,11 +114,6 @@ public class EditResident_Controller {
         }
 
         if (!isOwner.equals("Có") && relationship.equals("Chủ sở hữu")){
-            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Có mâu thuẫn giữa quan hệ với chủ hộ và việc có là chủ hộ hay không.");
-            return;
-        }
-
-        if (isOwner.equals("Có") && !relationship.equals("Chủ sở hữu")){
             showAlert2(Alert.AlertType.ERROR, "Lỗi", "Có mâu thuẫn giữa quan hệ với chủ hộ và việc có là chủ hộ hay không.");
             return;
         }
