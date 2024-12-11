@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane minHeight="500.0" prefHeight="850.0" prefWidth="200.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.FeeManagementController">
+<GridPane minHeight="500.0" prefHeight="850.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.FeeManagementController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="150.0" />
    </columnConstraints>
@@ -66,7 +66,7 @@
    </Button>
    <Button fx:id="addPayment" alignment="CENTER" contentDisplay="TOP" minHeight="80.0" minWidth="120.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" styleClass="panel_button" stylesheets="@../views_styles.css" text="Tạo thanh toán tháng" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
       <font>
-         <Font name="System Bold" size="18.0" />
+         <Font name="System Bold" size="13.0" />
       </font>
       <graphic>
          <ImageView fitHeight="50.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">

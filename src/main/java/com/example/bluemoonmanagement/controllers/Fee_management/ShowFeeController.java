@@ -10,6 +10,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -50,6 +51,11 @@ public class ShowFeeController {
         configureTableColumns();
         loadFeeData();
         btSearch.setOnAction(event -> searchFees());
+        tfSearch.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                searchFees();
+            }
+        });
         feeList.addListener((ListChangeListener<Fee>) change -> {
             while (change.next()) {
                 if (change.wasAdded() || change.wasRemoved()) {
@@ -111,11 +117,11 @@ public class ShowFeeController {
         lbPTuThien.setText(String.valueOf(cntTuThien));
     }
         private void searchFees(){
-            String searchFee = tfSearch.getText().trim();
+            String searchFee = tfSearch.getText().trim().toLowerCase();
             if (searchFee.isEmpty()) {
                 tableView.setItems(feeList);
             } else {
-                ObservableList<Fee> searchResults = feeList.filtered(fee -> fee.getName().contains(searchFee));
+                ObservableList<Fee> searchResults = feeList.filtered(fee -> fee.getName().toLowerCase().contains(searchFee));
                 tableView.setItems(searchResults);
             }
             tableView.refresh();
