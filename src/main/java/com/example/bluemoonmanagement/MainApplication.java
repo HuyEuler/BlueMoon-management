@@ -19,7 +19,7 @@ public class MainApplication extends Application {
         stage.setTitle("Apartment Management System");
 //        stage.setMaximized(true);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:src/main/resources/images/hotel-icon.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/images/bluemoon-logo.png"));
         stage.show();
 }
 
