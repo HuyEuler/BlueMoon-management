@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane minHeight="500.0" prefHeight="850.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.FeeManagementController">
+<GridPane minHeight="500.0" prefHeight="850.0" prefWidth="200.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bluemoonmanagement.controllers.Fee_management.FeeManagementController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="300.0" />
    </columnConstraints>
