@@ -117,12 +117,12 @@ public class AddResident_Controller {
         String roomOwnerUniqueCheck = roomId + "|" + true;
 
         if (roomNameUniqueList.contains(roomNameUniqueCheck)) {
-            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có người có tên " + name + ".");
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có người có tên " + name + ".");
             return;
         }
 
         if (isOwner.equals("Có") && roomOwnerUniqueList.contains(roomOwnerUniqueCheck)){
-            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
             return;
         }
 
