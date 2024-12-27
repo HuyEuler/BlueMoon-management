@@ -41,7 +41,7 @@ public class EditResident_Controller {
     @FXML private void initialize(){
         residentGender.getItems().addAll("Nam", "Nữ");
         residentIsOwner.getItems().addAll("Có", "Không");
-        residentStatus.getItems().addAll("Thường trú", "Tạm trú", "Tạm vắng"); //, "Đã rời đi");
+        residentStatus.getItems().addAll("Thường trú", "Tạm trú", "Tạm vắng");
 
         residentIsOwner.setOnAction(event -> {
             String isOwner = residentIsOwner.getValue();
@@ -138,7 +138,7 @@ public class EditResident_Controller {
         String roomOwnerUniqueCheck = roomId + "|" + true;
 
         if (isOwner.equals("Có") && roomOwnerUniqueList.contains(roomOwnerUniqueCheck)){
-            showAlert(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
+            showAlert2(Alert.AlertType.ERROR, "Lỗi", "Phòng " + room + " đã có chủ sở hữu.");
             return;
         }
 
@@ -179,9 +179,6 @@ public class EditResident_Controller {
             ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
                     phoneNumber, nationality, relationship, false, statusInt, note);
         }
-
-//        ResidentAPI.updateResidentById(residentId, ApartmentAPI.getApartmentIdByRoom(room), name, dob, gender.equals("Nam"),
-//        phoneNumber, nationality, relationship, isOwner.equals("Có"), statusInt, note);
 
         Stage stage = (Stage) residentRoom.getScene().getWindow();
         stage.close();
